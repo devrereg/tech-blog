@@ -2,7 +2,7 @@
 title: "블로그를 열며"
 date: 2026-05-29 10:00:00 +0900
 categories: [Meta]
-tags: [blog, learning, jekyll]
+tags: []
 description: "실무와 스터디를 통해 알게된 지식기록을 위한 첫 글."
 ---
 
