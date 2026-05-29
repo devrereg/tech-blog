@@ -1,0 +1,37 @@
+# Bundler cache
+.bundle
+vendor
+Gemfile.lock
+
+# Jekyll cache
+.jekyll-cache
+.jekyll-metadata
+_site
+
+# RubyGems
+*.gem
+
+# NPM dependencies
+node_modules
+package-lock.json
+
+# IDE configurations
+.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+
+# Misc
+_sass/vendors
+assets/js/dist
+
+# Claude Code agent files (블로그 사이트와 무관)
+CLAUDE.md
+.claude/
+.claude.local/
+
+# OS / 편집기 부산물
+.DS_Store
+*.swp
+*~
