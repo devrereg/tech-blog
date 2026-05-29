@@ -17,7 +17,7 @@ AOP는 **Aspect Oriented Programming**, 한국어로는 **관점 지향 프로�
 
 ## 왜 사용하는가?
 
-비즈니스 로직 안에 로깅, 분산 락 획득/반환, 트랜잭션, 권한 체크 같은 반복 코드가 섞이면 핵심 로직과 부가기능 로직이 섞인다.
+비즈니스 로직 안에 로깅, 분산 락 획득/반환, 트랜잭션, 권한 체크 같은 반복 코드가 섞이면 핵심 로직과 부가 기능 로직이 섞인다.
 
 ```kotlin
 fun reserveTicket() {
@@ -144,7 +144,7 @@ fun reserveTicket() {
 | `@AfterThrowing` | 예외 발생 시 |
 | `@Around` | 전·후 모두 (직접 `proceed()` 호출) |
 
-`@Around`를 많이 사용하지만, 단순 로깅·측정 정도면 `@Before`/`@AfterReturning`만써도 되는 경우가 있다.
+`@Around`를 많이 사용하지만, 단순 로깅·측정 정도면 `@Before`/`@AfterReturning`만 사용해도 되는 경우가 있다.
 
 ## 정리
 
