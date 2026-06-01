@@ -1,7 +1,7 @@
 ---
 title: "Spring AOP 왜, 언제, 어떻게 사용하는가?"
 date: 2026-05-30 03:56:49 +0900
-categories: [Spring Boot, AOP]
+categories: [Backend, Spring]
 tags: [spring, aop, kotlin, annotation]
 description: "관성적으로 써오던 Spring AOP를 왜·언제·어떻게 쓰는지 분산 락 예제로 정리한다."
 ---
