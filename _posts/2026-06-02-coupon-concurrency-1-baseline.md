@@ -1,5 +1,5 @@
 ---
-title: "쿠폰발급 시스템으로 동시성 제어 구현하기(1) — 락 없는 1차 구현과 그 한계"
+title: "쿠폰발급 시스템으로 동시성 제어 구현하기(1) — 락 없는 쿠폰 발급 1차 구현과 그 한계"
 date: 2026-06-02 01:37:56 +0900
 categories: [Backend, Concurrency]
 tags: [concurrency, coupon, kotlin, spring-boot, lost-update]
