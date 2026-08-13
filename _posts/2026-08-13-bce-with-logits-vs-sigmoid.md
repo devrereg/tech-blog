@@ -1,6 +1,6 @@
 ---
 title: "이진 분류 마스터하기: 학습은 BCEWithLogitsLoss, 예측은 Sigmoid"
-date: 2026-08-13 21:40:00 +0900
+date: 2026-08-13 12:00:00 +0900
 categories: [AI, PyTorch]
 tags: [pytorch, deep-learning, binary-classification, bce-loss, sigmoid]
 math: true
