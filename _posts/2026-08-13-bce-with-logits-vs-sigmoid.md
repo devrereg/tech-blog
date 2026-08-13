@@ -1,7 +1,7 @@
 ---
 title: "이진 분류 마스터하기: 학습은 BCEWithLogitsLoss, 예측은 Sigmoid"
 date: 2026-08-13 12:00:00 +0900
-categories: [AI, PyTorch]
+categories: [AI, Deep Learning]
 tags: [pytorch, deep-learning, binary-classification, bce-loss, sigmoid]
 math: true
 description: "이진 분류에서 학습할 땐 BCEWithLogitsLoss, 예측할 땐 Sigmoid를 따로 쓰는 이유를 로그 손실의 수치적 불안정성과 log-sum-exp 트릭 관점에서 정리했다."
