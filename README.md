@@ -1,7 +1,7 @@
 # devrereg's tech blog
 
 [![Build and Deploy](https://github.com/devrereg/tech-blog/actions/workflows/pages-deploy.yml/badge.svg)](https://github.com/devrereg/tech-blog/actions/workflows/pages-deploy.yml)
-[![GitHub license](https://img.shields.io/github/license/devrereg/tech-blog.svg?color=blue)][mit]
+[![GitHub license](https://img.shields.io/github/license/devrereg/tech-blog.svg?color=blue)](https://github.com/devrereg/tech-blog/blob/main/LICENSE)
 
 > 백엔드 개발을 공부하며 정리한 기록을 모아두는 기술 블로그입니다.
 
@@ -18,35 +18,38 @@
 <!-- BLOG-POST-LIST:START -->
 <!-- BLOG-POST-LIST:END -->
 
-## 주요 시리즈
+## 포스팅 주제
 
-- **쿠폰 발급 동시성 제어** — Lost Update 재현부터 비관적 락, 낙관적 락, Redis 분산락, Kafka 비동기 처리까지 하나의 문제를 단계적으로 해결해나가는 6부작 시리즈
-- **Spring Boot** — AOP, Flyway/DDL 자동화 등 실무에서 부딪힌 이슈 정리
-- **PyTorch / Deep Learning** — 선형 회귀, 이진 분류 등 딥러닝 기초 실습 기록
+**동시성 제어 (쿠폰 발급 시리즈)**
 
-## 기술 스택
+1. [락 없는 쿠폰 발급 1차 구현과 그 한계](https://devrereg.github.io/tech-blog/posts/coupon-concurrency-1-baseline/)
+2. [락 없는 쿠폰발급의 lost update를 테스트로 재현하기](https://devrereg.github.io/tech-blog/posts/coupon-concurrency-2-reproduce-lost-update/)
+3. [비관 락으로 lost update 잡기](https://devrereg.github.io/tech-blog/posts/coupon-concurrency-3-pessimistic-lock/)
+4. [낙관 락 발급 경로와 비관 락의 재시도 비용 비교](https://devrereg.github.io/tech-blog/posts/coupon-concurrency-4-optimistic-lock/)
+5. [재고 판단을 Redis로 옮기기](https://devrereg.github.io/tech-blog/posts/coupon-concurrency-5-redis-gate/)
+6. [발급을 비동기로: Kafka로 DB 저장 떼어내기](https://devrereg.github.io/tech-blog/posts/coupon-concurrency-6-kafka-async/)
 
-| 영역 | 사용 기술 |
-| --- | --- |
-| 정적 사이트 생성 | Jekyll, Chirpy Theme |
-| 배포 | GitHub Actions → GitHub Pages |
-| 주요 주제 | Spring Boot, Kotlin, Concurrency, Python, PyTorch |
+**Spring / Database**
 
-## 로컬에서 실행하기
+- [Spring AOP 왜, 언제, 어떻게 사용하는가?](https://devrereg.github.io/tech-blog/posts/spring-aop-basics/)
+- [Flyway란 무엇인가? 데이터베이스 변경 이력 관리와 실무 운영](https://devrereg.github.io/tech-blog/posts/spring-boot-flyway-and-ddl-auto/)
 
-```shell
-bundle install
-bundle exec jekyll s
-```
+**Python**
+
+- [Pydantic과 AsyncIO, 손으로 만지며 배운 하루](https://devrereg.github.io/tech-blog/posts/pydantic-asyncio-first-day/)
+- [SQLAlchemy 2.0 async, 함정 두 개로 배운 ORM](https://devrereg.github.io/tech-blog/posts/sqlalchemy-2-async-two-pitfalls/)
+
+**Deep Learning**
+
+- [이진 분류 마스터하기: 학습은 BCEWithLogitsLoss, 예측은 Sigmoid](https://devrereg.github.io/tech-blog/posts/bce-with-logits-vs-sigmoid/)
+- [파이토치로 이해하는 선형 회귀 모델 아키텍처와 학습 루프(Training Loop) 정리](https://devrereg.github.io/tech-blog/posts/pytorch-linear-regression-training-loop/)
+- [이진 분류(Binary Classification) 완전 정복: 붓꽃 데이터로 배우는 로지스틱 회귀](https://devrereg.github.io/tech-blog/posts/binary-classification-with-pytorch/)
+
+**Meta**
+
+- [블로그를 열며](https://devrereg.github.io/tech-blog/posts/hello-tech-blog/)
 
 ## 연락
 
 - GitHub: [@devrereg](https://github.com/devrereg)
 - Email: devrereg@gmail.com
-
----
-
-이 저장소는 [Chirpy Starter][chirpy]를 기반으로 하며, [MIT][mit] 라이선스를 따릅니다.
-
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[mit]: https://github.com/devrereg/tech-blog/blob/main/LICENSE
