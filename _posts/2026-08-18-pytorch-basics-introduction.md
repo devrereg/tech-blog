@@ -1,6 +1,6 @@
 ---
 title: "PyTorch 기본 소개 — 특징과 사용법 완전 정리"
-date: 2026-08-18 09:00:00 +0900
+date: 2026-08-18 01:00:00 +0900
 categories: [AI, Deep Learning]
 tags: [pytorch, deep-learning, python, tensor, autograd]
 description: "Tensor를 만들고, 자동미분을 이해하고, 모델 하나를 직접 학습시키는 전 과정을 PyTorch 기준으로 정리했다."
