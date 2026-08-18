@@ -16,11 +16,11 @@
 ## 최근 글
 
 <!-- BLOG-POST-LIST:START -->
+- [PyTorch 기본 소개 — 특징과 사용법 완전 정리](https://devrereg.github.io/tech-blog/posts/pytorch-basics-introduction/)
+- [딥러닝 기초 완전 정리 — 퍼셉트론부터 과적합까지](https://devrereg.github.io/tech-blog/posts/deep-learning-basics/)
 - [이진 분류&lpar;Binary Classification&rpar; 완전 정복: 붓꽃 데이터로 배우는 로지스틱 회귀](https://devrereg.github.io/tech-blog/posts/binary-classification-with-pytorch/)
 - [파이토치로 이해하는 선형 회귀 모델 아키텍처와 학습 루프&lpar;Training Loop&rpar; 정리](https://devrereg.github.io/tech-blog/posts/pytorch-linear-regression-training-loop/)
 - [이진 분류 마스터하기: 학습은 BCEWithLogitsLoss, 예측은 Sigmoid](https://devrereg.github.io/tech-blog/posts/bce-with-logits-vs-sigmoid/)
-- [SQLAlchemy 2.0 async, 함정 두 개로 배운 ORM](https://devrereg.github.io/tech-blog/posts/sqlalchemy-2-async-two-pitfalls/)
-- [Pydantic과 AsyncIO, 손으로 만지며 배운 하루](https://devrereg.github.io/tech-blog/posts/pydantic-asyncio-first-day/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 포스팅 주제
