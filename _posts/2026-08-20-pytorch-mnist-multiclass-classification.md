@@ -10,31 +10,31 @@ description: "MNIST 손글씨 숫자 데이터셋으로 다중분류 신경망�
 
 ## 📌 목차
 
-1. [문제 정의: MNIST 손글씨 숫자 인식](#1-problem-definition)
-2. [컴퓨터는 이미지를 어떻게 이해하는가](#2-image-as-numbers)
-3. [신경망 구조: 입력층 · 은닉층 · 출력층](#3-network-architecture)
-4. [ReLU 활성화 함수](#4-relu)
-5. [GPU와 미니 배치 학습](#5-gpu-minibatch)
-6. [데이터 파이프라인: Dataset · Transforms · DataLoader](#6-data-pipeline)
-7. [모델 정의와 학습 결과](#7-model-training)
-8. [경사 소실 문제 · 람다 표현식 · 배치 사이즈](#8-vanishing-gradient)
-9. [혼동행렬(Confusion Matrix)](#9-confusion-matrix)
-10. [Precision과 Recall, 그리고 F1-Score](#10-precision-recall-f1)
-11. [다중 클래스 평가: 평균 방식 비교](#11-multiclass-averaging)
-12. [ROC Curve와 AUC](#12-roc-auc)
-13. [확률 보정(Calibration)](#13-calibration)
-14. [클래스 불균형(Class Imbalance) 해결 전략](#14-class-imbalance)
-15. [전체 정리](#15-summary)
+1. [문제 정의: MNIST 손글씨 숫자 인식](#problem-definition)
+2. [컴퓨터는 이미지를 어떻게 이해하는가](#image-as-numbers)
+3. [신경망 구조: 입력층 · 은닉층 · 출력층](#network-architecture)
+4. [ReLU 활성화 함수](#relu)
+5. [GPU와 미니 배치 학습](#gpu-minibatch)
+6. [데이터 파이프라인: Dataset · Transforms · DataLoader](#data-pipeline)
+7. [모델 정의와 학습 결과](#model-training)
+8. [경사 소실 문제 · 람다 표현식 · 배치 사이즈](#vanishing-gradient)
+9. [혼동행렬(Confusion Matrix)](#confusion-matrix)
+10. [Precision과 Recall, 그리고 F1-Score](#precision-recall-f1)
+11. [다중 클래스 평가: 평균 방식 비교](#multiclass-averaging)
+12. [ROC Curve와 AUC](#roc-auc)
+13. [확률 보정(Calibration)](#calibration)
+14. [클래스 불균형(Class Imbalance) 해결 전략](#class-imbalance)
+15. [전체 정리](#summary)
 
 ---
 
-## 1. 문제 정의: MNIST 손글씨 숫자 인식 {#1-problem-definition}
+## 1. 문제 정의: MNIST 손글씨 숫자 인식 {#problem-definition}
 
 지금까지 정형화된 "숫자" 데이터를 다뤘다면, 이번엔 한 단계 나아가 모델이 **이미지를 직접 "보고 이해"** 하도록 학습시킨다. 목표는 손으로 쓴 0~9 숫자 이미지를 보고 어떤 숫자인지 맞히는 것이다.
 
 사람은 숫자를 픽셀 값이 아니라 **모양(형태)** 으로 인식한다. 이런 시각 정보 이해 기술은 자율주행차의 사물 인식, 의료 AI의 질병 진단 등 실생활 AI 기술의 핵심 원리이기도 하다.
 
-## 2. 컴퓨터는 이미지를 어떻게 이해하는가 {#2-image-as-numbers}
+## 2. 컴퓨터는 이미지를 어떻게 이해하는가 {#image-as-numbers}
 
 컴퓨터에게 이미지란 숫자로 가득 찬 격자판일 뿐이다.
 
@@ -51,7 +51,7 @@ description: "MNIST 손글씨 숫자 데이터셋으로 다중분류 신경망�
 
 완전결합 신경망(Fully Connected Network)은 1차원 벡터 입력을 요구하기 때문에, 2차원 이미지를 784개의 숫자가 일렬로 늘어선 벡터로 펴주는 전처리가 반드시 필요하다.
 
-## 3. 신경망 구조: 입력층 · 은닉층 · 출력층 {#3-network-architecture}
+## 3. 신경망 구조: 입력층 · 은닉층 · 출력층 {#network-architecture}
 
 다중분류 신경망은 크게 3단계로 구성된다.
 
@@ -65,7 +65,7 @@ description: "MNIST 손글씨 숫자 데이터셋으로 다중분류 신경망�
 
 예를 들어 숫자 '8'을 인식할 때, 은닉층은 "상단 동그라미", "하단 동그라미" 같은 중간 특징을 학습한다. 이렇게 여러 층을 쌓아 복잡한 문제를 단계적으로 해결하는 것이 **딥러닝(Deep Learning)** 의 핵심이다.
 
-## 4. ReLU 활성화 함수 {#4-relu}
+## 4. ReLU 활성화 함수 {#relu}
 
 ### 비선형성이 필요한 이유
 
@@ -88,7 +88,7 @@ x = torch.tensor([-2.0, -1.0, 0.0, 1.0, 2.0])
 y = relu(x)  # tensor([0., 0., 0., 1., 2.])
 ```
 
-## 5. GPU와 미니 배치 학습 {#5-gpu-minibatch}
+## 5. GPU와 미니 배치 학습 {#gpu-minibatch}
 
 ### GPU가 필요한 이유
 
@@ -104,7 +104,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 60,000개를 한 번에 학습시키는 것은 비효율적이다. 데이터를 작은 묶음(예: 500개씩)으로 나눠 반복 학습하며, 이 묶음 하나를 **미니 배치**라고 부른다.
 
-## 6. 데이터 파이프라인: Dataset · Transforms · DataLoader {#6-data-pipeline}
+## 6. 데이터 파이프라인: Dataset · Transforms · DataLoader {#data-pipeline}
 
 PyTorch의 데이터 준비 도구는 전문 셰프의 주방 도구에 비유할 수 있다.
 
@@ -141,7 +141,7 @@ test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=False)
 
 > `shuffle=True`는 매 epoch마다 데이터 순서를 무작위로 섞어, 모델이 데이터 순서 자체를 외우는 것을 방지하고 일반화 성능을 높인다. 검증 데이터는 학습에 관여하지 않으므로 섞을 필요가 없다(`shuffle=False`).
 
-## 7. 모델 정의와 학습 결과 {#7-model-training}
+## 7. 모델 정의와 학습 결과 {#model-training}
 
 ### nn.Module로 신경망 정의하기
 
@@ -210,7 +210,7 @@ for epoch in range(epochs):
 
 (실제로 재현한 실험 결과다.) 은닉층을 1개 더 추가(2개 은닉층 구조)한 결과, 정확도가 **94.95% → 95.81%**로 약 1%p 향상되었다. PyTorch는 모델 구조를 유연하게 바꿔가며 실험하기 좋다는 것을 보여주는 결과다.
 
-## 8. 경사 소실 문제 · 람다 표현식 · 배치 사이즈 {#8-vanishing-gradient}
+## 8. 경사 소실 문제 · 람다 표현식 · 배치 사이즈 {#vanishing-gradient}
 
 ### 경사 소실 문제(Vanishing Gradient)와 ReLU
 
@@ -247,7 +247,7 @@ flatten = lambda x: x.view(-1)
 
 ---
 
-## 9. 혼동행렬(Confusion Matrix) {#9-confusion-matrix}
+## 9. 혼동행렬(Confusion Matrix) {#confusion-matrix}
 
 7장에서 학습시킨 MNIST 모델은 검증 정확도 94.95%를 기록했다. 하지만 정확도라는 숫자 하나만으로는 이 모델이 **어떤 종류의 실수**를 하는지 알 수 없다 — 예를 들어 숫자 4를 9로 착각하는지, 3을 5로 착각하는지는 정확도에 전혀 드러나지 않는다. 이럴 때 필요한 도구가 혼동행렬이다. 혼동행렬은 예측 결과를 실제 정답과 비교해 표로 정리한 도구로, MNIST처럼 클래스가 10개(0~9)인 경우 10×10 크기의 표가 된다.
 
@@ -304,7 +304,7 @@ print(cm.shape)  # (10, 10)
 
 `cm`의 대각선 값(`cm[i][i]`)은 숫자 `i`를 정확히 맞춘 개수이고, 대각선 밖의 값(`cm[i][j]`)은 실제로는 `i`인데 `j`로 잘못 예측한 개수다. 손글씨 숫자 인식에서는 모양이 비슷한 숫자쌍(예: 4와 9, 3과 5, 7과 1)에서 오분류가 몰리는 경향이 있다 — 앞의 개·고양이·토끼 예시에서 '털 패턴'이 헷갈리는 클래스 쌍을 찾아냈던 것과 같은 방식으로, 이 표를 통해 MNIST 모델이 어떤 숫자쌍을 가장 자주 헷갈리는지 바로 확인할 수 있다.
 
-## 10. Precision과 Recall, 그리고 F1-Score {#10-precision-recall-f1}
+## 10. Precision과 Recall, 그리고 F1-Score {#precision-recall-f1}
 
 ### 정밀도(Precision)
 
@@ -341,7 +341,7 @@ $$F1 = 2 \times \frac{Precision \times Recall}{Precision + Recall}$$
 
 F1은 Precision과 Recall 중 하나라도 낮으면 함께 낮아지므로, 두 지표 모두 높은 수준에서 균형을 이뤄야 높은 점수를 받을 수 있다.
 
-## 11. 다중 클래스 평가: 평균 방식 비교 {#11-multiclass-averaging}
+## 11. 다중 클래스 평가: 평균 방식 비교 {#multiclass-averaging}
 
 클래스가 여러 개일 때 클래스별 지표를 하나로 종합하는 3가지 방식:
 
@@ -354,7 +354,7 @@ F1은 Precision과 Recall 중 하나라도 낮으면 함께 낮아지므로, 두
 **예시:** 클래스 A(100개, F1=0.9), B(50개, F1=0.8), C(10개, F1=0.3)
 - Macro-F1 = (0.9+0.8+0.3)/3 = **0.67**
 
-## 12. ROC Curve와 AUC {#12-roc-auc}
+## 12. ROC Curve와 AUC {#roc-auc}
 
 ROC(Receiver Operating Characteristic) 곡선은 임계값을 연속적으로 바꿔가며 모델 성능을 시각화한 곡선이다.
 
@@ -381,7 +381,7 @@ ROC 곡선 아래 면적으로, 모델 성능을 하나의 숫자(0~1)로 요약
 
 **Precision/Recall/F1과의 차이점:** 이들은 특정 임계값 하나를 정해놓고 계산하지만, AUC는 임계값과 무관하게 모델 자체의 판별 능력을 평가한다.
 
-## 13. 확률 보정(Calibration) {#13-calibration}
+## 13. 확률 보정(Calibration) {#calibration}
 
 모델의 예측 확률이 실제 확률과 일치하도록 조정하는 과정. 의료 진단, 자율주행, 금융 리스크 평가처럼 확률 자체를 의사결정에 사용하는 경우 필수적이다.
 
@@ -406,7 +406,7 @@ Softmax에 온도(T) 파라미터를 추가해 확률 분포를 조정한다.
 
 **장점:** 단일 파라미터만 조정하면 되고, **모델 재학습이 불필요**하다.
 
-## 14. 클래스 불균형(Class Imbalance) 해결 전략 {#14-class-imbalance}
+## 14. 클래스 불균형(Class Imbalance) 해결 전략 {#class-imbalance}
 
 ### 문제 상황
 
@@ -423,7 +423,7 @@ Softmax에 온도(T) 파라미터를 추가해 확률 분포를 조정한다.
 
 ---
 
-## 15. 전체 정리 {#15-summary}
+## 15. 전체 정리 {#summary}
 
 이 수업은 크게 두 파트로 나눌 수 있다.
 
