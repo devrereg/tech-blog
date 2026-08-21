@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>합성곱(Convolution) 연산 시각화</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --border: #d3d1c7;
+    --accent-bg: #e6f1fb;
+    --accent-border: #378add;
+    --accent-text: #0c447c;
+    --success-bg: #eaf3de;
+    --success-border: #639922;
+    --success-text: #27500a;
+    --text-primary: #2c2c2a;
+    --text-secondary: #5f5e5a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 24px 16px;
+    background: var(--bg);
+    color: var(--text-primary);
+  }
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  h2.title {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 0 20px;
+  }
+  .boards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .board-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-align: center;
+    margin: 0 0 8px;
+  }
+  .arrow {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    color: var(--text-secondary);
+    padding-top: 90px;
+  }
+  .controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  button {
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: #fff;
+    cursor: pointer;
+  }
+  button:hover { background: #f5f5f3; }
+  button.primary {
+    background: var(--accent-text);
+    color: #fff;
+    border-color: var(--accent-text);
+  }
+  button.primary:hover { opacity: 0.9; }
+  #calc-text {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    min-height: 18px;
+  }
+  svg text { font-family: inherit; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h2 class="title">합성곱(Convolution) 연산: 커널이 이미지를 스캔하는 과정</h2>
+  <div class="boards">
+    <div>
+      <p class="board-label">입력 이미지 (5×5)</p>
+      <svg id="input-svg" width="240" height="240" viewBox="0 0 240 240"></svg>
+    </div>
+    <div class="arrow">→</div>
+    <div>
+      <p class="board-label">특징 맵 (3×3)</p>
+      <svg id="output-svg" width="144" height="144" viewBox="0 0 144 144"></svg>
+    </div>
+  </div>
+  <div class="controls">
+    <button class="primary" id="step-btn" onclick="stepConv()">다음 칸 이동 →</button>
+    <button onclick="resetConv()">처음으로</button>
+  </div>
+  <p id="calc-text"></p>
+</div>
+
+<script>
+const inputVals = [
+  [1,2,0,1,2],
+  [0,1,3,1,0],
+  [2,0,1,2,1],
+  [1,1,0,3,2],
+  [0,2,1,1,0]
+];
+const kernel = [[1,0,-1],[1,0,-1],[1,0,-1]];
+let pos = 0;
+const outVals = Array(3).fill(null).map(() => Array(3).fill(null));
+const cell = 48;
+
+function drawInput(kr, kc) {
+  const svg = document.getElementById('input-svg');
+  let html = '';
+  for (let r = 0; r < 5; r++) {
+    for (let c = 0; c < 5; c++) {
+      const inKernel = r >= kr && r < kr + 3 && c >= kc && c < kc + 3;
+      html += `<rect x="${c*cell}" y="${r*cell}" width="${cell}" height="${cell}" fill="${inKernel ? 'var(--accent-bg)' : '#f7f7f5'}" stroke="var(--border)" stroke-width="1"/>`;
+      html += `<text x="${c*cell+cell/2}" y="${r*cell+cell/2}" text-anchor="middle" dominant-baseline="central" font-size="16" fill="var(--text-primary)">${inputVals[r][c]}</text>`;
+    }
+  }
+  html += `<rect x="${kc*cell}" y="${kr*cell}" width="${cell*3}" height="${cell*3}" fill="none" stroke="var(--accent-border)" stroke-width="3" rx="4"/>`;
+  svg.innerHTML = html;
+}
+
+function drawOutput() {
+  const svg = document.getElementById('output-svg');
+  let html = '';
+  for (let r = 0; r < 3; r++) {
+    for (let c = 0; c < 3; c++) {
+      const v = outVals[r][c];
+      html += `<rect x="${c*cell}" y="${r*cell}" width="${cell}" height="${cell}" fill="${v !== null ? 'var(--success-bg)' : '#f7f7f5'}" stroke="var(--border)" stroke-width="1"/>`;
+      if (v !== null) {
+        html += `<text x="${c*cell+cell/2}" y="${r*cell+cell/2}" text-anchor="middle" dominant-baseline="central" font-size="16" fill="var(--success-text)">${v}</text>`;
+      }
+    }
+  }
+  svg.innerHTML = html;
+}
+
+function stepConv() {
+  if (pos >= 9) {
+    pos = 0;
+    outVals.forEach(row => row.fill(null));
+  }
+  const kr = Math.floor(pos / 3), kc = pos % 3;
+  let sum = 0, terms = [];
+  for (let r = 0; r < 3; r++) {
+    for (let c = 0; c < 3; c++) {
+      const prod = inputVals[kr+r][kc+c] * kernel[r][c];
+      sum += prod;
+      terms.push(`${inputVals[kr+r][kc+c]}×${kernel[r][c]}`);
+    }
+  }
+  outVals[kr][kc] = sum;
+  drawInput(kr, kc);
+  drawOutput();
+  document.getElementById('calc-text').textContent = `계산: ${terms.join(' + ')} = ${sum}`;
+  pos++;
+}
+
+function resetConv() {
+  pos = 0;
+  outVals.forEach(row => row.fill(null));
+  drawInput(0, 0);
+  drawOutput();
+  document.getElementById('calc-text').textContent = '"다음 칸 이동" 버튼을 눌러 커널이 이동하는 과정을 확인해보세요.';
+}
+
+resetConv();
+</script>
+</body>
+</html>
