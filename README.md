@@ -16,11 +16,11 @@
 ## 최근 글
 
 <!-- BLOG-POST-LIST:START -->
+- [CNN 기반 이미지 분류, 제대로 이해하기](https://devrereg.github.io/tech-blog/posts/cnn-image-classification/)
 - [PyTorch로 배우는 다중분류 완전정복: MNIST부터 모델 평가지표까지](https://devrereg.github.io/tech-blog/posts/pytorch-mnist-multiclass-classification/)
 - [PyTorch로 이해하는 다중 분류&lpar;Multi-class Classification&rpar; 완전 정리](https://devrereg.github.io/tech-blog/posts/multi-class-classification-with-pytorch/)
 - [PyTorch 기본 소개 — 특징과 사용법 완전 정리](https://devrereg.github.io/tech-blog/posts/pytorch-basics-introduction/)
 - [딥러닝 기초 완전 정리 — 퍼셉트론부터 과적합까지](https://devrereg.github.io/tech-blog/posts/deep-learning-basics/)
-- [이진 분류&lpar;Binary Classification&rpar; 완전 정복: 붓꽃 데이터로 배우는 로지스틱 회귀](https://devrereg.github.io/tech-blog/posts/binary-classification-with-pytorch/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 포스팅 주제
