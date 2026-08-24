@@ -1,0 +1,41 @@
+<svg width="900" height="380" viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="380" fill="#ffffff"/>
+  <text x="450" y="40" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="600" fill="#1a1a1a">nn.AdaptiveAvgPool2d: 입력 크기와 무관하게 항상 같은 출력</text>
+
+  <!-- Input A: 16x16 -->
+  <text x="150" y="90" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#5f5e5a">입력 (100, 32, 16, 16)</text>
+  <rect x="90" y="105" width="120" height="120" fill="#E6F1FB" stroke="#378ADD" stroke-width="1"/>
+  <g stroke="#B5D4F4" stroke-width="0.5">
+    <line x1="120" y1="105" x2="120" y2="225"/><line x1="150" y1="105" x2="150" y2="225"/><line x1="180" y1="105" x2="180" y2="225"/>
+    <line x1="90" y1="135" x2="210" y2="135"/><line x1="90" y1="165" x2="210" y2="165"/><line x1="90" y1="195" x2="210" y2="195"/>
+  </g>
+
+  <!-- Input B: 8x8 -->
+  <text x="150" y="270" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#5f5e5a">입력 (100, 32, 8, 8)</text>
+  <rect x="120" y="285" width="60" height="60" fill="#E6F1FB" stroke="#378ADD" stroke-width="1"/>
+  <g stroke="#B5D4F4" stroke-width="0.5">
+    <line x1="140" y1="285" x2="140" y2="345"/><line x1="160" y1="285" x2="160" y2="345"/>
+    <line x1="120" y1="305" x2="180" y2="305"/><line x1="120" y1="325" x2="180" y2="325"/>
+  </g>
+
+  <!-- Arrow to AdaptiveAvgPool2d box -->
+  <line x1="240" y1="190" x2="360" y2="190" stroke="#5f5e5a" stroke-width="1.5" marker-end="url(#a1)"/>
+  <rect x="360" y="150" width="180" height="80" rx="10" fill="#FAEEDA" stroke="#BA7517" stroke-width="1"/>
+  <text x="450" y="185" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="600" fill="#633806">AdaptiveAvgPool2d</text>
+  <text x="450" y="205" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#633806">(1, 1)</text>
+  <line x1="540" y1="190" x2="640" y2="190" stroke="#5f5e5a" stroke-width="1.5" marker-end="url(#a1)"/>
+
+  <!-- Output -->
+  <text x="740" y="150" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#5f5e5a">출력은 항상 동일</text>
+  <rect x="700" y="165" width="80" height="50" fill="#E1F5EE" stroke="#1D9E75" stroke-width="1.2"/>
+  <text x="740" y="195" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="#04342C">(100,32,1,1)</text>
+
+  <text x="450" y="320" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#5f5e5a">→ 입력 해상도가 16x16이든 8x8이든, 원하는 출력 크기(1x1)로 항상 고정되어</text>
+  <text x="450" y="345" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#5f5e5a">뒤에 오는 분류기(fc 레이어)에 안정적으로 연결할 수 있습니다.</text>
+
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#5f5e5a" stroke-width="1.5"/>
+    </marker>
+  </defs>
+</svg>

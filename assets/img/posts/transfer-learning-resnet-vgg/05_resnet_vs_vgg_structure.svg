@@ -1,0 +1,37 @@
+<svg width="900" height="420" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="420" fill="#ffffff"/>
+  <text x="450" y="40" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="600" fill="#1a1a1a">ResNet-18 vs VGG-19-BN: 마지막 레이어 접근 방식 차이</text>
+
+  <!-- ResNet-18 -->
+  <rect x="60" y="80" width="360" height="300" rx="14" fill="#E6F1FB" stroke="#378ADD" stroke-width="1"/>
+  <text x="240" y="115" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="600" fill="#0C447C">ResNet-18</text>
+
+  <rect x="90" y="140" width="300" height="34" rx="6" fill="#B5D4F4"/>
+  <text x="240" y="162" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#042C53">특징 추출부 (conv layers)</text>
+  <rect x="90" y="184" width="300" height="34" rx="6" fill="#B5D4F4"/>
+  <text x="240" y="206" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#042C53">AdaptiveAvgPool2d</text>
+  <rect x="90" y="228" width="300" height="40" rx="6" fill="#378ADD"/>
+  <text x="240" y="252" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="600" fill="#ffffff">net.fc  (Linear, 512 → 1000)</text>
+
+  <text x="240" y="300" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#0C447C">net.fc = nn.Linear(512, n_output)</text>
+  <text x="240" y="330" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5f5e5a">→ 속성 하나로 바로 접근, 교체가 간단</text>
+
+  <!-- VGG-19-BN -->
+  <rect x="480" y="80" width="360" height="300" rx="14" fill="#FAEEDA" stroke="#BA7517" stroke-width="1"/>
+  <text x="660" y="115" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="600" fill="#633806">VGG-19-BN</text>
+
+  <rect x="510" y="140" width="300" height="34" rx="6" fill="#FAC775"/>
+  <text x="660" y="162" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#412402">특징 추출부 (conv + BN layers)</text>
+
+  <rect x="510" y="184" width="300" height="150" rx="6" fill="#ffffff" stroke="#BA7517" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="660" y="204" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="#633806">classifier (Sequential)</text>
+  <rect x="525" y="214" width="270" height="26" rx="4" fill="#FAC775"/>
+  <text x="660" y="232" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#412402">[0] Linear (25088 → 4096)</text>
+  <rect x="525" y="246" width="270" height="26" rx="4" fill="#FAC775"/>
+  <text x="660" y="264" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#412402">[1]~[5] ReLU, Dropout 등</text>
+  <rect x="525" y="278" width="270" height="30" rx="4" fill="#EF9F27"/>
+  <text x="660" y="298" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="#412402">[6] Linear (4096 → 1000)</text>
+
+  <text x="660" y="360" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#633806">net.classifier[6] = nn.Linear(4096, n_output)</text>
+  <text x="660" y="384" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5f5e5a">→ 리스트 인덱스로 6번째 요소를 찾아 교체</text>
+</svg>
