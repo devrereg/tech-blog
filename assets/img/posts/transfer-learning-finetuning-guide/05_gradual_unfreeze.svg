@@ -1,0 +1,30 @@
+<svg width="900" height="260" viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="260" fill="#ffffff"/>
+  <text x="450" y="36" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="600" fill="#1a1a1a">Gradual Unfreezing: 점진적 층 해제 타임라인</text>
+
+  <defs>
+    <marker id="rightarrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <rect x="70" y="90" width="150" height="80" fill="#DCEAFB"/>
+  <text x="145" y="122" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="600" fill="#0C447C">Epoch 1-5</text>
+  <text x="145" y="146" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#0C447C">Head만 학습</text>
+
+  <rect x="220" y="90" width="150" height="80" fill="#AED2F5"/>
+  <text x="295" y="122" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="600" fill="#042C53">Epoch 6-10</text>
+  <text x="295" y="146" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#042C53">Head + Layer4</text>
+
+  <rect x="370" y="90" width="150" height="80" fill="#6FA8E0"/>
+  <text x="445" y="122" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="600" fill="#ffffff">Epoch 11-15</text>
+  <text x="445" y="146" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#ffffff">Head + L4 + L3</text>
+
+  <rect x="520" y="90" width="310" height="80" fill="#1F5FA8"/>
+  <text x="675" y="118" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="600" fill="#ffffff">Epoch 16+</text>
+  <text x="675" y="140" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#ffffff">점진적으로</text>
+  <text x="675" y="156" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#ffffff">모든 층 해제</text>
+
+  <line x1="70" y1="200" x2="820" y2="200" stroke="#1a1a1a" stroke-width="1.5" marker-end="url(#rightarrow)"/>
+  <text x="450" y="225" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#5f5e5a">학습 진행 →</text>
+</svg>

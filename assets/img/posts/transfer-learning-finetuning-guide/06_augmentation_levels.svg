@@ -1,0 +1,39 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="500" fill="#ffffff"/>
+  <text x="450" y="38" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="600" fill="#1a1a1a">데이터 증강 강도 3단계 (누적 구조)</text>
+
+  <defs>
+    <marker id="uparrow" viewBox="0 0 10 10" refX="5" refY="1" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M1 9L5 1L9 9" fill="none" stroke="#8A8878" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <text x="145" y="72" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8A8878">공격적</text>
+
+  <!-- Strong -->
+  <rect x="70" y="80" width="150" height="70" rx="10" fill="#1F5FA8"/>
+  <text x="145" y="122" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="#ffffff">Strong</text>
+  <text x="255" y="100" font-family="sans-serif" font-size="13" fill="#2C2C2A">+ AutoAugment</text>
+  <text x="255" y="122" font-family="sans-serif" font-size="13" fill="#2C2C2A">+ RandomErasing</text>
+  <text x="255" y="144" font-family="sans-serif" font-size="13" fill="#2C2C2A">+ (MixUp/CutMix)</text>
+
+  <line x1="145" y1="220" x2="145" y2="160" stroke="#8A8878" stroke-width="1.5" marker-end="url(#uparrow)"/>
+
+  <!-- Medium -->
+  <rect x="70" y="222" width="150" height="70" rx="10" fill="#6FA8E0"/>
+  <text x="145" y="264" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="#ffffff">Medium</text>
+  <text x="255" y="242" font-family="sans-serif" font-size="13" fill="#2C2C2A">+ RandomResizedCrop(0.8~1.0)</text>
+  <text x="255" y="264" font-family="sans-serif" font-size="13" fill="#2C2C2A">+ RandomRotation(±15°)</text>
+  <text x="255" y="286" font-family="sans-serif" font-size="13" fill="#2C2C2A">+ ColorJitter</text>
+
+  <line x1="145" y1="362" x2="145" y2="302" stroke="#8A8878" stroke-width="1.5" marker-end="url(#uparrow)"/>
+
+  <!-- Weak -->
+  <rect x="70" y="364" width="150" height="70" rx="10" fill="#DCEAFB"/>
+  <text x="145" y="406" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="#0C447C">Weak</text>
+  <text x="255" y="384" font-family="sans-serif" font-size="13" fill="#2C2C2A">RandomHorizontalFlip</text>
+  <text x="255" y="406" font-family="sans-serif" font-size="13" fill="#2C2C2A">Random Crop (minimal)</text>
+  <text x="255" y="428" font-family="sans-serif" font-size="13" fill="#2C2C2A">Normalize</text>
+
+  <text x="145" y="460" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8A8878">보수적</text>
+</svg>

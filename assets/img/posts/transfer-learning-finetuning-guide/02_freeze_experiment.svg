@@ -1,0 +1,51 @@
+<svg width="900" height="460" viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="460" fill="#ffffff"/>
+  <text x="450" y="38" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="600" fill="#1a1a1a">동결 전략별 실험 결과: 정확도 vs 과적합</text>
+
+  <!-- highlight band for best group -->
+  <rect x="570" y="70" width="150" height="300" fill="#E1F5EE"/>
+  <text x="645" y="90" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="#0F6E56">최고 성능</text>
+
+  <!-- axis -->
+  <line x1="90" y1="370" x2="850" y2="370" stroke="#888780" stroke-width="1"/>
+  <line x1="90" y1="70" x2="90" y2="370" stroke="#888780" stroke-width="1"/>
+  <text x="75" y="374" text-anchor="end" font-family="sans-serif" font-size="11" fill="#5f5e5a">0%</text>
+  <text x="75" y="224" text-anchor="end" font-family="sans-serif" font-size="11" fill="#5f5e5a">50%</text>
+  <text x="75" y="74" text-anchor="end" font-family="sans-serif" font-size="11" fill="#5f5e5a">100%</text>
+  <line x1="90" y1="220" x2="850" y2="220" stroke="#eee" stroke-width="1"/>
+
+  <!-- groups: x centers 190, 375, 560(highlight covers 570-720 approx recalc), 745 -->
+  <!-- Full Freeze: acc 82.5, gap 3.2 -->
+  <rect x="150" y="123.5" width="40" height="246.5" fill="#378ADD"/>
+  <text x="170" y="113" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="600" fill="#0C447C">82.5%</text>
+  <rect x="195" y="360.4" width="40" height="9.6" fill="#D4537E"/>
+  <text x="215" y="352" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="#993556">3.2%</text>
+  <text x="192" y="392" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#2C2C2A">Full Freeze</text>
+
+  <!-- Last 1 Block: acc 87.3, gap 5.8 -->
+  <rect x="335" y="108.9" width="40" height="261.1" fill="#378ADD"/>
+  <text x="355" y="99" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="600" fill="#0C447C">87.3%</text>
+  <rect x="380" y="352.6" width="40" height="17.4" fill="#D4537E"/>
+  <text x="400" y="344" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="#993556">5.8%</text>
+  <text x="377" y="392" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#2C2C2A">Last 1 Block</text>
+
+  <!-- Last 2 Blocks (highlight): acc 89.1, gap 8.1 -->
+  <rect x="600" y="103.3" width="40" height="266.7" fill="#378ADD"/>
+  <text x="620" y="93" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="600" fill="#0C447C">89.1%</text>
+  <rect x="645" y="345.7" width="40" height="24.3" fill="#D4537E"/>
+  <text x="665" y="337" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="#993556">8.1%</text>
+  <text x="642" y="392" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="600" fill="#0F6E56">Last 2 Blocks</text>
+
+  <!-- Full Fine-tune: acc 88.6, gap 12.4 -->
+  <rect x="740" y="105.2" width="40" height="264.8" fill="#378ADD"/>
+  <text x="760" y="95" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="600" fill="#0C447C">88.6%</text>
+  <rect x="785" y="332.8" width="40" height="37.2" fill="#D4537E"/>
+  <text x="805" y="324" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="600" fill="#993556">12.4%</text>
+  <text x="782" y="392" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#2C2C2A">Full Fine-tune</text>
+
+  <!-- legend -->
+  <rect x="300" y="425" width="18" height="18" rx="3" fill="#378ADD"/>
+  <text x="326" y="439" font-family="sans-serif" font-size="12" fill="#2C2C2A">Val Accuracy</text>
+  <rect x="470" y="425" width="18" height="18" rx="3" fill="#D4537E"/>
+  <text x="496" y="439" font-family="sans-serif" font-size="12" fill="#2C2C2A">Overfit Gap (Train−Val 차이)</text>
+</svg>
