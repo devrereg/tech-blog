@@ -1,5 +1,6 @@
 ---
 title: "사용자 데이터로 이미지 분류 모델 만들기: ImageFolder부터 전이 학습까지"
+date: 2026-08-26 23:00:00 +0900
 categories: [AI, Deep Learning]
 tags: [pytorch, transfer-learning, fine-tuning, image-classification, cnn]
 description: "PyTorch ImageFolder로 사용자 데이터셋을 구성하고, 파인튜닝과 전이 학습의 차이를 개미/벌·허스키/늑대 실습으로 비교 정리한다."
