@@ -1,6 +1,6 @@
 ---
 title: "CNN 완전 정복: 이론부터 PyTorch 구현까지"
-date: 2026-08-28 10:00:00 +0900
+date: 2026-08-28 04:00:00 +0900
 categories: [AI, Deep Learning]
 tags: [pytorch, deep-learning, cnn, convolution, pooling, cifar-10, image-classification, machine-learning]
 description: "MLP가 왜 이미지에 약한지부터 시작해 합성곱·스트라이드·패딩·풀링 연산의 원리, Feature Extractor와 Classifier의 역할 분리, 하이퍼파라미터 설계 가이드, 그리고 CIFAR-10을 분류하는 SimpleCNN을 PyTorch로 구현하는 전체 흐름을 정리했다."
