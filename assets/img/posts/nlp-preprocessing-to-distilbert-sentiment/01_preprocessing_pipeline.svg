@@ -1,0 +1,49 @@
+<svg width="940" height="300" viewBox="0 0 940 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="940" height="300" fill="#ffffff"/>
+  <text x="470" y="36" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a1a">텍스트 전처리 파이프라인</text>
+
+  <g>
+    <rect x="15" y="86" width="158" height="118" rx="10" fill="#e6f1fb" stroke="#378add" stroke-width="1.2"/>
+    <text x="94" y="128" text-anchor="middle" font-size="14" font-weight="600" fill="#0c447c">① 토큰화</text>
+    <text x="94" y="158" text-anchor="middle" font-size="11" fill="#5f5e5a">문장을 단어로</text>
+    <text x="94" y="174" text-anchor="middle" font-size="11" fill="#5f5e5a">분리</text>
+  </g>
+  <g>
+    <rect x="203" y="86" width="158" height="118" rx="10" fill="#e6f1fb" stroke="#378add" stroke-width="1.2"/>
+    <text x="282" y="128" text-anchor="middle" font-size="14" font-weight="600" fill="#0c447c">② 소문자 변환</text>
+    <text x="282" y="158" text-anchor="middle" font-size="11" fill="#5f5e5a">대소문자 통일</text>
+  </g>
+  <g>
+    <rect x="391" y="86" width="158" height="118" rx="10" fill="#e6f1fb" stroke="#378add" stroke-width="1.2"/>
+    <text x="470" y="128" text-anchor="middle" font-size="14" font-weight="600" fill="#0c447c">③ 불용어 제거</text>
+    <text x="470" y="158" text-anchor="middle" font-size="11" fill="#5f5e5a">의미 없는 단어</text>
+    <text x="470" y="174" text-anchor="middle" font-size="11" fill="#5f5e5a">삭제</text>
+  </g>
+  <g>
+    <rect x="579" y="86" width="158" height="118" rx="10" fill="#e6f1fb" stroke="#378add" stroke-width="1.2"/>
+    <text x="658" y="122" text-anchor="middle" font-size="14" font-weight="600" fill="#0c447c">④ 정수 인코딩</text>
+    <text x="658" y="140" text-anchor="middle" font-size="14" font-weight="600" fill="#0c447c">+ 패딩</text>
+    <text x="658" y="168" text-anchor="middle" font-size="11" fill="#5f5e5a">숫자 변환 · 길이 통일</text>
+  </g>
+  <g>
+    <rect x="767" y="86" width="158" height="118" rx="10" fill="#eaf3de" stroke="#639922" stroke-width="1.2"/>
+    <text x="846" y="128" text-anchor="middle" font-size="14" font-weight="600" fill="#27500a">⑤ 임베딩</text>
+    <text x="846" y="158" text-anchor="middle" font-size="11" fill="#3b6d11">의미를 담은</text>
+    <text x="846" y="174" text-anchor="middle" font-size="11" fill="#3b6d11">벡터로 변환</text>
+  </g>
+
+  <g stroke="#888780" stroke-width="1.8" marker-end="url(#arrow1)">
+    <line x1="176" y1="145" x2="200" y2="145"/>
+    <line x1="364" y1="145" x2="388" y2="145"/>
+    <line x1="552" y1="145" x2="576" y2="145"/>
+    <line x1="740" y1="145" x2="764" y2="145"/>
+  </g>
+
+  <text x="470" y="252" text-anchor="middle" font-size="12" fill="#2c2c2a">예시:  "I loved the movie!"  →  [I, loved, movie, !]  →  [12, 45, 99, 3, 0, 0, 0, 0]  →  128차원 벡터</text>
+
+  <defs>
+    <marker id="arrow1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+</svg>

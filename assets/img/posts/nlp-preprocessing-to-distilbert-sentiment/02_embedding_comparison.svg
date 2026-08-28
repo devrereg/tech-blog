@@ -1,0 +1,81 @@
+<svg width="940" height="380" viewBox="0 0 940 380" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="940" height="380" fill="#ffffff"/>
+
+  <!-- Left: one-hot -->
+  <text x="235" y="36" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a1a">원-핫 인코딩 (One-hot)</text>
+
+  <g font-size="12" fill="#2c2c2a" text-anchor="end">
+    <text x="52" y="92">왕</text>
+    <text x="52" y="139">여왕</text>
+    <text x="52" y="186">사과</text>
+    <text x="52" y="233">바나나</text>
+  </g>
+
+  <!-- row 왕: 1 at col 0 -->
+  <g>
+    <rect x="64" y="74" width="60" height="30" rx="4" fill="#378add"/><text x="94" y="94" text-anchor="middle" font-size="12" fill="#ffffff">1</text>
+    <rect x="130" y="74" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="160" y="94" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="196" y="74" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="226" y="94" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="262" y="74" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="292" y="94" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="328" y="74" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="358" y="94" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="394" y="74" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="424" y="94" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+  </g>
+  <!-- row 여왕: 1 at col 1 -->
+  <g>
+    <rect x="64" y="121" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="94" y="141" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="130" y="121" width="60" height="30" rx="4" fill="#378add"/><text x="160" y="141" text-anchor="middle" font-size="12" fill="#ffffff">1</text>
+    <rect x="196" y="121" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="226" y="141" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="262" y="121" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="292" y="141" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="328" y="121" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="358" y="141" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="394" y="121" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="424" y="141" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+  </g>
+  <!-- row 사과: 1 at col 2 -->
+  <g>
+    <rect x="64" y="168" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="94" y="188" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="130" y="168" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="160" y="188" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="196" y="168" width="60" height="30" rx="4" fill="#378add"/><text x="226" y="188" text-anchor="middle" font-size="12" fill="#ffffff">1</text>
+    <rect x="262" y="168" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="292" y="188" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="328" y="168" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="358" y="188" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="394" y="168" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="424" y="188" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+  </g>
+  <!-- row 바나나: 1 at col 3 -->
+  <g>
+    <rect x="64" y="215" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="94" y="235" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="130" y="215" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="160" y="235" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="196" y="215" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="226" y="235" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="262" y="215" width="60" height="30" rx="4" fill="#378add"/><text x="292" y="235" text-anchor="middle" font-size="12" fill="#ffffff">1</text>
+    <rect x="328" y="215" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="358" y="235" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+    <rect x="394" y="215" width="60" height="30" rx="4" fill="#eef1f4" stroke="#d8dde2"/><text x="424" y="235" text-anchor="middle" font-size="12" fill="#a7adb4">0</text>
+  </g>
+
+  <text x="235" y="300" text-anchor="middle" font-size="12" fill="#c0392b">→ 단어끼리 전부 '무관'한 벡터 (의미 관계 없음)</text>
+
+  <!-- divider -->
+  <line x1="480" y1="60" x2="480" y2="320" stroke="#e4e2da" stroke-width="1"/>
+
+  <!-- Right: dense embedding -->
+  <text x="710" y="36" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a1a">밀집 임베딩 (Dense Embedding)</text>
+
+  <ellipse cx="670" cy="150" rx="120" ry="86" fill="#eef4fc"/>
+  <ellipse cx="855" cy="205" rx="62" ry="52" fill="#faf0e2"/>
+
+  <!-- royal/gender cluster -->
+  <circle cx="705" cy="108" r="7" fill="#378add"/><text x="705" y="94" text-anchor="middle" font-size="11" fill="#2c2c2a">여왕</text>
+  <circle cx="645" cy="128" r="7" fill="#378add"/><text x="645" y="114" text-anchor="middle" font-size="11" fill="#2c2c2a">왕</text>
+  <line x1="645" y1="128" x2="705" y2="108" stroke="#8aa0b4" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow2)"/>
+  <circle cx="640" cy="190" r="7" fill="#378add"/><text x="640" y="176" text-anchor="middle" font-size="11" fill="#2c2c2a">남자</text>
+  <circle cx="700" cy="182" r="7" fill="#378add"/><text x="700" y="168" text-anchor="middle" font-size="11" fill="#2c2c2a">여자</text>
+
+  <!-- fruit cluster -->
+  <circle cx="875" cy="192" r="7" fill="#e08e2a"/><text x="875" y="178" text-anchor="middle" font-size="11" fill="#2c2c2a">바나나</text>
+  <circle cx="838" cy="222" r="7" fill="#e08e2a"/><text x="838" y="243" text-anchor="middle" font-size="11" fill="#2c2c2a">사과</text>
+
+  <text x="710" y="300" text-anchor="middle" font-size="12" font-weight="600" fill="#0c447c">왕 − 남자 + 여자 ≈ 여왕</text>
+  <text x="710" y="322" text-anchor="middle" font-size="12" fill="#27500a">→ 의미가 비슷한 단어끼리 가까이 위치</text>
+
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#8aa0b4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+</svg>
