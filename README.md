@@ -16,11 +16,11 @@
 ## 최근 글
 
 <!-- BLOG-POST-LIST:START -->
+- [텍스트 전처리부터 DistilBERT 파인튜닝까지: 감성분류 모델 종합 정리](https://devrereg.github.io/tech-blog/posts/nlp-preprocessing-to-distilbert-sentiment/)
+- [CNN 완전 정복: 이론부터 PyTorch 구현까지](https://devrereg.github.io/tech-blog/posts/cnn-convolution-complete-guide/)
 - [사용자 데이터로 이미지 분류 모델 만들기: ImageFolder부터 전이 학습까지](https://devrereg.github.io/tech-blog/posts/pytorch-imagefolder-transfer-learning/)
 - [전이 학습 파인튜닝 완전 정리: 동결 범위·학습률·데이터 증강 전략](https://devrereg.github.io/tech-blog/posts/transfer-learning-finetuning-guide/)
 - [전이 학습으로 CIFAR-10 분류하기: ResNet-18 vs VGG-19-BN](https://devrereg.github.io/tech-blog/posts/transfer-learning-resnet-vgg/)
-- [CNN 튜닝 실전: 최적화 함수 선택부터 과적합 방지 기법까지](https://devrereg.github.io/tech-blog/posts/deep-learning-tuning-overfitting/)
-- [CNN 기반 이미지 분류, 제대로 이해하기](https://devrereg.github.io/tech-blog/posts/cnn-image-classification/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 포스팅 주제
