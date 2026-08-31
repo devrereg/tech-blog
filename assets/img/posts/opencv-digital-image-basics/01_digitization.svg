@@ -1,0 +1,67 @@
+<svg width="960" height="440" viewBox="0 0 960 440" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="480" y="36" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a1a">디지털화 3단계: 샘플링 → 양자화 → 인코딩</text>
+
+  <!-- stage boxes -->
+  <g>
+    <rect x="40" y="70" width="260" height="96" rx="12" fill="#4260f0"/>
+    <text x="170" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">① 샘플링 (Sampling)</text>
+    <text x="170" y="132" text-anchor="middle" font-size="12" fill="#e6ebff">연속 신호를 일정 간격으로</text>
+    <text x="170" y="150" text-anchor="middle" font-size="12" fill="#e6ebff">잘게 쪼개 표본 추출</text>
+  </g>
+  <text x="322" y="124" text-anchor="middle" font-size="22" fill="#9aa3b2">→</text>
+  <g>
+    <rect x="350" y="70" width="260" height="96" rx="12" fill="#4260f0"/>
+    <text x="480" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">② 양자화 (Quantization)</text>
+    <text x="480" y="132" text-anchor="middle" font-size="12" fill="#e6ebff">표본 값을 정해진 범위의</text>
+    <text x="480" y="150" text-anchor="middle" font-size="12" fill="#e6ebff">정수(대표값)로 매핑</text>
+  </g>
+  <text x="632" y="124" text-anchor="middle" font-size="22" fill="#9aa3b2">→</text>
+  <g>
+    <rect x="660" y="70" width="260" height="96" rx="12" fill="#4260f0"/>
+    <text x="790" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">③ 인코딩 (Encoding)</text>
+    <text x="790" y="132" text-anchor="middle" font-size="12" fill="#e6ebff">양자화된 값을 0과 1의</text>
+    <text x="790" y="150" text-anchor="middle" font-size="12" fill="#e6ebff">이진수로 변환·저장</text>
+  </g>
+
+  <!-- panel labels -->
+  <text x="170" y="222" text-anchor="middle" font-size="12" font-weight="600" fill="#5f6470">연속 신호 (Analog)</text>
+  <text x="480" y="222" text-anchor="middle" font-size="12" font-weight="600" fill="#5f6470">표본 추출 + 정수 매핑</text>
+  <text x="790" y="222" text-anchor="middle" font-size="12" font-weight="600" fill="#5f6470">디지털 신호 (근사 파형)</text>
+
+  <!-- baseline -->
+  <line x1="40" y1="340" x2="300" y2="340" stroke="#d7dbe3" stroke-width="1"/>
+  <line x1="350" y1="340" x2="610" y2="340" stroke="#d7dbe3" stroke-width="1"/>
+  <line x1="660" y1="340" x2="920" y2="340" stroke="#d7dbe3" stroke-width="1"/>
+
+  <!-- analog sine -->
+  <path d="M40 340 C 80 250, 100 250, 130 340 C 160 430, 180 430, 210 340 C 240 250, 260 250, 300 340"
+        fill="none" stroke="#7b2fb5" stroke-width="2.5"/>
+
+  <!-- sampled stems -->
+  <path d="M350 340 C 390 250, 410 250, 440 340 C 470 430, 490 430, 520 340 C 550 250, 570 250, 610 340"
+        fill="none" stroke="#c9b8e0" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <g stroke="#3a4a63" stroke-width="1.5">
+    <line x1="358" y1="340" x2="358" y2="322"/><line x1="376" y1="340" x2="376" y2="286"/>
+    <line x1="394" y1="340" x2="394" y2="258"/><line x1="412" y1="340" x2="412" y2="252"/>
+    <line x1="430" y1="340" x2="430" y2="300"/><line x1="448" y1="340" x2="448" y2="356"/>
+    <line x1="466" y1="340" x2="466" y2="404"/><line x1="484" y1="340" x2="484" y2="424"/>
+    <line x1="502" y1="340" x2="502" y2="404"/><line x1="520" y1="340" x2="520" y2="356"/>
+    <line x1="538" y1="340" x2="538" y2="300"/><line x1="556" y1="340" x2="556" y2="252"/>
+    <line x1="574" y1="340" x2="574" y2="258"/><line x1="592" y1="340" x2="592" y2="286"/>
+    <line x1="602" y1="340" x2="602" y2="322"/>
+  </g>
+  <g fill="#4260f0">
+    <circle cx="358" cy="322" r="3.5"/><circle cx="376" cy="286" r="3.5"/><circle cx="394" cy="258" r="3.5"/>
+    <circle cx="412" cy="252" r="3.5"/><circle cx="430" cy="300" r="3.5"/><circle cx="448" cy="356" r="3.5"/>
+    <circle cx="466" cy="404" r="3.5"/><circle cx="484" cy="424" r="3.5"/><circle cx="502" cy="404" r="3.5"/>
+    <circle cx="520" cy="356" r="3.5"/><circle cx="538" cy="300" r="3.5"/><circle cx="556" cy="252" r="3.5"/>
+    <circle cx="574" cy="258" r="3.5"/><circle cx="592" cy="286" r="3.5"/><circle cx="602" cy="322" r="3.5"/>
+  </g>
+
+  <!-- digital stairstep -->
+  <path d="M660 340 C 700 250, 720 250, 750 340 C 780 430, 800 430, 830 340 C 860 250, 880 250, 920 340"
+        fill="none" stroke="#d9c9e8" stroke-width="1.5"/>
+  <path d="M660 322 H678 V286 H696 V258 H714 V252 H732 V300 H750 V356 H768 V404 H786 V424 H804 V404 H822 V356 H840 V300 H858 V252 H876 V258 H894 V286 H912 V322 H920"
+        fill="none" stroke="#e8551f" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

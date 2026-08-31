@@ -1,0 +1,58 @@
+<svg width="960" height="400" viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="960" height="400" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a1a">픽셀 논리 연산 진리표: AND / OR / XOR</text>
+
+  <!-- AND -->
+  <g>
+    <text x="160" y="76" text-anchor="middle" font-size="13" font-weight="600" fill="#333">AND 연산</text>
+    <rect x="70" y="92" width="180" height="180" fill="none" stroke="#c8cdd8" stroke-width="1.5"/>
+    <text x="60" y="182" text-anchor="end" font-size="11" fill="#8a90a0">X1</text>
+    <text x="160" y="292" text-anchor="middle" font-size="11" fill="#8a90a0">X2</text>
+    <text x="110" y="288" text-anchor="middle" font-size="10" fill="#9aa3b2">0</text>
+    <text x="210" y="288" text-anchor="middle" font-size="10" fill="#9aa3b2">1</text>
+    <text x="60" y="228" text-anchor="end" font-size="10" fill="#9aa3b2">0</text>
+    <text x="60" y="128" text-anchor="end" font-size="10" fill="#9aa3b2">1</text>
+    <circle cx="110" cy="224" r="16" fill="#e23b2e"/>
+    <circle cx="210" cy="224" r="16" fill="#e23b2e"/>
+    <circle cx="110" cy="124" r="16" fill="#e23b2e"/>
+    <circle cx="210" cy="124" r="16" fill="#3a6df0"/>
+  </g>
+
+  <!-- OR -->
+  <g>
+    <text x="480" y="76" text-anchor="middle" font-size="13" font-weight="600" fill="#333">OR 연산</text>
+    <rect x="390" y="92" width="180" height="180" fill="none" stroke="#c8cdd8" stroke-width="1.5"/>
+    <text x="380" y="182" text-anchor="end" font-size="11" fill="#8a90a0">X1</text>
+    <text x="480" y="292" text-anchor="middle" font-size="11" fill="#8a90a0">X2</text>
+    <text x="430" y="288" text-anchor="middle" font-size="10" fill="#9aa3b2">0</text>
+    <text x="530" y="288" text-anchor="middle" font-size="10" fill="#9aa3b2">1</text>
+    <text x="380" y="228" text-anchor="end" font-size="10" fill="#9aa3b2">0</text>
+    <text x="380" y="128" text-anchor="end" font-size="10" fill="#9aa3b2">1</text>
+    <circle cx="430" cy="224" r="16" fill="#e23b2e"/>
+    <circle cx="530" cy="224" r="16" fill="#3a6df0"/>
+    <circle cx="430" cy="124" r="16" fill="#3a6df0"/>
+    <circle cx="530" cy="124" r="16" fill="#3a6df0"/>
+  </g>
+
+  <!-- XOR -->
+  <g>
+    <text x="800" y="76" text-anchor="middle" font-size="13" font-weight="600" fill="#333">XOR 연산</text>
+    <rect x="710" y="92" width="180" height="180" fill="none" stroke="#c8cdd8" stroke-width="1.5"/>
+    <text x="700" y="182" text-anchor="end" font-size="11" fill="#8a90a0">X1</text>
+    <text x="800" y="292" text-anchor="middle" font-size="11" fill="#8a90a0">X2</text>
+    <text x="750" y="288" text-anchor="middle" font-size="10" fill="#9aa3b2">0</text>
+    <text x="850" y="288" text-anchor="middle" font-size="10" fill="#9aa3b2">1</text>
+    <text x="700" y="228" text-anchor="end" font-size="10" fill="#9aa3b2">0</text>
+    <text x="700" y="128" text-anchor="end" font-size="10" fill="#9aa3b2">1</text>
+    <circle cx="750" cy="224" r="16" fill="#e23b2e"/>
+    <circle cx="850" cy="224" r="16" fill="#3a6df0"/>
+    <circle cx="750" cy="124" r="16" fill="#3a6df0"/>
+    <circle cx="850" cy="124" r="16" fill="#e23b2e"/>
+  </g>
+
+  <!-- legend -->
+  <circle cx="360" cy="348" r="9" fill="#3a6df0"/>
+  <text x="376" y="352" font-size="12" fill="#333">결과 = 1 (켜짐)</text>
+  <circle cx="520" cy="348" r="9" fill="#e23b2e"/>
+  <text x="536" y="352" font-size="12" fill="#333">결과 = 0 (꺼짐)</text>
+</svg>
