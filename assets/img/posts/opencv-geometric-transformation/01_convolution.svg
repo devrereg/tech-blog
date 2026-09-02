@@ -1,0 +1,69 @@
+<svg width="660" height="440" viewBox="0 0 660 440" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2f6fd0"/>
+    </marker>
+  </defs>
+  <rect width="660" height="440" fill="#ffffff"/>
+  <text x="330" y="30" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a1a">필터 연산: 커널이 슬라이딩하며 컨볼루션(가중합)으로 새 픽셀 값을 만든다</text>
+  <text x="208" y="58" text-anchor="middle" font-size="12" fill="#5f6470">원본 이미지 (픽셀 값 행렬)</text>
+
+  <!-- row 0 -->
+  <rect x="70"  y="70" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="93"  y="98" text-anchor="middle" font-size="13" fill="#333">146</text>
+  <rect x="116" y="70" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="139" y="98" text-anchor="middle" font-size="13" fill="#333">192</text>
+  <rect x="162" y="70" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="185" y="98" text-anchor="middle" font-size="13" fill="#333">171</text>
+  <rect x="208" y="70" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="231" y="98" text-anchor="middle" font-size="13" fill="#333">224</text>
+  <rect x="254" y="70" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="277" y="98" text-anchor="middle" font-size="13" fill="#333">40</text>
+  <rect x="300" y="70" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="323" y="98" text-anchor="middle" font-size="13" fill="#333">61</text>
+  <!-- row 1 -->
+  <rect x="70"  y="116" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="93"  y="144" text-anchor="middle" font-size="13" fill="#333">187</text>
+  <rect x="116" y="116" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="139" y="144" text-anchor="middle" font-size="13" fill="#333">147</text>
+  <rect x="162" y="116" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="185" y="144" text-anchor="middle" font-size="13" fill="#333">209</text>
+  <rect x="208" y="116" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="231" y="144" text-anchor="middle" font-size="13" fill="#333">178</text>
+  <rect x="254" y="116" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="277" y="144" text-anchor="middle" font-size="13" fill="#333">189</text>
+  <rect x="300" y="116" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="323" y="144" text-anchor="middle" font-size="13" fill="#333">159</text>
+  <!-- row 2 (kernel) -->
+  <rect x="70"  y="162" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="93"  y="190" text-anchor="middle" font-size="13" fill="#333">206</text>
+  <rect x="116" y="162" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="139" y="190" text-anchor="middle" font-size="13" fill="#333">188</text>
+  <rect x="162" y="162" width="46" height="46" fill="#dce6f7" stroke="#c9ced7"/><text x="185" y="190" text-anchor="middle" font-size="13" fill="#333">212</text>
+  <rect x="208" y="162" width="46" height="46" fill="#dce6f7" stroke="#c9ced7"/><text x="231" y="190" text-anchor="middle" font-size="13" fill="#333">133</text>
+  <rect x="254" y="162" width="46" height="46" fill="#dce6f7" stroke="#c9ced7"/><text x="277" y="190" text-anchor="middle" font-size="13" fill="#333">207</text>
+  <rect x="300" y="162" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="323" y="190" text-anchor="middle" font-size="13" fill="#333">182</text>
+  <!-- row 3 (kernel) -->
+  <rect x="70"  y="208" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="93"  y="236" text-anchor="middle" font-size="13" fill="#333">66</text>
+  <rect x="116" y="208" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="139" y="236" text-anchor="middle" font-size="13" fill="#333">121</text>
+  <rect x="162" y="208" width="46" height="46" fill="#dce6f7" stroke="#c9ced7"/><text x="185" y="236" text-anchor="middle" font-size="13" fill="#333">190</text>
+  <rect x="208" y="208" width="46" height="46" fill="#dce6f7" stroke="#c9ced7"/><text x="231" y="236" text-anchor="middle" font-size="13" fill="#333">106</text>
+  <rect x="254" y="208" width="46" height="46" fill="#dce6f7" stroke="#c9ced7"/><text x="277" y="236" text-anchor="middle" font-size="13" fill="#333">42</text>
+  <rect x="300" y="208" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="323" y="236" text-anchor="middle" font-size="13" fill="#333">231</text>
+  <!-- row 4 (kernel) -->
+  <rect x="70"  y="254" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="93"  y="282" text-anchor="middle" font-size="13" fill="#333">100</text>
+  <rect x="116" y="254" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="139" y="282" text-anchor="middle" font-size="13" fill="#333">169</text>
+  <rect x="162" y="254" width="46" height="46" fill="#dce6f7" stroke="#c9ced7"/><text x="185" y="282" text-anchor="middle" font-size="13" fill="#333">219</text>
+  <rect x="208" y="254" width="46" height="46" fill="#dce6f7" stroke="#c9ced7"/><text x="231" y="282" text-anchor="middle" font-size="13" fill="#333">130</text>
+  <rect x="254" y="254" width="46" height="46" fill="#dce6f7" stroke="#c9ced7"/><text x="277" y="282" text-anchor="middle" font-size="13" fill="#333">109</text>
+  <rect x="300" y="254" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="323" y="282" text-anchor="middle" font-size="13" fill="#333">144</text>
+  <!-- row 5 -->
+  <rect x="70"  y="300" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="93"  y="328" text-anchor="middle" font-size="13" fill="#333">150</text>
+  <rect x="116" y="300" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="139" y="328" text-anchor="middle" font-size="13" fill="#333">137</text>
+  <rect x="162" y="300" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="185" y="328" text-anchor="middle" font-size="13" fill="#333">197</text>
+  <rect x="208" y="300" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="231" y="328" text-anchor="middle" font-size="13" fill="#333">146</text>
+  <rect x="254" y="300" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="277" y="328" text-anchor="middle" font-size="13" fill="#333">192</text>
+  <rect x="300" y="300" width="46" height="46" fill="#eef1f5" stroke="#c9ced7"/><text x="323" y="328" text-anchor="middle" font-size="13" fill="#333">102</text>
+
+  <!-- kernel outline -->
+  <rect x="162" y="162" width="138" height="138" fill="none" stroke="#2f6fd0" stroke-width="3"/>
+  <text x="231" y="366" text-anchor="middle" font-size="12" font-weight="600" fill="#2f6fd0">Kernel 3×3</text>
+
+  <!-- arrow -->
+  <text x="432" y="200" text-anchor="middle" font-size="13" font-weight="600" fill="#2f6fd0">Convolution</text>
+  <line x1="380" y1="225" x2="478" y2="225" stroke="#2f6fd0" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="432" y="256" text-anchor="middle" font-size="13" fill="#333">Σ(K × Area)</text>
+
+  <!-- new pixel -->
+  <rect x="500" y="178" width="112" height="96" fill="#dce6f7" stroke="#2f6fd0" stroke-width="2"/>
+  <text x="556" y="231" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a1a">New Pixel</text>
+
+  <line x1="60" y1="392" x2="600" y2="392" stroke="#e2e5eb" stroke-width="1"/>
+  <text x="330" y="418" text-anchor="middle" font-size="12" fill="#5f6470">필터는 픽셀의 &#39;값&#39;을 바꾼다 — 커널과 겹치는 영역의 가중합이 중심 픽셀의 새 값이 된다</text>
+</svg>

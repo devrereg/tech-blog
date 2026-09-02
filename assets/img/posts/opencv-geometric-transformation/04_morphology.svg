@@ -1,0 +1,53 @@
+<svg width="960" height="580" viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="960" height="580" fill="#ffffff"/>
+  <text x="480" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a1a">모폴로지 — 열기(OPEN)와 닫기(CLOSE)의 연산 순서</text>
+  <text x="480" y="48" text-anchor="middle" font-size="12" fill="#5f6470">이진 영상 기준: 흰색 = 전경 객체, 어두운색 = 배경</text>
+
+  <!-- row labels -->
+  <text x="34" y="200" font-size="13" font-weight="600" fill="#5f6470" transform="rotate(-90 34 200)">MORPH_OPEN</text>
+  <text x="34" y="445" font-size="13" font-weight="600" fill="#5f6470" transform="rotate(-90 34 445)">MORPH_CLOSE</text>
+
+  <!-- ===== ROW 1: OPEN (침식 → 팽창) ===== -->
+  <text x="230" y="82" text-anchor="middle" font-size="12" fill="#333">① Noisy 원본</text>
+  <text x="230" y="99" text-anchor="middle" font-size="11" fill="#5f6470">배경에 작은 흰 점 노이즈</text>
+  <rect x="150" y="115" width="160" height="160" rx="6" fill="#22314a"/>
+  <circle cx="230" cy="195" r="58" fill="#ffffff"/>
+  <circle cx="172" cy="132" r="4" fill="#ffffff"/>
+  <circle cx="292" cy="140" r="4" fill="#ffffff"/>
+  <circle cx="165" cy="252" r="4" fill="#ffffff"/>
+  <circle cx="290" cy="255" r="4" fill="#ffffff"/>
+  <circle cx="300" cy="196" r="3.5" fill="#ffffff"/>
+
+  <text x="480" y="82" text-anchor="middle" font-size="12" fill="#333">② 침식 (Erosion)</text>
+  <text x="480" y="99" text-anchor="middle" font-size="11" fill="#5f6470">흰 영역 축소 · 노이즈 소멸</text>
+  <rect x="400" y="115" width="160" height="160" rx="6" fill="#22314a"/>
+  <circle cx="480" cy="195" r="42" fill="#ffffff"/>
+
+  <text x="730" y="82" text-anchor="middle" font-size="12" fill="#2f6fd0" font-weight="600">③ 팽창 (Dilation) = OPEN 결과</text>
+  <text x="730" y="99" text-anchor="middle" font-size="11" fill="#5f6470">크기 복원 · 노이즈는 제거된 채</text>
+  <rect x="650" y="115" width="160" height="160" rx="6" fill="#22314a"/>
+  <circle cx="730" cy="195" r="58" fill="#ffffff"/>
+
+  <line x1="70" y1="315" x2="890" y2="315" stroke="#e2e5eb" stroke-width="1"/>
+
+  <!-- ===== ROW 2: CLOSE (팽창 → 침식) ===== -->
+  <text x="230" y="345" text-anchor="middle" font-size="12" fill="#333">① Holes 원본</text>
+  <text x="230" y="362" text-anchor="middle" font-size="11" fill="#5f6470">객체 내부에 구멍</text>
+  <rect x="150" y="360" width="160" height="160" rx="6" fill="#22314a"/>
+  <circle cx="230" cy="440" r="58" fill="#ffffff"/>
+  <circle cx="215" cy="425" r="11" fill="#22314a"/>
+  <circle cx="250" cy="410" r="6" fill="#22314a"/>
+  <circle cx="248" cy="462" r="8" fill="#22314a"/>
+
+  <text x="480" y="345" text-anchor="middle" font-size="12" fill="#333">② 팽창 (Dilation)</text>
+  <text x="480" y="362" text-anchor="middle" font-size="11" fill="#5f6470">흰 영역 확대 · 구멍이 메워짐</text>
+  <rect x="400" y="360" width="160" height="160" rx="6" fill="#22314a"/>
+  <circle cx="480" cy="440" r="70" fill="#ffffff"/>
+  <circle cx="468" cy="428" r="2.5" fill="#22314a"/>
+  <circle cx="492" cy="458" r="2" fill="#22314a"/>
+
+  <text x="730" y="345" text-anchor="middle" font-size="12" fill="#2f6fd0" font-weight="600">③ 침식 (Erosion) = CLOSE 결과</text>
+  <text x="730" y="362" text-anchor="middle" font-size="11" fill="#5f6470">크기 복원 · 구멍은 메워진 채</text>
+  <rect x="650" y="360" width="160" height="160" rx="6" fill="#22314a"/>
+  <circle cx="730" cy="440" r="58" fill="#ffffff"/>
+</svg>

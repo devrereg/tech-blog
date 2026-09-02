@@ -1,0 +1,38 @@
+<svg width="1000" height="380" viewBox="0 0 1000 380" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <defs>
+    <marker id="karrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2b3a52"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="380" fill="#ffffff"/>
+
+  <!-- LEFT: Affine -->
+  <text x="250" y="40" text-anchor="middle" font-size="15" font-weight="600" fill="#2f6fd0">Affine 변환</text>
+  <text x="250" y="60" text-anchor="middle" font-size="12" fill="#5f6470">빨간 변은 변환 후에도 계속 평행 유지</text>
+
+  <rect x="70" y="140" width="140" height="90" fill="#eef1f5" stroke="#9aa1ad" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="70" y1="140" x2="210" y2="140" stroke="#e23b2e" stroke-width="3"/>
+  <line x1="70" y1="230" x2="210" y2="230" stroke="#e23b2e" stroke-width="3"/>
+
+  <line x1="235" y1="185" x2="285" y2="185" stroke="#2b3a52" stroke-width="2.5" marker-end="url(#karrow)"/>
+
+  <polygon points="330,150 470,150 440,240 300,240" fill="#dce6f7" stroke="#2f6fd0" stroke-width="2.5"/>
+  <line x1="330" y1="150" x2="470" y2="150" stroke="#e23b2e" stroke-width="3"/>
+  <line x1="300" y1="240" x2="440" y2="240" stroke="#e23b2e" stroke-width="3"/>
+
+  <!-- divider -->
+  <line x1="510" y1="90" x2="510" y2="330" stroke="#e2e5eb" stroke-width="1"/>
+
+  <!-- RIGHT: Perspective -->
+  <text x="750" y="40" text-anchor="middle" font-size="15" font-weight="600" fill="#2f6fd0">Perspective 변환</text>
+  <text x="750" y="60" text-anchor="middle" font-size="12" fill="#5f6470">평행선이 한 점(소실점)에서 만남</text>
+
+  <rect x="560" y="130" width="140" height="80" fill="#eef1f5" stroke="#9aa1ad" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="720" y1="170" x2="770" y2="170" stroke="#2b3a52" stroke-width="2.5" marker-end="url(#karrow)"/>
+
+  <polygon points="800,120 940,120 905,205 835,205" fill="#dce6f7" stroke="#2f6fd0" stroke-width="2.5"/>
+  <line x1="800" y1="120" x2="852" y2="320" stroke="#e23b2e" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <line x1="940" y1="120" x2="888" y2="320" stroke="#e23b2e" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <path d="M870,308 l6,18 -15,-11 18,0 -15,11 z" fill="#e23b2e"/>
+  <text x="870" y="345" text-anchor="middle" font-size="12" fill="#e23b2e">소실점 (Vanishing Point)</text>
+</svg>
