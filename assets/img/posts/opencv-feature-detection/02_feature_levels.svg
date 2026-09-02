@@ -1,0 +1,39 @@
+<svg width="1000" height="360" viewBox="0 0 1000 360" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <defs>
+    <marker id="karrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2b3a52"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="360" fill="#ffffff"/>
+  <text x="500" y="34" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a1a">영상 특징의 3단계 (Low → Mid → High-Level Feature)</text>
+
+  <!-- Low -->
+  <rect x="45" y="70" width="270" height="215" rx="10" fill="#eef1f5" stroke="#9aa1ad" stroke-width="1.5"/>
+  <text x="180" y="100" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a1a">1. 저수준 특징 (Low-Level)</text>
+  <text x="180" y="132" text-anchor="middle" font-size="12" fill="#333">색상 (Color)</text>
+  <text x="180" y="160" text-anchor="middle" font-size="12" fill="#333">밝기 / 강도 (Intensity)</text>
+  <text x="180" y="188" text-anchor="middle" font-size="12" fill="#333">엣지 · 코너 (Edge, Corner)</text>
+  <text x="180" y="216" text-anchor="middle" font-size="12" fill="#333">블롭 (Blob)</text>
+  <text x="180" y="252" text-anchor="middle" font-size="11" fill="#5f6470">픽셀에서 직접 추출</text>
+
+  <!-- Mid -->
+  <rect x="365" y="70" width="270" height="215" rx="10" fill="#dce6f7" stroke="#2f6fd0" stroke-width="1.5"/>
+  <text x="500" y="100" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a1a">2. 중간수준 특징 (Mid-Level)</text>
+  <text x="500" y="136" text-anchor="middle" font-size="12" fill="#333">윤곽선 (Contours)</text>
+  <text x="500" y="168" text-anchor="middle" font-size="12" fill="#333">형태 기술자 (Shape Descriptors)</text>
+  <text x="500" y="200" text-anchor="middle" font-size="12" fill="#333">질감 (Texture)</text>
+  <text x="500" y="252" text-anchor="middle" font-size="11" fill="#5f6470">저수준 특징의 조합</text>
+
+  <!-- High -->
+  <rect x="685" y="70" width="270" height="215" rx="10" fill="#b9d0f2" stroke="#2f6fd0" stroke-width="2"/>
+  <text x="820" y="100" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a1a">3. 고수준 특징 (High-Level)</text>
+  <text x="820" y="132" text-anchor="middle" font-size="12" fill="#333">지역적 특징 (SIFT / SURF / ORB)</text>
+  <text x="820" y="160" text-anchor="middle" font-size="12" fill="#333">객체 인식 (Object Recognition)</text>
+  <text x="820" y="188" text-anchor="middle" font-size="12" fill="#333">CNN 기반 특징</text>
+  <text x="820" y="252" text-anchor="middle" font-size="11" fill="#5f6470">"이것이 무엇인가" 판단</text>
+
+  <line x1="320" y1="177" x2="360" y2="177" stroke="#2b3a52" stroke-width="2.5" marker-end="url(#karrow)"/>
+  <line x1="640" y1="177" x2="680" y2="177" stroke="#2b3a52" stroke-width="2.5" marker-end="url(#karrow)"/>
+
+  <text x="500" y="330" text-anchor="middle" font-size="12" fill="#5f6470">단순 픽셀 정보  →  의미 있는 형태  →  객체의 식별 정보</text>
+</svg>

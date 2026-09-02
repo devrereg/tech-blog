@@ -1,0 +1,59 @@
+<svg width="1000" height="400" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="1000" height="400" fill="#ffffff"/>
+  <text x="500" y="34" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a1a">소벨(Sobel) Gx 커널 컨볼루션 계산 예시</text>
+
+  <!-- Input image 4x4 -->
+  <text x="150" y="72" text-anchor="middle" font-size="13" fill="#333">입력 영상 (4×4)</text>
+  <g font-size="13" text-anchor="middle">
+    <!-- row/col cells 60px -->
+    <g>
+      <rect x="60"  y="90"  width="60" height="60" fill="#7d7d7d" stroke="#ffffff"/>
+      <rect x="120" y="90"  width="60" height="60" fill="#7d7d7d" stroke="#ffffff"/>
+      <rect x="180" y="90"  width="60" height="60" fill="#cfcfcf" stroke="#ffffff"/>
+      <rect x="240" y="90"  width="60" height="60" fill="#cfcfcf" stroke="#ffffff"/>
+      <rect x="60"  y="150" width="60" height="60" fill="#7d7d7d" stroke="#ffffff"/>
+      <rect x="120" y="150" width="60" height="60" fill="#7d7d7d" stroke="#ffffff"/>
+      <rect x="180" y="150" width="60" height="60" fill="#cfcfcf" stroke="#ffffff"/>
+      <rect x="240" y="150" width="60" height="60" fill="#cfcfcf" stroke="#ffffff"/>
+      <rect x="60"  y="210" width="60" height="60" fill="#7d7d7d" stroke="#ffffff"/>
+      <rect x="120" y="210" width="60" height="60" fill="#7d7d7d" stroke="#ffffff"/>
+      <rect x="180" y="210" width="60" height="60" fill="#cfcfcf" stroke="#ffffff"/>
+      <rect x="240" y="210" width="60" height="60" fill="#cfcfcf" stroke="#ffffff"/>
+      <rect x="60"  y="270" width="60" height="60" fill="#7d7d7d" stroke="#ffffff"/>
+      <rect x="120" y="270" width="60" height="60" fill="#7d7d7d" stroke="#ffffff"/>
+      <rect x="180" y="270" width="60" height="60" fill="#cfcfcf" stroke="#ffffff"/>
+      <rect x="240" y="270" width="60" height="60" fill="#cfcfcf" stroke="#ffffff"/>
+    </g>
+    <g fill="#ffffff">
+      <text x="90"  y="126">100</text><text x="150" y="126">100</text><text x="210" y="126" fill="#333">200</text><text x="270" y="126" fill="#333">200</text>
+      <text x="90"  y="186">100</text><text x="150" y="186">100</text><text x="210" y="186" fill="#333">200</text><text x="270" y="186" fill="#333">200</text>
+      <text x="90"  y="246">100</text><text x="150" y="246">100</text><text x="210" y="246" fill="#333">200</text><text x="270" y="246" fill="#333">200</text>
+      <text x="90"  y="306">100</text><text x="150" y="306">100</text><text x="210" y="306" fill="#333">200</text><text x="270" y="306" fill="#333">200</text>
+    </g>
+    <!-- 3x3 window highlight around center pixel (col1-3, row1-3) -->
+    <rect x="60" y="90" width="180" height="180" fill="none" stroke="#2f6fd0" stroke-width="3"/>
+    <rect x="120" y="150" width="60" height="60" fill="none" stroke="#e23b2e" stroke-width="3"/>
+  </g>
+
+  <!-- Gx kernel -->
+  <text x="500" y="72" text-anchor="middle" font-size="13" fill="#333">Gx 커널</text>
+  <g font-size="18" font-weight="600" text-anchor="middle" fill="#2f6fd0">
+    <rect x="410" y="90" width="180" height="180" fill="#111418" stroke="#111418"/>
+    <text x="440" y="126">-1</text><text x="500" y="126">0</text><text x="560" y="126">+1</text>
+    <text x="440" y="186">-2</text><text x="500" y="186">0</text><text x="560" y="186">+2</text>
+    <text x="440" y="246">-1</text><text x="500" y="246">0</text><text x="560" y="246">+1</text>
+  </g>
+
+  <!-- calc -->
+  <text x="640" y="100" font-size="13" fill="#333">계산 과정</text>
+  <g font-size="12.5" fill="#333">
+    <text x="640" y="128">1행: 100·(-1) + 100·0 + 200·1 = 100</text>
+    <text x="640" y="152">2행: 100·(-2) + 100·0 + 200·2 = 200</text>
+    <text x="640" y="176">3행: 100·(-1) + 100·0 + 200·1 = 100</text>
+  </g>
+  <line x1="640" y1="190" x2="930" y2="190" stroke="#9aa1ad" stroke-width="1"/>
+  <text x="640" y="214" font-size="13" font-weight="600" fill="#1a1a1a">합계 = 100 + 200 + 100 = 400</text>
+  <text x="640" y="250" font-size="12" font-weight="600" fill="#e23b2e">값이 클수록 엣지가 뚜렷함</text>
+
+  <text x="500" y="376" text-anchor="middle" font-size="12" fill="#5f6470">가운데 세로 경계(100 → 200)에서 Gx 응답이 400으로 크게 나타난다</text>
+</svg>

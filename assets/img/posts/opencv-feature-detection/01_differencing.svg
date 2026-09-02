@@ -1,0 +1,57 @@
+<svg width="1000" height="420" viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <defs>
+    <marker id="rarrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#e23b2e"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="420" fill="#ffffff"/>
+  <text x="500" y="34" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a1a">차분(Differencing): 공간적 차분 vs 시간적 차분</text>
+
+  <!-- LEFT: Spatial -->
+  <text x="250" y="66" text-anchor="middle" font-size="13" font-weight="600" fill="#333">공간적 차분 (Spatial Difference)</text>
+  <text x="250" y="84" text-anchor="middle" font-size="12" fill="#5f6470">같은 프레임 내 인접 픽셀 비교</text>
+  <line x1="70" y1="340" x2="440" y2="340" stroke="#9aa1ad" stroke-width="1.5"/>
+  <line x1="70" y1="120" x2="70" y2="340" stroke="#9aa1ad" stroke-width="1.5"/>
+  <!-- bars: 50,55,52,190,195,200 scaled /1.1 -->
+  <rect x="90"  y="294" width="42" height="46"  fill="#8fb3e8" stroke="#2f6fd0"/>
+  <rect x="148" y="290" width="42" height="50"  fill="#8fb3e8" stroke="#2f6fd0"/>
+  <rect x="206" y="293" width="42" height="47"  fill="#8fb3e8" stroke="#2f6fd0"/>
+  <rect x="264" y="167" width="42" height="173" fill="#f3a6a0" stroke="#e23b2e"/>
+  <rect x="322" y="162" width="42" height="178" fill="#f3a6a0" stroke="#e23b2e"/>
+  <rect x="380" y="158" width="42" height="182" fill="#f3a6a0" stroke="#e23b2e"/>
+  <text x="111" y="286" text-anchor="middle" font-size="11" fill="#333">50</text>
+  <text x="169" y="282" text-anchor="middle" font-size="11" fill="#333">55</text>
+  <text x="227" y="285" text-anchor="middle" font-size="11" fill="#333">52</text>
+  <text x="285" y="159" text-anchor="middle" font-size="11" fill="#333">190</text>
+  <text x="343" y="154" text-anchor="middle" font-size="11" fill="#333">195</text>
+  <text x="401" y="150" text-anchor="middle" font-size="11" fill="#333">200</text>
+  <text x="111" y="356" text-anchor="middle" font-size="10" fill="#5f6470">x=0</text>
+  <text x="169" y="356" text-anchor="middle" font-size="10" fill="#5f6470">x=1</text>
+  <text x="227" y="356" text-anchor="middle" font-size="10" fill="#5f6470">x=2</text>
+  <text x="285" y="356" text-anchor="middle" font-size="10" fill="#5f6470">x=3</text>
+  <text x="343" y="356" text-anchor="middle" font-size="10" fill="#5f6470">x=4</text>
+  <text x="401" y="356" text-anchor="middle" font-size="10" fill="#5f6470">x=5</text>
+  <line x1="235" y1="300" x2="285" y2="200" stroke="#e23b2e" stroke-width="2.5" marker-end="url(#rarrow)"/>
+  <text x="205" y="250" text-anchor="middle" font-size="12" font-weight="600" fill="#e23b2e">큰 차이</text>
+  <text x="205" y="266" text-anchor="middle" font-size="11" fill="#e23b2e">(Edge 후보)</text>
+
+  <!-- divider -->
+  <line x1="500" y1="60" x2="500" y2="380" stroke="#e2e5eb" stroke-width="1"/>
+
+  <!-- RIGHT: Temporal -->
+  <text x="750" y="66" text-anchor="middle" font-size="13" font-weight="600" fill="#333">시간적 차분 (Temporal Difference)</text>
+  <text x="750" y="84" text-anchor="middle" font-size="12" fill="#5f6470">연속 프레임 간 같은 위치 비교</text>
+  <line x1="590" y1="340" x2="920" y2="340" stroke="#9aa1ad" stroke-width="1.5"/>
+  <line x1="590" y1="120" x2="590" y2="340" stroke="#9aa1ad" stroke-width="1.5"/>
+  <rect x="640" y="313" width="90" height="27"  fill="#9bd7b3" stroke="#37a86a"/>
+  <rect x="790" y="178" width="90" height="162" fill="#f3a6a0" stroke="#e23b2e"/>
+  <text x="685" y="305" text-anchor="middle" font-size="11" fill="#333">30</text>
+  <text x="835" y="170" text-anchor="middle" font-size="11" fill="#333">180</text>
+  <text x="685" y="358" text-anchor="middle" font-size="10" fill="#5f6470">t-1 (이전 프레임)</text>
+  <text x="835" y="358" text-anchor="middle" font-size="10" fill="#5f6470">t (현재 프레임)</text>
+  <line x1="690" y1="318" x2="828" y2="200" stroke="#e23b2e" stroke-width="2.5" marker-end="url(#rarrow)"/>
+  <text x="748" y="250" text-anchor="middle" font-size="12" font-weight="600" fill="#e23b2e">|180 - 30| = 150</text>
+  <text x="748" y="266" text-anchor="middle" font-size="11" fill="#e23b2e">(Motion 후보)</text>
+
+  <text x="500" y="404" text-anchor="middle" font-size="12" fill="#5f6470">공간적 차분 → Edge(경계선) 검출  ·  시간적 차분 → Motion(움직임) 검출</text>
+</svg>

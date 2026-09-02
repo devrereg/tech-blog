@@ -1,0 +1,50 @@
+<svg width="1000" height="400" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="1000" height="400" fill="#ffffff"/>
+  <text x="500" y="30" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a1a">허프 변환(Hough Transform): 이미지 공간 → 파라미터 공간</text>
+
+  <!-- LEFT: image space -->
+  <text x="250" y="60" text-anchor="middle" font-size="13" font-weight="600" fill="#333">이미지 공간 (x, y)</text>
+  <line x1="80" y1="330" x2="450" y2="330" stroke="#9aa1ad" stroke-width="1.5"/>
+  <line x1="80" y1="80"  x2="80"  y2="330" stroke="#9aa1ad" stroke-width="1.5"/>
+  <text x="452" y="334" font-size="11" fill="#5f6470">x</text>
+  <text x="72"  y="76"  font-size="11" fill="#5f6470" text-anchor="end">y</text>
+  <!-- line y = 0.6x + 0.8 -->
+  <line x1="80" y1="286" x2="440" y2="119" stroke="#8fb3e8" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <text x="120" y="110" font-size="12" fill="#2f6fd0">직선 위의 점들은 하나의 선을 구성</text>
+  <!-- points -->
+  <circle cx="152" cy="252" r="7" fill="#e23b2e" stroke="#7a1c15" stroke-width="1.5"/>
+  <circle cx="260" cy="202" r="7" fill="#e23b2e" stroke="#7a1c15" stroke-width="1.5"/>
+  <circle cx="368" cy="152" r="7" fill="#e23b2e" stroke="#7a1c15" stroke-width="1.5"/>
+  <text x="152" y="238" text-anchor="middle" font-size="11" fill="#333">P1</text>
+  <text x="260" y="188" text-anchor="middle" font-size="11" fill="#333">P2</text>
+  <text x="368" y="138" text-anchor="middle" font-size="11" fill="#333">P3</text>
+
+  <!-- divider -->
+  <line x1="510" y1="55" x2="510" y2="345" stroke="#e2e5eb" stroke-width="1"/>
+
+  <!-- RIGHT: parameter space -->
+  <text x="750" y="60" text-anchor="middle" font-size="13" font-weight="600" fill="#333">파라미터 공간 (ρ, θ) — Hough Space</text>
+  <line x1="560" y1="340" x2="950" y2="340" stroke="#9aa1ad" stroke-width="1.5"/>
+  <line x1="560" y1="70"  x2="560" y2="340" stroke="#9aa1ad" stroke-width="1.5"/>
+  <text x="952" y="344" font-size="11" fill="#5f6470">θ</text>
+  <text x="552" y="76"  font-size="11" fill="#5f6470" text-anchor="end">ρ</text>
+  <line x1="560" y1="226" x2="950" y2="226" stroke="#e2e5eb" stroke-width="1"/>
+
+  <!-- P1 curve -->
+  <polyline fill="none" stroke="#2f6fd0" stroke-width="2"
+    points="560,198 608,185 657,178 705,179 754,188 802,202 815,207 863,225 923,249 940,255"/>
+  <!-- P2 curve -->
+  <polyline fill="none" stroke="#37a86a" stroke-width="2"
+    points="560,155 608,136 657,130 705,140 754,163 802,197 815,207 863,244 923,288 940,297"/>
+  <!-- P3 curve -->
+  <polyline fill="none" stroke="#e6952b" stroke-width="2"
+    points="560,113 608,86 657,82 705,101 754,139 802,191 815,207 863,263 923,326 940,340"/>
+
+  <!-- peak -->
+  <circle cx="815" cy="207" r="6" fill="none" stroke="#e23b2e" stroke-width="2.5"/>
+  <line x1="815" y1="207" x2="860" y2="160" stroke="#e23b2e" stroke-width="1.5"/>
+  <text x="864" y="156" font-size="12" font-weight="600" fill="#e23b2e">Peak (교차점)</text>
+  <text x="864" y="172" font-size="11" fill="#e23b2e">= 실제 직선의 (ρ, θ)</text>
+
+  <text x="750" y="378" text-anchor="middle" font-size="12" fill="#5f6470">한 직선 위의 점들 → 곡선들이 한 점에서 만남 → 그 점이 곧 직선</text>
+</svg>
