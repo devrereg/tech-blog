@@ -1,0 +1,68 @@
+<svg width="1000" height="400" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <defs>
+    <marker id="garrow" markerWidth="8" markerHeight="8" refX="5" refY="2.5" orient="auto">
+      <path d="M0,0 L5,2.5 L0,5 Z" fill="#1f9e5c"/>
+    </marker>
+    <marker id="oarrow" markerWidth="8" markerHeight="8" refX="5" refY="2.5" orient="auto">
+      <path d="M0,0 L5,2.5 L0,5 Z" fill="#e08a1f"/>
+    </marker>
+    <marker id="garrow2" markerWidth="8" markerHeight="8" refX="5" refY="2.5" orient="auto">
+      <path d="M0,0 L5,2.5 L0,5 Z" fill="#9aa1ad"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="400" fill="#ffffff"/>
+  <text x="500" y="34" text-anchor="middle" font-size="17" font-weight="700" fill="#1a1a1a">모서리(Corner)가 좋은 특징점인 이유</text>
+
+  <!-- panel 1: flat -->
+  <text x="163" y="70" text-anchor="middle" font-size="14" font-weight="600" fill="#5f6470">평탄한 영역 (Flat)</text>
+  <rect x="33" y="90" width="260" height="200" fill="#e5e7ec"/>
+  <g stroke="#9aa1ad" stroke-width="2.5">
+    <line x1="163" y1="190" x2="163" y2="115" marker-end="url(#garrow2)"/>
+    <line x1="163" y1="190" x2="163" y2="265" marker-end="url(#garrow2)"/>
+    <line x1="163" y1="190" x2="88"  y2="190" marker-end="url(#garrow2)"/>
+    <line x1="163" y1="190" x2="238" y2="190" marker-end="url(#garrow2)"/>
+    <line x1="163" y1="190" x2="110" y2="137" marker-end="url(#garrow2)"/>
+    <line x1="163" y1="190" x2="216" y2="137" marker-end="url(#garrow2)"/>
+    <line x1="163" y1="190" x2="110" y2="243" marker-end="url(#garrow2)"/>
+    <line x1="163" y1="190" x2="216" y2="243" marker-end="url(#garrow2)"/>
+  </g>
+  <circle cx="163" cy="190" r="9" fill="#e2493b" stroke="#ffffff" stroke-width="2"/>
+  <text x="163" y="322" text-anchor="middle" font-size="12.5" fill="#333">모든 방향에서 동일</text>
+  <text x="163" y="342" text-anchor="middle" font-size="12.5" fill="#333">→ 위치를 특정할 수 없음</text>
+
+  <!-- panel 2: edge -->
+  <text x="500" y="70" text-anchor="middle" font-size="14" font-weight="600" fill="#e08a1f">경계선 (Edge)</text>
+  <rect x="370" y="90" width="260" height="100" fill="#2b3245"/>
+  <rect x="370" y="190" width="260" height="100" fill="#dfe2e8"/>
+  <line x1="500" y1="290" x2="500" y2="115" stroke="#1f9e5c" stroke-width="2.5" marker-end="url(#garrow)"/>
+  <line x1="500" y1="190" x2="500" y2="265" stroke="#1f9e5c" stroke-width="2.5" marker-end="url(#garrow)"/>
+  <circle cx="500" cy="190" r="9" fill="#e2493b" stroke="#ffffff" stroke-width="2"/>
+  <g fill="#e2493b">
+    <path d="M415,183 l10,0 l-5,-9 z"/>
+    <path d="M453,183 l10,0 l-5,-9 z"/>
+    <path d="M537,183 l10,0 l-5,-9 z"/>
+    <path d="M575,183 l10,0 l-5,-9 z"/>
+  </g>
+  <text x="500" y="322" text-anchor="middle" font-size="12.5" fill="#333">경계선을 따라서는 동일</text>
+  <text x="500" y="342" text-anchor="middle" font-size="12.5" fill="#333">→ 모호함 (구멍 문제, Aperture Problem)</text>
+
+  <!-- panel 3: corner -->
+  <text x="837" y="70" text-anchor="middle" font-size="14" font-weight="600" fill="#1f9e5c">모서리 (Corner)</text>
+  <rect x="707" y="90"  width="130" height="100" fill="#2b3245"/>
+  <rect x="837" y="90"  width="130" height="100" fill="#9aa1ad"/>
+  <rect x="707" y="190" width="130" height="100" fill="#2b3245"/>
+  <rect x="837" y="190" width="130" height="100" fill="#dfe2e8"/>
+  <g stroke="#1f9e5c" stroke-width="2.5">
+    <line x1="837" y1="190" x2="837" y2="115" marker-end="url(#garrow)"/>
+    <line x1="837" y1="190" x2="837" y2="265" marker-end="url(#garrow)"/>
+    <line x1="837" y1="190" x2="762" y2="190" marker-end="url(#garrow)"/>
+    <line x1="837" y1="190" x2="912" y2="190" marker-end="url(#garrow)"/>
+    <line x1="837" y1="190" x2="784" y2="137" marker-end="url(#garrow)"/>
+    <line x1="837" y1="190" x2="890" y2="137" marker-end="url(#garrow)"/>
+    <line x1="837" y1="190" x2="784" y2="243" marker-end="url(#garrow)"/>
+    <line x1="837" y1="190" x2="890" y2="243" marker-end="url(#garrow)"/>
+  </g>
+  <circle cx="837" cy="190" r="9" fill="#e2493b" stroke="#ffffff" stroke-width="2"/>
+  <text x="837" y="322" text-anchor="middle" font-size="12.5" fill="#333">모든 방향에서 다르게 변함</text>
+  <text x="837" y="342" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1f9e5c">→ 가장 좋은 특징점!</text>
+</svg>

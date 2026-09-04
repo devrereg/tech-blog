@@ -1,0 +1,65 @@
+<svg width="1000" height="580" viewBox="0 0 1000 580" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="1000" height="580" fill="#ffffff"/>
+  <text x="500" y="34" text-anchor="middle" font-size="17" font-weight="700" fill="#1a1a1a">고정 윈도우 vs 적응형 윈도우 — 객체가 카메라에 다가올 때</text>
+
+  <!-- Row 1: MeanShift (fixed) -->
+  <text x="500" y="66" text-anchor="middle" font-size="13.5" font-weight="600" fill="#e2493b">MeanShift — 윈도우 크기 고정</text>
+
+  <g font-size="12" fill="#5f6470">
+    <text x="200" y="86">Frame 1</text>
+    <text x="500" y="86">Frame 2</text>
+    <text x="800" y="86">Frame 3</text>
+  </g>
+
+  <g stroke="#d8dbe1" stroke-width="1">
+    <rect x="70"  y="90" width="260" height="190" fill="#f5f6f8"/>
+    <rect x="370" y="90" width="260" height="190" fill="#f5f6f8"/>
+    <rect x="670" y="90" width="260" height="190" fill="#f5f6f8"/>
+  </g>
+  <g fill="#b9bec8">
+    <rect x="70"  y="150" width="260" height="70"/>
+    <rect x="370" y="150" width="260" height="70"/>
+    <rect x="670" y="150" width="260" height="70"/>
+  </g>
+
+  <!-- objects growing -->
+  <rect x="130" y="161" width="70"  height="48" rx="6" fill="#f5f6f8" stroke="#1a1a1a" stroke-width="2"/>
+  <rect x="450" y="151" width="100" height="68" rx="6" fill="#f5f6f8" stroke="#1a1a1a" stroke-width="2"/>
+  <rect x="795" y="137" width="140" height="96" rx="6" fill="#f5f6f8" stroke="#1a1a1a" stroke-width="2"/>
+
+  <!-- fixed-size tracker box -->
+  <rect x="126" y="157" width="78" height="56" fill="none" stroke="#e2493b" stroke-width="3.5"/>
+  <rect x="461" y="157" width="78" height="56" fill="none" stroke="#e2493b" stroke-width="3.5"/>
+  <rect x="826" y="157" width="78" height="56" fill="none" stroke="#e2493b" stroke-width="3.5"/>
+
+  <!-- Row 2: CamShift (adaptive) -->
+  <text x="500" y="336" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1f9e5c">CamShift — 윈도우 크기 적응</text>
+
+  <g font-size="12" fill="#5f6470">
+    <text x="200" y="356">Frame 1</text>
+    <text x="500" y="356">Frame 2</text>
+    <text x="800" y="356">Frame 3</text>
+  </g>
+
+  <g stroke="#d8dbe1" stroke-width="1">
+    <rect x="70"  y="360" width="260" height="190" fill="#f5f6f8"/>
+    <rect x="370" y="360" width="260" height="190" fill="#f5f6f8"/>
+    <rect x="670" y="360" width="260" height="190" fill="#f5f6f8"/>
+  </g>
+  <g fill="#b9bec8">
+    <rect x="70"  y="420" width="260" height="70"/>
+    <rect x="370" y="420" width="260" height="70"/>
+    <rect x="670" y="420" width="260" height="70"/>
+  </g>
+
+  <rect x="130" y="431" width="70"  height="48" rx="6" fill="#f5f6f8" stroke="#1a1a1a" stroke-width="2"/>
+  <rect x="450" y="421" width="100" height="68" rx="6" fill="#f5f6f8" stroke="#1a1a1a" stroke-width="2"/>
+  <rect x="795" y="407" width="140" height="96" rx="6" fill="#f5f6f8" stroke="#1a1a1a" stroke-width="2"/>
+
+  <!-- adaptive-size tracker box -->
+  <rect x="122" y="423" width="86"  height="64"  fill="none" stroke="#1f9e5c" stroke-width="3.5"/>
+  <rect x="442" y="413" width="116" height="84"  fill="none" stroke="#1f9e5c" stroke-width="3.5"/>
+  <rect x="787" y="399" width="156" height="112" fill="none" stroke="#1f9e5c" stroke-width="3.5"/>
+
+  <text x="500" y="570" text-anchor="middle" font-size="12.5" fill="#5f6470">고정 윈도우는 객체가 커질수록 놓치지만, 적응형 윈도우는 2차 모멘트로 크기·방향을 계속 갱신한다</text>
+</svg>
