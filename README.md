@@ -16,11 +16,11 @@
 ## 최근 글
 
 <!-- BLOG-POST-LIST:START -->
+- [OpenCV 스터디 4주차: 템플릿 매칭부터 RAFT까지, 객체 추적 알고리즘 총정리](https://devrereg.github.io/tech-blog/posts/opencv-object-tracking/)
 - [OpenCV 스터디 3주차: 차분부터 허프 변환까지, 영상의 특징 검출](https://devrereg.github.io/tech-blog/posts/opencv-feature-detection/)
 - [OpenCV 스터디 2주차: 필터부터 기하학적 변환까지](https://devrereg.github.io/tech-blog/posts/opencv-geometric-transformation/)
 - [OpenCV 스터디 1주차: 디지털 영상의 기초부터 히스토그램까지](https://devrereg.github.io/tech-blog/posts/opencv-digital-image-basics/)
 - [텍스트 전처리부터 DistilBERT 파인튜닝까지: 감성분류 모델 종합 정리](https://devrereg.github.io/tech-blog/posts/nlp-preprocessing-to-distilbert-sentiment/)
-- [CNN 완전 정복: 이론부터 PyTorch 구현까지](https://devrereg.github.io/tech-blog/posts/cnn-convolution-complete-guide/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 포스팅 주제
