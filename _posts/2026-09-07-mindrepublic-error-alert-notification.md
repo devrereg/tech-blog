@@ -1,16 +1,17 @@
 ---
-title: "[마인드리퍼블릭] ERROR Email · Slack Bot 알림 처리 — 서버 장애 실시간 감지와 중복 알림 제거"
+title: "[마인드리퍼블릭] WENOA 서버 장애 알림 처리 — ERROR Email · Slack Bot 실시간 감지와 중복 알림 제거"
 date: 2026-09-07 01:00:00 +0900
 categories: [포트폴리오]
-tags: [portfolio, mindrepublic, slack-bot, aws-waf, spring-boot, kotlin, fastapi, redis, alerting, error-monitoring]
-description: "서버 장애를 즉시 인지하기 위한 알림 시스템. LoadBalancer 앞단 AWS WAF의 Email 알림과, 전 서버 에러 로그를 Slack Bot으로 실시간 통지하는 파이프라인을 구축하고, 동일 장애에 대한 중복 알림을 제거했다."
+tags: [portfolio, mindrepublic, wenoa, slack-bot, aws-waf, spring-boot, kotlin, fastapi, redis, alerting, error-monitoring]
+description: "마인드리퍼블릭 WENOA 서비스의 서버 장애 알림 시스템. LoadBalancer 앞단 AWS WAF의 Email 알림과, 전 서버 에러 로그를 Slack Bot으로 실시간 통지하는 파이프라인을 구축하고, 동일 장애에 대한 중복 알림을 제거했다."
 ---
 
-> [마인드리퍼블릭] 서비스의 **서버 장애 알림 시스템** 구축 기록입니다. 인프라 레벨(AWS WAF → Email)과 애플리케이션 레벨(Error 로그 → Slack Bot) 두 경로로 장애를 감지하고, 동일 장애에 대한 중복 알림을 제거해 빠르게 대응할 수 있도록 만들었습니다.
+> 마인드리퍼블릭에서 운영하는 서비스 **WENOA**의 **서버 장애 알림 시스템** 구축 기록입니다. 인프라 레벨(AWS WAF → Email)과 애플리케이션 레벨(Error 로그 → Slack Bot) 두 경로로 장애를 감지하고, 동일 장애에 대한 중복 알림을 제거해 빠르게 대응할 수 있도록 만들었습니다.
 
 ## 프로젝트 개요
 
-- **프로젝트명**: [마인드리퍼블릭] ERROR Email, Slack Bot 알림 처리
+- **회사 / 서비스**: 마인드리퍼블릭 / WENOA
+- **프로젝트명**: WENOA 서버 장애 알림 처리 (ERROR Email, Slack Bot)
 - **기술 스택**: AWS WAF · Slack Bot · Spring Boot 3 (Kotlin) · FastAPI · Redis
 
 **설계 기준**
