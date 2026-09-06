@@ -1,6 +1,6 @@
 ---
 title: "[마인드리퍼블릭] ERROR Email · Slack Bot 알림 처리 — 서버 장애 실시간 감지와 중복 알림 제거"
-date: 2026-09-07 09:30:00 +0900
+date: 2026-09-07 01:00:00 +0900
 categories: [포트폴리오]
 tags: [portfolio, mindrepublic, slack-bot, aws-waf, spring-boot, kotlin, fastapi, redis, alerting, error-monitoring]
 description: "서버 장애를 즉시 인지하기 위한 알림 시스템. LoadBalancer 앞단 AWS WAF의 Email 알림과, 전 서버 에러 로그를 Slack Bot으로 실시간 통지하는 파이프라인을 구축하고, 동일 장애에 대한 중복 알림을 제거했다."
