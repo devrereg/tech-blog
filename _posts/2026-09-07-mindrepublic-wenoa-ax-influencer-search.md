@@ -24,7 +24,7 @@ description: "마인드리퍼블릭 WENOA의 내부 직원용 AX 서비스. 기�
 
 ## 아키텍처
 
-![WENOA AX 서비스 아키텍처(2026.03) 다이어그램. CI/CD 파이프라인은 개발자 코드 Push → GitHub Repository → GitHub Actions(Docker Build & Push, GitHub OIDC 기반 IAM Role로 AWS 배포 권한 획득) → ECR → ECS Fargate 배포로 이어진다. 런타임은 내부 직원(사내망/VPN) → Route 53 → ALB → ECS Fargate(FastAPI Task)로 요청이 들어오고, 기존 방식은 멀티 필터 검색 API가 Elasticsearch에 필터 기반 쿼리를 보내 정렬 없는 결과 리스트를 반환한다. 신규 방식은 자연어 검색 API가 LangGraph Agent를 실행해 ① 자연어 파싱 및 필터 자동 생성(LLM, Secrets Manager에서 API Key 조회) → ② 자동 생성 필터로 Elasticsearch 검색 실행 → ③ 가중치 기반 인플루언서 정렬을 거쳐 정렬된 결과 리스트를 반환한다. ECS Task는 CloudWatch로 로그를 전송하고 IAM(ECS Task Role)로 권한을 부여받는다](/assets/img/posts/mindrepublic-wenoa-ax/wenoa_ax_architecture.drawio.svg)
+![WENOA AX 서비스 아키텍처(2026.03) 다이어그램. CI/CD 파이프라인은 개발자 코드 Push → GitHub Repository → GitHub Actions(Docker Build & Push, GitHub OIDC 기반 IAM Role로 AWS 배포 권한 획득) → ECR → ECS Fargate 배포로 이어진다. 런타임은 내부 직원(사내망/VPN) → Route 53 → ALB → ECS Fargate(FastAPI Task)로 요청이 들어오고, 기존 방식은 멀티 필터 검색 API가 Elasticsearch에 필터 기반 쿼리를 보내 정렬 없는 결과 리스트를 반환한다. 신규 방식은 자연어 검색 API가 LangGraph Agent를 실행해 ① 자연어 파싱 및 필터 자동 생성(LLM, Secrets Manager에서 API Key 조회) → ② 자동 생성 필터로 Elasticsearch 검색 실행 → ③ 가중치 기반 인플루언서 정렬을 거쳐 정렬된 결과 리스트를 반환한다. ECS Task는 CloudWatch로 로그를 전송하고 IAM(ECS Task Role)로 권한을 부여받는다](/assets/img/posts/mindrepublic-wenoa-ax/wenoa_ax_architecture.drawio.png)
 
 *WENOA AX 서비스 아키텍처 (2026.03) — CI/CD(GitHub Actions → ECR → ECS Fargate)와 런타임(FastAPI Task 위에서 기존 멀티 필터 검색 API와 자연어 검색 API가 공존, 후자는 LangGraph Agent가 처리)*
 
