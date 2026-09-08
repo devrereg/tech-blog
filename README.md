@@ -16,11 +16,11 @@
 ## 최근 글
 
 <!-- BLOG-POST-LIST:START -->
-- [[마인드리퍼블릭] 정기결제 기능 개발을 위한 토스페이먼츠 연동](https://devrereg.github.io/tech-blog/posts/mindrepublic-tosspayments-recurring-billing/)
-- [[마인드리퍼블릭] WENOA AX 서비스 — 자연어 기반 인플루언서 검색](https://devrereg.github.io/tech-blog/posts/mindrepublic-wenoa-ax-influencer-search/)
-- [[마인드리퍼블릭] WENOA 서버 장애 알림 처리 — ERROR Email · Slack Bot 실시간 감지와 중복 알림 제거](https://devrereg.github.io/tech-blog/posts/mindrepublic-error-alert-notification/)
-- [OpenCV 스터디 4주차: 템플릿 매칭부터 RAFT까지, 객체 추적 알고리즘 총정리](https://devrereg.github.io/tech-blog/posts/opencv-object-tracking/)
-- [OpenCV 스터디 3주차: 차분부터 허프 변환까지, 영상의 특징 검출](https://devrereg.github.io/tech-blog/posts/opencv-feature-detection/)
+- [[라이프오아시스] MAUM Admin/백오피스 개발 및 자동화 — 800만 유저 LIKE 검색을 Fulltext Index로 100배 개선하고, 매월 반복되던 마케팅 프로모션 세팅을 Admin 기능으로 자동화](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-admin-fulltext-search-promotion-automation/)
+- [[라이프오아시스] MAUM 인앱결제 수수료 절감을 위한 토스페이먼츠 웹결제 연동 — 결제·재화 지급 정합성을 Saga 보상 트랜잭션으로 확보](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-tosspayments-web-payment/)
+- [[라이프오아시스] MAUM 근처 친구 추천 — 800만 유저 위치정보 전체 스캔을 3시간 배치 캐싱으로 전환](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-nearby-friends-recommendation/)
+- [[라이프오아시스] MAUM 운영 안정화 및 레거시 마이그레이션 — 분산된 멀티 레포 마이크로서비스를 Monorepo로 통합하고 Spring Boot 3 + Kotlin으로 순차 마이그레이션](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-monorepo-legacy-migration/)
+- [[마인드리퍼블릭] WENOA 인플루언서 검색 최적화를 위한 ETL 파이프라인 구축](https://devrereg.github.io/tech-blog/posts/mindrepublic-wenoa-influencer-search-etl-pipeline/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 포스팅 주제
