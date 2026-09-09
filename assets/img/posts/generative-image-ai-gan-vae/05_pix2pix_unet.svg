@@ -1,0 +1,61 @@
+<svg width="1000" height="420" viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <defs>
+    <marker id="a5" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2b3a52"/>
+    </marker>
+    <marker id="a5s" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#e08a1f"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="420" fill="#ffffff"/>
+  <text x="500" y="34" text-anchor="middle" font-size="17" font-weight="700" fill="#1a1a1a">Pix2Pix U-Net 생성자 구조</text>
+
+  <text x="235" y="70" text-anchor="middle" font-size="13" font-weight="600" fill="#2f6fd0">Encoder (Downsampling)</text>
+  <text x="765" y="70" text-anchor="middle" font-size="13" font-weight="600" fill="#1f9e5c">Decoder (Upsampling)</text>
+
+  <!-- Encoder blocks (shrinking) -->
+  <g fill="#dce6f7" stroke="#2f6fd0" stroke-width="2">
+    <rect x="90"  y="100" width="70" height="180" rx="6"/>
+    <rect x="185" y="130" width="60" height="120" rx="6"/>
+    <rect x="270" y="155" width="52" height="70"  rx="6"/>
+  </g>
+  <!-- bottleneck -->
+  <rect x="350" y="175" width="60" height="30" rx="6" fill="#3a3f4a" stroke="#3a3f4a"/>
+  <text x="380" y="230" text-anchor="middle" font-size="10.5" fill="#5f6470">bottleneck</text>
+
+  <!-- Decoder blocks (growing) -->
+  <g fill="#d7f0e2" stroke="#1f9e5c" stroke-width="2">
+    <rect x="450" y="155" width="52" height="70"  rx="6"/>
+    <rect x="535" y="130" width="60" height="120" rx="6"/>
+    <rect x="630" y="100" width="70" height="180" rx="6"/>
+  </g>
+
+  <!-- input / output images -->
+  <rect x="20" y="150" width="55" height="80" rx="6" fill="#eef2fa" stroke="#9db8e0" stroke-width="1.5"/>
+  <text x="47" y="245" text-anchor="middle" font-size="10.5" fill="#5f6470">입력</text>
+  <rect x="720" y="150" width="55" height="80" rx="6" fill="#fdeef0" stroke="#eab6bd" stroke-width="1.5"/>
+  <text x="747" y="245" text-anchor="middle" font-size="10.5" fill="#5f6470">출력</text>
+
+  <!-- main flow arrows -->
+  <g stroke="#2b3a52" stroke-width="2.2" marker-end="url(#a5)" fill="none">
+    <line x1="75" y1="190" x2="88" y2="190"/>
+    <line x1="160" y1="190" x2="183" y2="190"/>
+    <line x1="245" y1="190" x2="268" y2="190"/>
+    <line x1="322" y1="190" x2="348" y2="190"/>
+    <line x1="410" y1="190" x2="448" y2="190"/>
+    <line x1="502" y1="190" x2="533" y2="190"/>
+    <line x1="595" y1="190" x2="628" y2="190"/>
+    <line x1="700" y1="190" x2="718" y2="190"/>
+  </g>
+
+  <!-- skip connections -->
+  <g stroke="#e08a1f" stroke-width="1.8" stroke-dasharray="5 4" fill="none" marker-end="url(#a5s)">
+    <path d="M 125 100 C 200 40, 620 40, 665 98"/>
+    <path d="M 215 130 C 300 80, 520 80, 562 128"/>
+    <path d="M 296 155 C 350 120, 440 120, 474 153"/>
+  </g>
+  <text x="395" y="60" text-anchor="middle" font-size="11.5" fill="#e08a1f">skip connection (concat)</text>
+
+  <text x="500" y="330" text-anchor="middle" font-size="12.5" fill="#5f6470">Encoder의 각 단계 출력을 같은 높이의 Decoder 단계에 그대로 이어붙인다</text>
+  <text x="500" y="360" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5f6470">압축부에서 잃기 쉬운 세밀한 디테일(선·경계·질감)을 복원부에 직접 전달</text>
+</svg>

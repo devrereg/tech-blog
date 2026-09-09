@@ -1,0 +1,45 @@
+<svg width="1000" height="380" viewBox="0 0 1000 380" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <defs>
+    <marker id="a4" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2b3a52"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="380" fill="#ffffff"/>
+  <text x="500" y="34" text-anchor="middle" font-size="17" font-weight="700" fill="#1a1a1a">DCGAN 생성자(Generator) 아키텍처</text>
+
+  <!-- z vector -->
+  <rect x="40" y="170" width="60" height="70" rx="8" fill="#f3f4f6" stroke="#b9bec8" stroke-width="1.5"/>
+  <text x="70" y="150" text-anchor="middle" font-size="12" fill="#5f6470">z</text>
+  <text x="70" y="258" text-anchor="middle" font-size="10.5" fill="#8a8f99">64차원</text>
+
+  <!-- FC + reshape -->
+  <rect x="150" y="120" width="110" height="170" rx="8" fill="#e9def7" stroke="#7c4fd6" stroke-width="2"/>
+  <text x="205" y="100" text-anchor="middle" font-size="11.5" fill="#4a2c8a">선형 계층 + reshape</text>
+  <text x="205" y="205" text-anchor="middle" font-size="12" font-weight="600" fill="#4a2c8a">16×16</text>
+  <text x="205" y="225" text-anchor="middle" font-size="12" font-weight="600" fill="#4a2c8a">×128</text>
+  <text x="205" y="308" text-anchor="middle" font-size="10.5" fill="#8a8f99">32,768개 값 계산 → 재배열</text>
+
+  <!-- up1 -->
+  <rect x="330" y="105" width="130" height="200" rx="8" fill="#fbe8cc" stroke="#e08a1f" stroke-width="2"/>
+  <text x="395" y="90" text-anchor="middle" font-size="11.5" fill="#8a520c">업샘플링 + 합성곱 1</text>
+  <text x="395" y="210" text-anchor="middle" font-size="12" font-weight="600" fill="#8a520c">32×32×128</text>
+
+  <!-- up2 -->
+  <rect x="530" y="80" width="160" height="250" rx="8" fill="#d7ecf7" stroke="#1f8fc9" stroke-width="2"/>
+  <text x="610" y="66" text-anchor="middle" font-size="11.5" fill="#0f5a80">업샘플링 + 합성곱 2</text>
+  <text x="610" y="210" text-anchor="middle" font-size="12" font-weight="600" fill="#0f5a80">64×64×64</text>
+
+  <!-- output conv -->
+  <rect x="760" y="80" width="180" height="250" rx="8" fill="#d7f0e2" stroke="#1f9e5c" stroke-width="2"/>
+  <text x="850" y="66" text-anchor="middle" font-size="11.5" fill="#146538">합성곱 3 (출력)</text>
+  <text x="850" y="200" text-anchor="middle" font-size="13" font-weight="700" fill="#146538">64×64×3</text>
+  <text x="850" y="222" text-anchor="middle" font-size="11" fill="#146538">RGB 이미지</text>
+
+  <!-- arrows -->
+  <line x1="100" y1="205" x2="148" y2="205" stroke="#2b3a52" stroke-width="2.5" marker-end="url(#a4)"/>
+  <line x1="260" y1="205" x2="328" y2="205" stroke="#2b3a52" stroke-width="2.5" marker-end="url(#a4)"/>
+  <line x1="460" y1="205" x2="528" y2="205" stroke="#2b3a52" stroke-width="2.5" marker-end="url(#a4)"/>
+  <line x1="690" y1="205" x2="758" y2="205" stroke="#2b3a52" stroke-width="2.5" marker-end="url(#a4)"/>
+
+  <text x="500" y="360" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5f6470">공간 크기는 키우고(16→32→64), 채널 수는 줄이며(128→64→3) 작은 벡터를 이미지로 확장한다</text>
+</svg>

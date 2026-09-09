@@ -1,0 +1,53 @@
+<svg width="1000" height="420" viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="1000" height="420" fill="#ffffff"/>
+  <text x="500" y="34" text-anchor="middle" font-size="17" font-weight="700" fill="#1a1a1a">AE vs VAE — 잠재 공간의 채워짐</text>
+
+  <!-- AE panel -->
+  <text x="250" y="66" text-anchor="middle" font-size="13.5" font-weight="600" fill="#e2493b">AutoEncoder — 고정된 점</text>
+  <rect x="70" y="80" width="360" height="280" rx="14" fill="#fbf3f2" stroke="#eab6bd" stroke-width="1.5"/>
+
+  <g fill="#e2493b">
+    <circle cx="130" cy="140" r="5"/>
+    <circle cx="200" cy="120" r="5"/>
+    <circle cx="290" cy="160" r="5"/>
+    <circle cx="360" cy="130" r="5"/>
+    <circle cx="150" cy="230" r="5"/>
+    <circle cx="250" cy="270" r="5"/>
+    <circle cx="340" cy="240" r="5"/>
+    <circle cx="200" cy="330" r="5"/>
+    <circle cx="310" cy="320" r="5"/>
+    <circle cx="120" cy="300" r="5"/>
+  </g>
+  <!-- gap marker -->
+  <circle cx="245" cy="200" r="10" fill="none" stroke="#8a231a" stroke-width="1.6" stroke-dasharray="3 3"/>
+  <text x="245" y="204" text-anchor="middle" font-size="12" fill="#8a231a">?</text>
+  <text x="250" y="392" text-anchor="middle" font-size="12" fill="#5f6470">점 사이가 비어 있어 샘플링하면 깨진 이미지</text>
+
+  <!-- VAE panel -->
+  <text x="750" y="66" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1f9e5c">VAE — 겹치는 분포</text>
+  <rect x="570" y="80" width="360" height="280" rx="14" fill="#f2faf5" stroke="#a9dcc0" stroke-width="1.5"/>
+
+  <g fill="#1f9e5c" fill-opacity="0.28" stroke="#1f9e5c" stroke-width="1.2">
+    <ellipse cx="650" cy="150" rx="46" ry="34"/>
+    <ellipse cx="730" cy="135" rx="50" ry="36"/>
+    <ellipse cx="820" cy="160" rx="46" ry="34"/>
+    <ellipse cx="670" cy="230" rx="52" ry="38"/>
+    <ellipse cx="760" cy="245" rx="50" ry="36"/>
+    <ellipse cx="845" cy="235" rx="44" ry="34"/>
+    <ellipse cx="700" cy="315" rx="50" ry="36"/>
+    <ellipse cx="800" cy="315" rx="48" ry="34"/>
+  </g>
+  <g fill="#146538">
+    <circle cx="650" cy="150" r="3.5"/>
+    <circle cx="730" cy="135" r="3.5"/>
+    <circle cx="820" cy="160" r="3.5"/>
+    <circle cx="670" cy="230" r="3.5"/>
+    <circle cx="760" cy="245" r="3.5"/>
+    <circle cx="845" cy="235" r="3.5"/>
+    <circle cx="700" cy="315" r="3.5"/>
+    <circle cx="800" cy="315" r="3.5"/>
+  </g>
+  <text x="750" y="392" text-anchor="middle" font-size="12" fill="#5f6470">KL 항이 분포를 겹치게 만들어 공간이 연속적</text>
+
+  <text x="500" y="414" text-anchor="middle" font-size="12" font-style="italic" fill="#5f6470">VAE는 잠재 공간 아무 데서나 샘플링해도 그럴듯한 이미지가 나온다</text>
+</svg>

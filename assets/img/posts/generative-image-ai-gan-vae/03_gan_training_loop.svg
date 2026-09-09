@@ -1,0 +1,56 @@
+<svg width="1000" height="420" viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <defs>
+    <marker id="a3" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2b3a52"/>
+    </marker>
+    <marker id="a3r" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#e2493b"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="420" fill="#ffffff"/>
+  <text x="500" y="34" text-anchor="middle" font-size="17" font-weight="700" fill="#1a1a1a">GAN 적대적 학습 루프</text>
+
+  <!-- z -->
+  <rect x="40" y="150" width="120" height="70" rx="10" fill="#f3f4f6" stroke="#b9bec8" stroke-width="1.5"/>
+  <text x="100" y="180" text-anchor="middle" font-size="12" fill="#5f6470">Random Noise</text>
+  <text x="100" y="202" text-anchor="middle" font-size="13" font-weight="600" fill="#3a3f4a">z</text>
+
+  <!-- Generator -->
+  <rect x="210" y="140" width="140" height="90" rx="10" fill="#fbdada" stroke="#e2493b" stroke-width="2"/>
+  <text x="280" y="180" text-anchor="middle" font-size="13.5" font-weight="700" fill="#8a231a">Generator</text>
+  <text x="280" y="200" text-anchor="middle" font-size="12" fill="#8a231a">G</text>
+
+  <!-- Fake image -->
+  <rect x="400" y="90" width="140" height="80" rx="10" fill="#fdeef0" stroke="#eab6bd" stroke-width="1.5"/>
+  <text x="470" y="122" text-anchor="middle" font-size="12" fill="#5f6470">Fake Image</text>
+  <text x="470" y="144" text-anchor="middle" font-size="12.5" font-weight="600" fill="#3a3f4a">G(z)</text>
+
+  <!-- Real image -->
+  <rect x="400" y="210" width="140" height="80" rx="10" fill="#eef2fa" stroke="#9db8e0" stroke-width="1.5"/>
+  <text x="470" y="242" text-anchor="middle" font-size="12" fill="#5f6470">Real Image</text>
+  <text x="470" y="264" text-anchor="middle" font-size="12" fill="#5f6470">(Training Data)</text>
+
+  <!-- Discriminator -->
+  <rect x="600" y="140" width="140" height="90" rx="10" fill="#dce6f7" stroke="#2f6fd0" stroke-width="2"/>
+  <text x="670" y="180" text-anchor="middle" font-size="13.5" font-weight="700" fill="#173a70">Discriminator</text>
+  <text x="670" y="200" text-anchor="middle" font-size="12" fill="#173a70">D</text>
+
+  <!-- output -->
+  <rect x="790" y="150" width="160" height="70" rx="10" fill="#d7f0e2" stroke="#1f9e5c" stroke-width="2"/>
+  <text x="870" y="180" text-anchor="middle" font-size="12.5" font-weight="600" fill="#146538">Real (1) / Fake (0)</text>
+  <text x="870" y="202" text-anchor="middle" font-size="11.5" fill="#146538">확률 출력</text>
+
+  <!-- forward arrows -->
+  <line x1="160" y1="185" x2="208" y2="185" stroke="#2b3a52" stroke-width="2.5" marker-end="url(#a3)"/>
+  <line x1="350" y1="170" x2="398" y2="135" stroke="#2b3a52" stroke-width="2.5" marker-end="url(#a3)"/>
+  <line x1="540" y1="130" x2="598" y2="165" stroke="#2b3a52" stroke-width="2.5" marker-end="url(#a3)"/>
+  <line x1="540" y1="250" x2="598" y2="205" stroke="#2b3a52" stroke-width="2.5" marker-end="url(#a3)"/>
+  <line x1="740" y1="185" x2="788" y2="185" stroke="#2b3a52" stroke-width="2.5" marker-end="url(#a3)"/>
+
+  <!-- feedback arrows -->
+  <path d="M 870 220 L 870 360 L 670 360 L 670 232" fill="none" stroke="#e2493b" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a3r)"/>
+  <path d="M 830 360 L 280 360 L 280 232" fill="none" stroke="#e2493b" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a3r)"/>
+  <text x="500" y="352" text-anchor="middle" font-size="11.5" fill="#e2493b">손실 되먹임 — D는 판별을 더 정확하게, G는 D를 더 잘 속이도록</text>
+
+  <text x="500" y="400" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5f6470">같은 판별 신호를 두고 G와 D가 정반대 방향으로 학습한다 (미니맥스 게임)</text>
+</svg>
