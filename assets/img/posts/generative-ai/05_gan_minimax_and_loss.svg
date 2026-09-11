@@ -1,0 +1,54 @@
+<svg width="1000" height="560" viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="1000" height="560" fill="#ffffff"/>
+
+  <!-- Header -->
+  <rect x="40" y="28" width="28" height="28" rx="8" fill="#7c5cff"/>
+  <text x="54" y="47" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">3</text>
+  <text x="80" y="49" font-size="21" font-weight="700" fill="#1a1a1a">GAN 학습 구조와 게임이론</text>
+  <line x1="40" y1="72" x2="960" y2="72" stroke="#dbe4f3" stroke-width="2"/>
+
+  <!-- Minimax box -->
+  <rect x="40" y="100" width="430" height="200" rx="12" fill="#fbfbfc" stroke="#e2e4e9"/>
+  <text x="60" y="126" font-size="13" font-weight="700" fill="#3a3f4a">⚖ 미니맥스 게임 (Minimax Game)</text>
+  <text x="60" y="148" font-size="11.5" fill="#5f6470">두 모델이 서로 반대되는 목적을 가지고 경쟁하며</text>
+  <text x="60" y="164" font-size="11.5" fill="#5f6470">학습하는 구조입니다.</text>
+
+  <rect x="60" y="182" width="390" height="46" rx="8" fill="#ffffff" stroke="#d7dae0"/>
+  <text x="76" y="199" font-size="11.5" font-weight="700" fill="#e2493b">🔺 Generator (G)</text>
+  <text x="76" y="217" font-size="10.5" fill="#7a7f89">속이려는 자: D가 실수하도록 유도 (Minimize D's Success)</text>
+
+  <rect x="60" y="236" width="390" height="46" rx="8" fill="#ffffff" stroke="#d7dae0"/>
+  <text x="76" y="253" font-size="11.5" font-weight="700" fill="#2f6fd0">🛡 Discriminator (D)</text>
+  <text x="76" y="271" font-size="10.5" fill="#7a7f89">구별하려는 자: 진짜와 가짜를 정확히 분류 (Maximize Accuracy)</text>
+
+  <!-- Loss fluctuation graph (full-height right column) -->
+  <rect x="510" y="100" width="450" height="412" rx="12" fill="#fbfbfc" stroke="#e2e4e9"/>
+  <text x="530" y="128" font-size="12.5" font-weight="700" fill="#3a3f4a">📉 학습 곡선 예시 (Loss Fluctuation)</text>
+
+  <rect x="740" y="118" width="14" height="10" fill="#e2493b"/>
+  <text x="758" y="127" font-size="10" fill="#5f6470">Generator Loss</text>
+  <rect x="740" y="136" width="14" height="10" fill="#4b7bec"/>
+  <text x="758" y="145" font-size="10" fill="#5f6470">Discriminator Loss</text>
+
+  <line x1="540" y1="470" x2="540" y2="170" stroke="#c7ccd6" stroke-width="1"/>
+  <line x1="540" y1="470" x2="930" y2="470" stroke="#c7ccd6" stroke-width="1"/>
+
+  <polyline points="550,260 580,190 610,320 640,220 670,380 700,240 730,360 760,200 790,340 820,230 850,370 880,210 910,330" fill="none" stroke="#e2493b" stroke-width="2"/>
+  <polyline points="550,380 580,420 610,300 640,400 670,260 700,380 730,280 760,400 790,260 820,390 850,270 880,410 910,290" fill="none" stroke="#4b7bec" stroke-width="2"/>
+  <circle cx="910" cy="330" r="4" fill="#e2493b"/>
+  <circle cx="910" cy="290" r="4" fill="#4b7bec"/>
+
+  <text x="540" y="488" font-size="9.5" fill="#9aa5b1">epoch →</text>
+  <text x="735" y="452" text-anchor="middle" font-size="10.5" fill="#9aa5b1">뚜렷한 수렴 없이 계속 진동하는 것이 GAN 학습의 특징</text>
+
+  <!-- Bottom: characteristic problems -->
+  <rect x="40" y="320" width="430" height="90" rx="12" fill="#fff7f0" stroke="#f4cba8"/>
+  <text x="60" y="344" font-size="12" font-weight="700" fill="#b45309">🌀 불안정한 학습 (Instability)</text>
+  <text x="60" y="366" font-size="11" fill="#8a6d1f">Loss가 수렴하지 않고 계속 진동(Oscillation)하는</text>
+  <text x="60" y="384" font-size="11" fill="#8a6d1f">현상이 빈번합니다.</text>
+
+  <rect x="40" y="422" width="430" height="90" rx="12" fill="#fdeef0" stroke="#eab6bd"/>
+  <text x="60" y="446" font-size="12" font-weight="700" fill="#8a231a">📦 모드 붕괴 (Mode Collapse)</text>
+  <text x="60" y="468" font-size="11" fill="#8a231a">G가 다양성을 잃고, D를 속이기 쉬운</text>
+  <text x="60" y="486" font-size="11" fill="#8a231a">특정 패턴만 반복 생성함.</text>
+</svg>

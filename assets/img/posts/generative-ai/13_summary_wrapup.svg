@@ -1,0 +1,43 @@
+<svg width="1000" height="460" viewBox="0 0 1000 460" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="1000" height="460" fill="#ffffff"/>
+
+  <text x="40" y="44" font-size="21" font-weight="700" fill="#1a1a1a">핵심 정리</text>
+  <line x1="40" y1="60" x2="960" y2="60" stroke="#dbe4f3" stroke-width="2"/>
+
+  <rect x="40" y="84" width="150" height="24" rx="12" fill="#efeaff" stroke="#c7b8fb"/>
+  <text x="115" y="100" text-anchor="middle" font-size="10.5" font-weight="700" fill="#7c5cff" letter-spacing="0.5">🎁 WRAP UP</text>
+  <text x="205" y="101" font-size="12" fill="#7a7f89">수업 마무리 요약</text>
+
+  <rect x="40" y="120" width="920" height="80" rx="12" fill="#eef4ff" stroke="#bcd3f7"/>
+  <text x="66" y="150" font-size="13.5" font-weight="700" fill="#2f6fd0">◎ 생성형 모델은 "분포(Distribution)"를 학습한다</text>
+  <text x="66" y="174" font-size="11.5" fill="#5f6470">단순 암기가 아닌, 데이터가 생성될 확률 공간을 이해하고 새로운 샘플을 만들어낸다</text>
+
+  <!-- VAE / GAN cards -->
+  <rect x="40" y="216" width="450" height="110" rx="12" fill="#f8f6ff" stroke="#c7b8fb"/>
+  <text x="60" y="246" font-size="14" font-weight="700" fill="#5b3fd6">✤ VAE</text>
+  <text x="60" y="270" font-size="11.5" fill="#4b4f58">잠재 공간의 <tspan font-weight="700">확률적 분포</tspan>를 가정하고</text>
+  <text x="60" y="290" font-size="11.5" fill="#4b4f58">샘플링하여 생성</text>
+
+  <rect x="510" y="216" width="450" height="110" rx="12" fill="#eef4ff" stroke="#bcd3f7"/>
+  <text x="530" y="246" font-size="14" font-weight="700" fill="#2f6fd0">🎭 GAN</text>
+  <text x="530" y="270" font-size="11.5" fill="#4b4f58">생성자와 판별자의 <tspan font-weight="700">경쟁적 학습</tspan>을</text>
+  <text x="530" y="290" font-size="11.5" fill="#4b4f58">통해 사실적 이미지 생성</text>
+
+  <!-- Use cases -->
+  <text x="40" y="356" font-size="13" font-weight="700" fill="#3a3f4a">🚀 활용 분야</text>
+
+  <rect x="40" y="372" width="285" height="70" rx="10" fill="#fff0f5" stroke="#f3c6d6"/>
+  <text x="70" y="398" font-size="17">🎨</text>
+  <text x="100" y="400" font-size="12" font-weight="700" fill="#3a3f4a">스타일 전이</text>
+  <text x="100" y="418" font-size="10.5" fill="#9aa5b1">Style Transfer</text>
+
+  <rect x="357" y="372" width="285" height="70" rx="10" fill="#eef7f0" stroke="#c3e6cb"/>
+  <text x="387" y="398" font-size="17">🖼️</text>
+  <text x="417" y="400" font-size="12" font-weight="700" fill="#3a3f4a">이미지 생성/복원</text>
+  <text x="417" y="418" font-size="10.5" fill="#9aa5b1">Inpainting</text>
+
+  <rect x="675" y="372" width="285" height="70" rx="10" fill="#eef2fa" stroke="#c6d6f0"/>
+  <text x="705" y="398" font-size="17">🗄️</text>
+  <text x="735" y="400" font-size="12" font-weight="700" fill="#3a3f4a">데이터 증강</text>
+  <text x="735" y="418" font-size="10.5" fill="#9aa5b1">Augmentation</text>
+</svg>

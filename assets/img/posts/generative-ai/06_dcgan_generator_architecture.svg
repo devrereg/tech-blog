@@ -1,0 +1,85 @@
+<svg width="1000" height="420" viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <defs>
+    <marker id="a6" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#5f6470"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="420" fill="#ffffff"/>
+
+  <rect x="40" y="40" width="920" height="260" rx="16" fill="#f6f7f9" stroke="#dfe1e6"/>
+  <text x="500" y="66" text-anchor="middle" font-size="14" font-weight="700" fill="#3a3f4a">생성기 (Generator)</text>
+
+  <!-- z vector -->
+  <rect x="66" y="140" width="18" height="90" rx="4" fill="#ffffff" stroke="#9aa5b1"/>
+  <text x="75" y="245" text-anchor="middle" font-size="10" fill="#5f6470">64</text>
+  <text x="75" y="260" text-anchor="middle" font-size="9.5" fill="#7a7f89">입력 노이즈</text>
+  <text x="75" y="272" text-anchor="middle" font-size="9.5" fill="#7a7f89">벡터 z</text>
+  <line x1="84" y1="185" x2="118" y2="185" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a6)"/>
+  <text x="100" y="175" text-anchor="middle" font-size="8.5" fill="#7a7f89">선형 계층</text>
+
+  <!-- reshape stack -->
+  <g>
+    <rect x="120" y="150" width="60" height="60" rx="6" fill="#e9ecf2" stroke="#b7bcc6" transform="translate(6,-6)"/>
+    <rect x="120" y="150" width="60" height="60" rx="6" fill="#e9ecf2" stroke="#b7bcc6" transform="translate(3,-3)"/>
+    <rect x="120" y="150" width="60" height="60" rx="6" fill="#eef0f4" stroke="#b7bcc6"/>
+  </g>
+  <text x="150" y="140" text-anchor="middle" font-size="9.5" fill="#5f6470">128</text>
+  <text x="180" y="262" text-anchor="middle" font-size="9" fill="#7a7f89">(16×16×128)</text>
+  <text x="180" y="276" text-anchor="middle" font-size="8.5" fill="#7a7f89">reshape</text>
+
+  <line x1="192" y1="180" x2="222" y2="180" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a6)"/>
+  <text x="207" y="170" text-anchor="middle" font-size="8" fill="#7a7f89">업샘플링(2×)</text>
+
+  <!-- 32x32x128 -->
+  <g>
+    <rect x="224" y="140" width="80" height="80" rx="6" fill="#e3e7ef" stroke="#a9aeb9" transform="translate(8,-8)"/>
+    <rect x="224" y="140" width="80" height="80" rx="6" fill="#eaeef5" stroke="#a9aeb9"/>
+  </g>
+  <text x="264" y="130" text-anchor="middle" font-size="9.5" fill="#5f6470">128</text>
+  <text x="264" y="252" text-anchor="middle" font-size="9" fill="#7a7f89">(32×32×128)</text>
+  <text x="264" y="266" text-anchor="middle" font-size="8.5" fill="#7a7f89">합성곱 계층 1</text>
+
+  <line x1="322" y1="170" x2="352" y2="170" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a6)"/>
+  <text x="337" y="160" text-anchor="middle" font-size="8" fill="#7a7f89">업샘플링(2×)</text>
+
+  <!-- 64x64x128 -->
+  <g>
+    <rect x="354" y="110" width="120" height="120" rx="6" fill="#e3e7ef" stroke="#a9aeb9" transform="translate(8,-8)"/>
+    <rect x="354" y="110" width="120" height="120" rx="6" fill="#eaeef5" stroke="#a9aeb9"/>
+  </g>
+  <text x="414" y="100" text-anchor="middle" font-size="9.5" fill="#5f6470">128</text>
+  <text x="414" y="252" text-anchor="middle" font-size="9" fill="#7a7f89">(64×64×128)</text>
+  <text x="414" y="266" text-anchor="middle" font-size="8.5" fill="#7a7f89">합성곱 계층 2</text>
+
+  <line x1="482" y1="170" x2="512" y2="170" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a6)"/>
+
+  <!-- 64x64x64 -->
+  <g>
+    <rect x="514" y="110" width="120" height="120" rx="6" fill="#dfe8f5" stroke="#9db8e0" transform="translate(6,-6)"/>
+    <rect x="514" y="110" width="120" height="120" rx="6" fill="#eaf0fb" stroke="#9db8e0"/>
+  </g>
+  <text x="574" y="100" text-anchor="middle" font-size="9.5" fill="#5f6470">64</text>
+  <text x="574" y="252" text-anchor="middle" font-size="9" fill="#7a7f89">(64×64×64)</text>
+  <text x="574" y="266" text-anchor="middle" font-size="8.5" fill="#7a7f89">합성곱 계층 3</text>
+
+  <line x1="642" y1="170" x2="672" y2="170" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a6)"/>
+
+  <!-- output rgb -->
+  <rect x="674" y="110" width="120" height="120" rx="6" fill="url(#rgbGrad)" stroke="#7a7f89"/>
+  <defs>
+    <linearGradient id="rgbGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e2493b"/>
+      <stop offset="50%" stop-color="#4b7bec"/>
+      <stop offset="100%" stop-color="#3fa66b"/>
+    </linearGradient>
+  </defs>
+  <text x="734" y="100" text-anchor="middle" font-size="9.5" fill="#5f6470">3</text>
+  <text x="734" y="252" text-anchor="middle" font-size="9" fill="#7a7f89">(64×64×3)</text>
+  <text x="734" y="266" text-anchor="middle" font-size="8.5" fill="#7a7f89">생성된 이미지</text>
+
+  <rect x="60" y="290" width="880" height="0.5" fill="none"/>
+  <text x="60" y="330" font-size="11" fill="#5f6470">업샘플링: 가장 가까운 이웃 값(Nearest Neighbor) 기반으로 공간 해상도를 2배로 업샘플링</text>
+  <text x="60" y="350" font-size="11" fill="#5f6470">합성곱 계층 1 · 2 · 3: in_channels=128,128,64 / out_channels=128,64,3 / kernel_size=3, stride=1, padding=ON</text>
+
+  <text x="500" y="390" text-anchor="middle" font-size="12.5" fill="#9aa5b1">그림 4.2 DCGAN 생성기 아키텍처 — 공간 크기는 커지고(16→32→64) 채널 수는 줄어든다(128→64→3)</text>
+</svg>

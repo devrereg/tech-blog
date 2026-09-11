@@ -1,0 +1,39 @@
+<svg width="1000" height="340" viewBox="0 0 1000 340" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <defs>
+    <marker id="a12" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#5f6470"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="340" fill="#ffffff"/>
+
+  <rect x="60" y="70" width="180" height="160" rx="14" fill="#1f2330"/>
+  <text x="150" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#c9cdd8">Random Noise (z)</text>
+  <g fill="#3fa66b">
+    <circle cx="105" cy="130" r="7"/><circle cx="150" cy="130" r="7"/><circle cx="195" cy="130" r="7"/>
+    <circle cx="105" cy="160" r="7"/><circle cx="150" cy="160" r="7"/><circle cx="195" cy="160" r="7"/>
+    <circle cx="105" cy="190" r="7"/><circle cx="150" cy="190" r="7"/><circle cx="195" cy="190" r="7"/>
+  </g>
+  <text x="150" y="216" text-anchor="middle" font-size="10" fill="#9aa5b1">torch.randn(64, 20)</text>
+
+  <line x1="250" y1="150" x2="310" y2="150" stroke="#5f6470" stroke-width="1.6" marker-end="url(#a12)"/>
+  <text x="280" y="140" text-anchor="middle" font-size="14">→</text>
+
+  <rect x="330" y="120" width="130" height="60" rx="10" fill="#ffffff" stroke="#9aa5b1" stroke-width="1.5"/>
+  <text x="395" y="155" text-anchor="middle" font-size="13" font-weight="700" fill="#3a3f4a">Decoder</text>
+
+  <line x1="460" y1="150" x2="520" y2="150" stroke="#5f6470" stroke-width="1.6" marker-end="url(#a12)"/>
+
+  <rect x="540" y="70" width="220" height="160" rx="10" fill="#0f1115"/>
+  <text x="650" y="252" text-anchor="middle" font-size="10" fill="#9aa5b1">Generated Samples</text>
+  <g font-size="12" fill="#c9cdd8" font-family="ui-monospace, monospace">
+    <text x="565" y="100">7 2 1 0 4 1 4 9</text>
+    <text x="565" y="128">5 9 0 6 9 0 1 5</text>
+    <text x="565" y="156">9 7 3 4 9 6 6 5</text>
+    <text x="565" y="184">4 0 7 4 0 1 3 1</text>
+  </g>
+
+  <text x="150" y="250" text-anchor="middle" font-size="11" fill="#5f6470">N(0, I)에서 직접 샘플링</text>
+  <text x="650" y="272" text-anchor="middle" font-size="11" fill="#5f6470">Encoder 없이 Decoder만으로 생성</text>
+
+  <text x="500" y="310" text-anchor="middle" font-size="12.5" fill="#9aa5b1">KL Divergence로 정리된 잠재 공간 덕분에, 무작위로 뽑은 z만으로도 그럴듯한 새 이미지가 나온다</text>
+</svg>

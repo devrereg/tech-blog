@@ -1,0 +1,57 @@
+<svg width="1000" height="560" viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="1000" height="560" fill="#ffffff"/>
+
+  <!-- Header -->
+  <rect x="40" y="28" width="28" height="28" rx="8" fill="#2f6fd0"/>
+  <text x="54" y="47" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">2</text>
+  <text x="80" y="49" font-size="21" font-weight="700" fill="#1a1a1a">확률 관점에서 본 이미지 생성</text>
+  <line x1="40" y1="72" x2="960" y2="72" stroke="#dbe4f3" stroke-width="2"/>
+
+  <!-- Left: why probability -->
+  <rect x="40" y="100" width="430" height="150" rx="12" fill="#eef4ff" stroke="#bcd3f7"/>
+  <text x="62" y="130" font-size="14.5" font-weight="700" fill="#2f6fd0">❓ 왜 '확률'인가?</text>
+  <text x="62" y="160" font-size="12.5" fill="#3a3f4a"><tspan font-weight="700">✓ 정답이 하나가 아님</tspan></text>
+  <text x="62" y="180" font-size="12" fill="#5f6470">숫자 '7'을 써도 사람마다 모양, 굵기, 기울기가 다름</text>
+  <text x="62" y="205" font-size="12.5" fill="#3a3f4a"><tspan font-weight="700">✓ 이미지는 분포(Distribution)다</tspan></text>
+  <text x="62" y="225" font-size="12" fill="#5f6470">세상의 모든 고양이 사진은 어떤 확률 분포 안에 존재함</text>
+
+  <rect x="40" y="266" width="430" height="90" rx="12" fill="#1f2330"/>
+  <text x="62" y="296" font-size="10.5" font-weight="700" fill="#9aa5b1" letter-spacing="0.5">◎ 우리의 목표</text>
+  <text x="255" y="318" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">"데이터가 만들어졌을 가능성 공간</text>
+  <text x="255" y="338" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">(Latent Space)을 학습하자"</text>
+
+  <!-- Right: latent space diagram -->
+  <rect x="510" y="100" width="450" height="380" rx="12" fill="#fbfbfc" stroke="#e2e4e9"/>
+  <text x="935" y="122" text-anchor="end" font-size="11" fill="#9aa5b1" letter-spacing="0.5">LATENT SPACE CONCEPT</text>
+
+  <rect x="535" y="140" width="90" height="70" rx="8" fill="#ffffff" stroke="#d7dae0"/>
+  <text x="580" y="185" text-anchor="middle" font-size="26" fill="#3a3f4a">3</text>
+  <text x="580" y="222" text-anchor="middle" font-size="11" fill="#7a7f89">이미지 A</text>
+
+  <rect x="650" y="140" width="90" height="70" rx="8" fill="#ffffff" stroke="#7c5cff" stroke-width="2"/>
+  <text x="695" y="188" text-anchor="middle" font-size="30" font-style="italic" fill="#1a1a1a">3</text>
+  <text x="695" y="222" text-anchor="middle" font-size="11" fill="#7a7f89">이미지 B</text>
+
+  <rect x="765" y="140" width="90" height="70" rx="8" fill="#ffffff" stroke="#d7dae0"/>
+  <text x="810" y="185" text-anchor="middle" font-size="26" fill="#3a3f4a">3</text>
+  <text x="810" y="222" text-anchor="middle" font-size="11" fill="#7a7f89">이미지 C</text>
+
+  <text x="735" y="248" text-anchor="middle" font-size="11" fill="#9aa5b1">인코드 &amp; 매핑 (Mapping)</text>
+  <line x1="600" y1="212" x2="700" y2="270" stroke="#c7ccd6" stroke-width="1.3" stroke-dasharray="3 3"/>
+  <line x1="695" y1="212" x2="720" y2="270" stroke="#c7ccd6" stroke-width="1.3" stroke-dasharray="3 3"/>
+  <line x1="810" y1="212" x2="745" y2="270" stroke="#c7ccd6" stroke-width="1.3" stroke-dasharray="3 3"/>
+
+  <rect x="530" y="270" width="400" height="170" rx="10" fill="#ffffff" stroke="#e2e4e9"/>
+  <text x="545" y="288" font-size="10" fill="#9aa5b1">z2</text>
+  <ellipse cx="740" cy="360" rx="90" ry="55" fill="#e7e1ff" opacity="0.8"/>
+  <circle cx="700" cy="335" r="5" fill="#4b7bec"/>
+  <circle cx="790" cy="345" r="5" fill="#4b7bec"/>
+  <circle cx="760" cy="390" r="5" fill="#4b7bec"/>
+  <circle cx="655" cy="400" r="5" fill="#4b7bec"/>
+  <circle cx="720" cy="365" r="6" fill="#8a5cf6"/>
+  <text x="720" y="352" text-anchor="middle" font-size="9.5" fill="#5b3fd6" font-weight="700">New Sample</text>
+  <text x="930" y="420" text-anchor="end" font-size="10" fill="#9aa5b1">z1</text>
+
+  <text x="730" y="462" text-anchor="middle" font-size="12.5" font-weight="700" fill="#3a3f4a">저차원 잠재 공간 (Latent Space)</text>
+  <text x="730" y="480" text-anchor="middle" font-size="11.5" fill="#7a7f89">점 하나 = 이미지 하나</text>
+</svg>

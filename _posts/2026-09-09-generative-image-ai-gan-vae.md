@@ -2,7 +2,7 @@
 title: "AI는 새로운 이미지를 어떻게 만들까: 생성형 이미지 AI(GAN, VAE) 원리 총정리"
 date: 2026-09-09 02:30:00 +0900
 categories: [AI, Deep Learning]
-tags: [generative-model, gan, dcgan, pix2pix, cyclegan, vae, autoencoder, deep-learning, pytorch, image-generation, machine-learning]
+tags: [generative-model, gan, dcgan, pix2pix, vae, autoencoder, deep-learning, pytorch, image-generation, machine-learning]
 math: true
 description: "판별하는 AI가 아니라 창조하는 AI, 즉 생성형 모델의 원리를 정리했다. '데이터의 분포를 학습해 새로운 샘플을 만든다'는 하나의 목표를, 경쟁으로 학습하는 GAN·DCGAN·Pix2Pix 계열과 확률 분포로 직접 모델링하는 VAE라는 두 갈래로 나눠 개념부터 구조, 수식, 코드까지 짚는다."
 ---
@@ -31,7 +31,7 @@ description: "판별하는 AI가 아니라 창조하는 AI, 즉 생성형 모델
 - **판별형 모델(Discriminative Model)**: 입력 $x$가 주어졌을 때 정답 $y$를 맞히는 모델. 조건부 확률 $p(y \mid x)$를 학습합니다. 분류(Classification), 검출(Detection), 회귀가 모두 여기에 속합니다.
 - **생성형 모델(Generative Model)**: 데이터 $x$ 자체가 어떻게 생겼는지, 즉 $p(x)$(또는 $p(x \mid y)$)를 학습하는 모델. 학습한 분포에서 표본을 뽑으면 그것이 **존재하지 않던 새 데이터**가 됩니다.
 
-![왼쪽은 판별형 AI가 고양이 사진을 입력받아 '고양이 92%'라는 레이블을 출력하는 흐름, 오른쪽은 생성형 AI가 무작위 노이즈 벡터를 입력받아 존재하지 않는 고양이 이미지를 출력하는 흐름을 나란히 비교한 다이어그램. 하단에는 '입력에서 레이블로'와 '노이즈에서 새 이미지로'라는 축이 표시되어 있다](/assets/img/posts/generative-image-ai-gan-vae/01_discriminative_vs_generative.svg)
+![상단에 'AI는 새로운 이미지를 만들어낼 수 있을까?'라는 Key Question이 있고, 그 아래 기존 AI(Discriminative, 분류·검출로 판단에 집중)와 생성형 AI(Generative, 생성·합성으로 창조에 집중) 두 카드를 나란히 비교하며, 하단에는 "판단이 아니라 창조"라는 방향의 차이를 요약한 어두운 색 박스가 있는 슬라이드](/assets/img/posts/generative-ai/01_generative_intro_question.svg)
 
 *판별형은 "이 이미지가 무엇인가"를 답하고, 생성형은 "이런 이미지는 대략 어떻게 생겼는가"를 배운 뒤 새로 그려낸다*
 
@@ -55,7 +55,7 @@ description: "판별하는 AI가 아니라 창조하는 AI, 즉 생성형 모델
 > **"데이터가 만들어졌을 가능성 공간(잠재 공간, Latent Space)을 학습하자."**
 > 이 공간에서 점 하나를 뽑으면(샘플링), 그것이 곧 새로운 이미지가 된다.
 
-![여러 스타일의 손글씨 숫자 '3' 이미지들이 2차원 잠재 공간의 여러 점으로 매핑되고, 그 점들 사이 빈 영역에서 새 점을 하나 샘플링하면 두 스타일이 섞인 새로운 '3' 이미지가 만들어지는 개념도](/assets/img/posts/generative-image-ai-gan-vae/02_latent_space.svg)
+![왼쪽에는 '왜 확률인가'에 대한 두 가지 이유(정답이 하나가 아님, 이미지는 분포다)와 '가능성 공간을 학습하자'는 목표 박스가 있고, 오른쪽에는 손글씨 숫자 '3' 이미지 세 장이 매핑을 거쳐 2차원 잠재 공간의 점들로 흩어지고 그 사이에서 새 샘플을 뽑는 latent space 개념도가 있는 슬라이드](/assets/img/posts/generative-ai/02_probability_and_latent_space.svg)
 
 *비슷한 이미지는 잠재 공간에서 가까이 모이고, 점과 점 사이를 샘플링하면 그 중간 성격의 새 이미지가 나온다*
 
@@ -92,7 +92,7 @@ GAN을 이해하는 가장 쉬운 비유는 **위조지폐범과 경찰**입니�
 3. **Discriminator(D)**: 가짜 이미지와 실제 이미지(Training Data)를 함께 입력받아 진짜(1)/가짜(0)를 판별합니다.
 4. 이 과정이 반복되며, G는 더 진짜 같은 이미지를, D는 더 정확한 판별 능력을 갖도록 학습됩니다.
 
-![왼쪽에서 잠재 벡터 z가 Generator로 들어가 Fake Image를 만들고, Real Image와 함께 Discriminator로 입력되어 Real/Fake 확률을 출력하는 흐름도. Discriminator의 판별 결과가 손실로 되먹임되어 G와 D 양쪽으로 화살표가 돌아가는 구조](/assets/img/posts/generative-image-ai-gan-vae/03_gan_training_loop.svg)
+![GAN의 정의, Random Noise(z)가 Generator를 거쳐 Fake Image가 되고 Real Images와 함께 Discriminator에 입력되어 Real(1)/Fake(0)를 예측하는 Adversarial Training Loop, 그리고 Key Players(Generator·Discriminator)와 Minimax Game 설명을 함께 담은 슬라이드](/assets/img/posts/generative-ai/03_gan_concept_and_loop.svg)
 
 *G는 D를 속이는 방향으로, D는 G에게 속지 않는 방향으로 — 같은 신호를 두고 반대로 학습한다*
 
@@ -105,6 +105,10 @@ GAN의 학습은 게임 이론의 **제로섬 게임(Zero-Sum Game)** 과 유사
 
 이론적으로 학습이 완벽히 진행되면, 판별자가 진짜와 가짜를 구별할 확률이 50%(완전히 헷갈리는 상태)에 도달하는 **내시 균형(Nash Equilibrium)** 에 이르며, 이때 Generator가 만드는 이미지는 진짜와 구별할 수 없을 만큼 정교해집니다.
 
+![미니맥스 게임 정의(Generator는 D의 성공을 최소화, Discriminator는 자신의 정확도를 최대화)와, 실제 학습 과정에서 Generator Loss·Discriminator Loss가 뚜렷한 수렴 없이 계속 진동하는 모습을 보여주는 그래프, 그리고 하단에 불안정한 학습과 모드 붕괴 문제가 함께 담긴 슬라이드](/assets/img/posts/generative-ai/05_gan_minimax_and_loss.svg)
+
+*이론적으로는 내시 균형에 수렴해야 하지만, 실제 학습 곡선은 G와 D가 서로 밀고 당기며 계속 진동하는 모습을 보인다*
+
 ### 3.4 GAN의 수학적 정의
 
 판별자와 생성자의 손실 함수는 다음과 같습니다.
@@ -116,14 +120,20 @@ $$\mathcal{L}_G = -\log D(G(z))$$
 - $D(x)$: 진짜 이미지 $x$에 대한 판별자의 출력 (진짜일 확률)
 - $D(G(z))$: 가짜 이미지에 대한 판별자의 출력
 
-이 둘을 합쳐 하나의 게임으로 표현하면 **미니맥스 목적 함수**가 됩니다.
+$\mathcal{L}_D$와 $\mathcal{L}_G$를 합쳐 하나의 게임으로 표현하면 **미니맥스 목적 함수**가 됩니다.
 
 $$\min_G \max_D V(D, G) = \mathbb{E}_{x \sim p_{\text{data}}}\big[\log D(x)\big] + \mathbb{E}_{z \sim p_z}\big[\log(1 - D(G(z)))\big]$$
 
 - 판별자(D)는 이 값을 **최대화**하려 하고,
 - 생성자(G)는 이 값을 **최소화**하려 합니다.
 
+> **참고**: $\mathcal{L}_D$는 $V(D,G)$에 $-1$을 곱한 것과 정확히 같아서 그대로 유도됩니다. 반면 원래 미니맥스식대로라면 $G$는 $\log(1-D(G(z)))$를 최소화해야 하는데, 학습 초반 $D$가 너무 강할 때 이 항의 기울기가 거의 0에 가까워지는 문제가 있습니다. 그래서 실무에서는 $G$가 대신 $\log D(G(z))$를 최대화하도록 바꾼 **non-saturating loss**($\mathcal{L}_G = -\log D(G(z))$)를 씁니다. 즉 $\mathcal{L}_D$는 $V(D,G)$의 직접적인 유도지만, $\mathcal{L}_G$는 학습 안정성을 위한 실전 대체식이라는 점이 다릅니다.
+
 하나의 식 안에 정반대 목표가 공존한다는 점이 GAN 학습이 본질적으로 "경쟁"일 수밖에 없는 이유입니다.
+
+![입력 노이즈 벡터 z가 생성기를 거쳐 생성된(가짜) 이미지가 되고, 실제 이미지와 함께 판별기에 입력되어 진짜/가짜를 판별하는 구조도. 판별기의 출력에서 판별기 손실과 생성기 손실이 각각 점선 화살표로 되먹임되는 모습](/assets/img/posts/generative-ai/04_gan_structure_diagram.svg)
+
+*판별기 손실은 판별기 자신을, 판별기를 속인 정도(생성기 손실)는 생성기를 업데이트하는 신호로 쓰인다 — $\mathcal{L}_D$와 $\mathcal{L}_G$가 실제로 흐르는 경로*
 
 ### 3.5 GAN 학습의 현실적인 문제
 
@@ -173,9 +183,43 @@ $$\min_G \max_D V(D, G) = \mathbb{E}_{x \sim p_{\text{data}}}\big[\log D(x)\big]
 
 여기서 `64`(잠재 벡터 차원), `16×16×128`(시작 특징 맵 크기) 같은 숫자들은 계산으로 저절로 나오는 값이 아니라, **설계자가 미리 정한 하이퍼파라미터**라는 점도 기억해두면 좋습니다.
 
-![DCGAN 생성자 아키텍처. 왼쪽의 64차원 z 벡터가 선형 계층과 reshape를 거쳐 16×16×128 특징 맵이 되고, 업샘플링+합성곱을 두 번 거치며 32×32, 64×64로 커진 뒤 마지막 합성곱에서 64×64×3 RGB 이미지가 나오는 사다리꼴 확장 구조](/assets/img/posts/generative-image-ai-gan-vae/04_dcgan_generator.svg)
+![64차원 노이즈 벡터 z가 선형 계층과 reshape를 거쳐 16×16×128 특징 맵이 되고, 업샘플링+합성곱을 두 번 거치며 32×32×128, 64×64×128을 지나 합성곱 계층에서 64×64×64로, 마지막에 64×64×3 RGB 이미지로 확장되는 DCGAN 생성기 아키텍처 다이어그램](/assets/img/posts/generative-ai/06_dcgan_generator_architecture.svg)
 
 *생성자는 작은 벡터에서 출발해 공간 크기는 키우고(16→32→64) 채널 수는 줄이며(128→64→3) 이미지를 키워간다*
+
+이 흐름을 PyTorch `nn.Module`로 옮기면 다음과 같습니다.
+
+```python
+class Generator(nn.Module):
+    def __init__(self, latent_dim=64):
+        super().__init__()
+        self.fc = nn.Linear(latent_dim, 16 * 16 * 128)  # 64 → 32,768 (계산)
+        self.conv_blocks = nn.Sequential(
+            nn.Upsample(scale_factor=2),                          # 16×16 → 32×32 (복제)
+            nn.Conv2d(128, 128, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(128),
+            nn.ReLU(inplace=True),
+
+            nn.Upsample(scale_factor=2),                          # 32×32 → 64×64
+            nn.Conv2d(128, 64, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(64),
+            nn.ReLU(inplace=True),
+
+            nn.Conv2d(64, 3, kernel_size=3, stride=1, padding=1),
+            nn.Tanh(),                                            # [-1, 1] 범위 출력
+        )
+
+    def forward(self, z):
+        x = self.fc(z)                 # (B, 64) → (B, 32768)
+        x = x.view(-1, 128, 16, 16)     # reshape (재배열, 계산 아님)
+        return self.conv_blocks(x)      # (B, 3, 64, 64)
+```
+
+업샘플링이 실제로 어떻게 픽셀을 복제하는지는, 아래 위젯에서 직접 눌러보면서 확인하면 훨씬 이해가 빠릅니다. 4×4 격자가 8×8로 업샘플링되는 과정을 체험해볼 수 있습니다.
+
+<div style="border: 1px solid #d3d1c7; border-radius: 12px; overflow: hidden; margin: 24px 0;">
+  <iframe src="/assets/html/generative_ai/dcgan_generator_upsampling_demo.html" width="100%" height="500" style="border: none; display: block;" title="DCGAN 생성자 업샘플링 시각화"></iframe>
+</div>
 
 ### 4.3 DCGAN 판별자(Discriminator) 구조
 
@@ -192,6 +236,40 @@ $$\min_G \max_D V(D, G) = \mathbb{E}_{x \sim p_{\text{data}}}\big[\log D(x)\big]
 ```
 
 stride=2인 합성곱을 사용해 별도의 풀링 층 없이도 공간 크기를 절반씩 줄이면서, 채널 수는 점점 늘려갑니다. 결국 판별자는 우리가 흔히 아는 **이진 분류(Binary Classification) 모델** 과 본질적으로 같은 구조입니다.
+
+![64×64×3 RGB 이미지가 stride=2인 합성곱 4개(채널 3→16→32→64→128, 공간 크기 64→32→16→8→4)를 거쳐 압축되고, Flatten과 완전연결층·Sigmoid를 지나 0~1 사이의 진짜/가짜 확률 하나로 요약되는 DCGAN 판별기 아키텍처 다이어그램](/assets/img/posts/generative-ai/07_dcgan_discriminator_architecture.svg)
+
+*판별기는 생성기와 정반대로, 공간은 줄이고(64→32→16→8→4) 채널은 늘리며(3→16→32→64→128) 이미지를 압축해간다*
+
+이 흐름을 PyTorch `nn.Module`로 옮기면 다음과 같습니다.
+
+```python
+class Discriminator(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.conv_blocks = nn.Sequential(
+            nn.Conv2d(3, 16, kernel_size=3, stride=2, padding=1),
+            nn.LeakyReLU(0.2, inplace=True),                       # 64×64 → 32×32
+
+            nn.Conv2d(16, 32, kernel_size=3, stride=2, padding=1),
+            nn.BatchNorm2d(32),
+            nn.LeakyReLU(0.2, inplace=True),                       # 32×32 → 16×16
+
+            nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1),
+            nn.BatchNorm2d(64),
+            nn.LeakyReLU(0.2, inplace=True),                       # 16×16 → 8×8
+
+            nn.Conv2d(64, 128, kernel_size=3, stride=2, padding=1),
+            nn.BatchNorm2d(128),
+            nn.LeakyReLU(0.2, inplace=True),                       # 8×8 → 4×4
+        )
+        self.fc = nn.Linear(128 * 4 * 4, 1)
+
+    def forward(self, x):
+        x = self.conv_blocks(x)          # (B, 128, 4, 4)
+        x = x.view(x.size(0), -1)        # Flatten → (B, 2048)
+        return torch.sigmoid(self.fc(x)) # (B, 1) 진짜/가짜 확률
+```
 
 ### 4.4 생성자 vs 판별자 — 거울 구조
 
@@ -221,7 +299,7 @@ Pix2Pix의 입력은 노이즈가 아니라 **이미지 그 자체**입니다. �
 - **Decoder (Upsampling)**: 업샘플링 + 합성곱으로 다시 이미지를 복원 (ReLU, 마지막 단계는 Tanh)
 - **Skip Connection**: Encoder의 각 단계 출력을 Decoder의 대응 단계에 직접 이어붙여(concat), 압축 과정에서 잃기 쉬운 세밀한 디테일(선, 경계, 질감)을 보존
 
-![Pix2Pix U-Net 생성자 구조도. 왼쪽 Encoder가 이미지를 단계적으로 좁게 압축해 내려가고, 오른쪽 Decoder가 다시 넓게 복원해 올라가는 U자 형태. 같은 높이의 Encoder-Decoder 단계 사이를 점선 화살표(skip connection)가 가로질러 연결한다](/assets/img/posts/generative-image-ai-gan-vae/05_pix2pix_unet.svg)
+![입력 이미지가 Encoder(합성곱→정규화→LeakyReLU)를 거쳐 점점 좁게 압축되고, Decoder(업샘플링→정규화→ReLU, 마지막은 Tanh)를 거쳐 다시 넓게 복원되며 Translated Image로 출력되는 U자 구조. 같은 높이의 Encoder-Decoder 단계 사이를 점선 화살표(skip connection)가 가로질러 연결하는 Pix2Pix Generator 구조도](/assets/img/posts/generative-ai/08_pix2pix_unet_generator.svg)
 
 *U-Net은 압축부에서 잃은 고주파 디테일을 skip connection으로 복원부에 그대로 전달한다*
 
@@ -233,6 +311,10 @@ Pix2Pix의 판별자는 원본 이미지와 생성된 이미지를 채널 방향
 - **PatchGAN**은 이미지를 70×70 크기의 작은 패치(patch) 단위로 나눠, **각 패치별로** 진짜/가짜를 판별하고 평균을 냅니다.
 
 이렇게 국소 단위로 꼼꼼히 판별하면, 전체적인 형태보다 **세밀한 질감(realistic texture)** 을 훨씬 민감하게 잡아낼 수 있습니다.
+
+![Real Image와 Translated Image가 채널 방향으로 concat되어 conv layer 4개(채널 6→16→64→128→256)를 거치고, flatten과 완전연결층을 지나 '이미지 쌍이 진짜/가짜일 확률' 하나로 출력되는 PatchGAN 판별기 구조도. 하단에는 패치 단위로 판별하는 이유가 함께 설명되어 있다](/assets/img/posts/generative-ai/09_patchgan_discriminator.svg)
+
+*이미지 전체를 하나의 숫자로 판별하는 대신, 70×70 패치마다 진짜/가짜를 판별해 평균 내는 것이 PatchGAN의 핵심이다*
 
 ---
 
@@ -249,7 +331,7 @@ GAN이 "경쟁"을 통해 간접적으로 이미지 생성법을 배웠다면, V
 - **Encoder**: 사진을 보고 상세한 설명서(특징)를 작성하는 사람
 - **Decoder**: 그 설명서만 보고 다시 그림을 그리는 사람
 
-![VAE 구조 흐름도. Input Image가 Encoder를 거쳐 평균 μ와 표준편차 σ로 압축되고, z = μ + σ·ε 샘플링을 거쳐 잠재 벡터 z가 되며, 이 z가 Decoder를 통과해 Reconstructed Image로 복원되는 좌우 흐름. ε은 N(0,1)에서 뽑히는 별도 입력으로 표시된다](/assets/img/posts/generative-image-ai-gan-vae/06_vae_flow.svg)
+![Input Image가 Encoder를 거쳐 잠재 공간의 평균 μ와 표준편차 σ로 압축되고, 그 분포에서 z ~ N(μ,σ)를 샘플링한 뒤 Decoder를 통과해 Reconstructed(New) Image로 복원되는 좌우 흐름도. 우측에는 Encoder를 '사진 보고 설명서를 쓰는 사람', Decoder를 '설명서만 보고 그림을 그리는 사람'에 비유한 개념 박스가 함께 있다](/assets/img/posts/generative-ai/10_vae_structure_flow.svg)
 
 *Encoder는 이미지를 하나의 점이 아니라 (μ, σ)라는 분포로 인코딩하고, 그 분포에서 뽑은 z를 Decoder가 이미지로 되돌린다*
 
@@ -265,7 +347,7 @@ AE는 이미지를 잠재 공간의 고정된 점 하나로 압축합니다. 점
 
 VAE는 이미지를 점이 아니라 **분포(구름)** 로 인코딩하고, 이 분포들이 잠재 공간 전체에 걸쳐 빈틈없이 이어지도록 학습됩니다. 그 결과 잠재 공간 아무 데서나 샘플링해도 그럴듯한 이미지가 나옵니다.
 
-![왼쪽은 AE의 잠재 공간에 점들이 드문드문 흩어져 점과 점 사이가 텅 빈 그림, 오른쪽은 VAE의 잠재 공간에 타원형 분포들이 서로 겹치며 공간을 빈틈없이 채운 그림을 비교한 다이어그램](/assets/img/posts/generative-image-ai-gan-vae/07_ae_vs_vae_latent.svg)
+![AutoEncoder(AE)는 잠재 공간이 고정값이라 새로운 생성(Sampling)이 어렵고, VAE는 잠재 공간이 확률 분포라 데이터의 특성 분포를 학습해 Sampling으로 생성이 가능하다는 것을 나란히 비교한 카드형 다이어그램](/assets/img/posts/generative-ai/11_ae_vs_vae_comparison.svg)
 
 *AE의 잠재 공간은 점 사이가 비어 있고, VAE는 KL 항 덕분에 분포들이 겹치며 연속적으로 이어진다*
 
@@ -318,6 +400,10 @@ samples = decoder(z)              # Encoder 없이 바로 이미지 생성
 
 KL Divergence 손실 덕분에 잠재 공간 전체가 표준정규분포와 비슷하게 정리되도록 학습되었기 때문에, 그냥 $\mathcal{N}(0, I)$에서 무작위로 뽑은 $z$를 Decoder에 넣기만 해도 그럴듯한 이미지가 만들어집니다.
 
+![torch.randn(64, 20)으로 뽑은 Random Noise(z)가 Decoder 하나만 거쳐, MNIST 숫자들이 격자로 나열된 Generated Samples로 바로 출력되는 흐름도. Encoder 없이 Decoder만으로 생성이 이루어진다는 점이 강조되어 있다](/assets/img/posts/generative-ai/12_vae_generation_sampling.svg)
+
+*Encoder는 학습에만 쓰이고, 생성 단계에서는 무작위 노이즈와 Decoder만으로 새 이미지를 만들어낸다*
+
 ---
 
 ## 7. GAN vs VAE 최종 비교 {#gan-vs-vae}
@@ -349,6 +435,8 @@ KL Divergence 손실 덕분에 잠재 공간 전체가 표준정규분포와 비
 > **생성형 모델은 데이터의 "분포"를 학습한다. 단순 암기가 아니라, 데이터가 생성될 확률 공간을 이해하고 그 공간에서 새로운 샘플을 만들어낸다.**
 
 GAN은 이 분포를 **경쟁**을 통해 암묵적으로 흉내 내는 법을 배우고, VAE는 이 분포를 **$\mu, \sigma$라는 확률 파라미터**로 명시적으로 학습합니다. 접근 방식은 다르지만 목적지는 같다는 점이 이 두 모델을 이해하는 핵심입니다.
+
+![생성형 모델은 '분포(Distribution)'를 학습한다는 요약 박스 아래, VAE(잠재 공간의 확률적 분포를 가정하고 샘플링하여 생성)와 GAN(생성자와 판별자의 경쟁적 학습으로 사실적 이미지 생성) 두 카드, 그리고 활용 분야로 스타일 전이·이미지 생성/복원·데이터 증강 세 아이콘 카드를 나란히 보여주는 마무리 요약 슬라이드](/assets/img/posts/generative-ai/13_summary_wrapup.svg)
 
 **핵심 체크리스트**
 

@@ -1,0 +1,75 @@
+<svg width="1000" height="380" viewBox="0 0 1000 380" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <defs>
+    <marker id="a7" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#5f6470"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="380" fill="#ffffff"/>
+
+  <rect x="40" y="30" width="920" height="260" rx="16" fill="#f6f7f9" stroke="#dfe1e6"/>
+  <text x="500" y="56" text-anchor="middle" font-size="14" font-weight="700" fill="#3a3f4a">판별기 (Discriminator)</text>
+
+  <!-- input rgb -->
+  <rect x="70" y="90" width="110" height="110" rx="6" fill="url(#rgbGrad2)" stroke="#7a7f89"/>
+  <defs>
+    <linearGradient id="rgbGrad2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e2493b"/>
+      <stop offset="50%" stop-color="#4b7bec"/>
+      <stop offset="100%" stop-color="#3fa66b"/>
+    </linearGradient>
+  </defs>
+  <text x="125" y="80" text-anchor="middle" font-size="9.5" fill="#5f6470">3</text>
+  <text x="125" y="218" text-anchor="middle" font-size="9" fill="#7a7f89">64×64×3</text>
+
+  <line x1="180" y1="145" x2="210" y2="145" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a7)"/>
+  <text x="195" y="135" text-anchor="middle" font-size="8" fill="#7a7f89">stride=2</text>
+
+  <rect x="212" y="105" width="80" height="80" rx="6" fill="#eaf0fb" stroke="#9db8e0"/>
+  <text x="252" y="95" text-anchor="middle" font-size="9.5" fill="#5f6470">16</text>
+  <text x="252" y="200" text-anchor="middle" font-size="9" fill="#7a7f89">32×32×16</text>
+  <text x="252" y="214" text-anchor="middle" font-size="8.5" fill="#7a7f89">합성곱 1</text>
+
+  <line x1="292" y1="145" x2="322" y2="145" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a7)"/>
+
+  <rect x="324" y="112" width="66" height="66" rx="6" fill="#e6ecf7" stroke="#9db8e0"/>
+  <text x="357" y="102" text-anchor="middle" font-size="9.5" fill="#5f6470">32</text>
+  <text x="357" y="196" text-anchor="middle" font-size="9" fill="#7a7f89">16×16×32</text>
+  <text x="357" y="210" text-anchor="middle" font-size="8.5" fill="#7a7f89">합성곱 2</text>
+
+  <line x1="390" y1="145" x2="420" y2="145" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a7)"/>
+
+  <rect x="422" y="120" width="50" height="50" rx="6" fill="#e0e9f8" stroke="#9db8e0"/>
+  <text x="447" y="110" text-anchor="middle" font-size="9.5" fill="#5f6470">64</text>
+  <text x="447" y="190" text-anchor="middle" font-size="9" fill="#7a7f89">8×8×64</text>
+  <text x="447" y="204" text-anchor="middle" font-size="8.5" fill="#7a7f89">합성곱 3</text>
+
+  <line x1="472" y1="145" x2="502" y2="145" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a7)"/>
+
+  <rect x="504" y="128" width="36" height="36" rx="6" fill="#dae4f6" stroke="#9db8e0"/>
+  <text x="522" y="118" text-anchor="middle" font-size="9.5" fill="#5f6470">128</text>
+  <text x="522" y="182" text-anchor="middle" font-size="9" fill="#7a7f89">4×4×128</text>
+  <text x="522" y="196" text-anchor="middle" font-size="8.5" fill="#7a7f89">합성곱 4</text>
+
+  <line x1="540" y1="145" x2="580" y2="145" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a7)"/>
+  <text x="560" y="135" text-anchor="middle" font-size="8" fill="#7a7f89">Flatten</text>
+
+  <rect x="582" y="90" width="26" height="110" rx="4" fill="#ffffff" stroke="#9aa5b1"/>
+  <text x="595" y="218" text-anchor="middle" font-size="9" fill="#7a7f89">2048</text>
+
+  <line x1="608" y1="145" x2="648" y2="145" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a7)"/>
+  <text x="628" y="135" text-anchor="middle" font-size="8" fill="#7a7f89">FC</text>
+
+  <rect x="650" y="120" width="18" height="60" rx="4" fill="#f3f4f6" stroke="#b9bec8"/>
+
+  <line x1="668" y1="145" x2="706" y2="145" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a7)"/>
+  <text x="687" y="135" text-anchor="middle" font-size="8" fill="#7a7f89">Sigmoid</text>
+
+  <rect x="708" y="122" width="60" height="46" rx="8" fill="#fdeef0" stroke="#eab6bd"/>
+  <text x="738" y="140" text-anchor="middle" font-size="10" font-weight="700" fill="#8a231a">0~1</text>
+  <text x="738" y="156" text-anchor="middle" font-size="8" fill="#8a231a">진짜/가짜</text>
+
+  <text x="60" y="248" font-size="11" fill="#5f6470">합성곱 1·2·3·4 (stride=2): 채널 3→16→32→64→128, 공간 크기 64→32→16→8→4로 절반씩 감소</text>
+  <text x="60" y="268" font-size="11" fill="#5f6470">별도의 풀링 층 없이 strided convolution만으로 다운샘플링 — 이진 분류 모델과 본질적으로 같은 구조</text>
+
+  <text x="500" y="340" text-anchor="middle" font-size="12.5" fill="#9aa5b1">그림 4.3 DCGAN 판별기 아키텍처 — 이미지를 압축해 하나의 진짜/가짜 확률로 요약한다</text>
+</svg>

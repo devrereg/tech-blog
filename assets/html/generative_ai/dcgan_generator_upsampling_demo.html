@@ -1,0 +1,100 @@
+<h2 class="sr-only">DCGAN 생성기의 64차원 노이즈 벡터 예시와 업샘플링(Nearest Neighbor) 과정을 보여주는 인터랙티브 시각자료</h2>
+<style>
+.cap{font-size:13px;color:var(--text-secondary);margin:0 0 8px;}
+.cap2{font-size:12px;color:var(--text-muted);margin:6px 0 0;text-align:center;}
+.vcell{aspect-ratio:1;border-radius:3px;}
+.stackwrap{position:relative;width:70px;height:70px;flex:none;}
+.stacklayer{position:absolute;width:52px;height:52px;border-radius:6px;border:0.5px solid var(--border-accent);}
+.sizebox{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.sizeswatch{background:var(--bg-accent);border:0.5px solid var(--border-accent);border-radius:4px;}
+</style>
+
+<p class="cap">64차원 랜덤 노이즈 벡터 (z) — 색이 진할수록 값이 크다고 생각하면 됩니다</p>
+<div id="vecGrid" style="display:grid;grid-template-columns:repeat(8,1fr);gap:4px;max-width:260px;margin:0 0 1.5rem;"></div>
+
+<div style="display:flex;align-items:center;gap:16px;margin:0 0 1.5rem;">
+  <div class="stackwrap">
+    <div class="stacklayer" style="top:0;left:14px;background:var(--bg-accent);"></div>
+    <div class="stacklayer" style="top:7px;left:7px;background:var(--bg-accent);opacity:.8;"></div>
+    <div class="stacklayer" style="top:14px;left:0;background:var(--bg-accent);opacity:.6;"></div>
+  </div>
+  <div style="font-size:13px;color:var(--text-secondary);">
+    <i class="ti ti-arrow-right" style="margin-right:6px;" aria-hidden="true"></i>
+    선형 계층(Fully Connected)을 거쳐 <span style="color:var(--text-primary);font-weight:500;">16×16×128</span> 특징 맵으로 변환
+  </div>
+</div>
+
+<p class="cap">업샘플링 체험 — 픽셀 1개가 2×2로 복제됩니다 (Nearest Neighbor)</p>
+<div style="display:flex;align-items:center;gap:20px;margin:0 0 1rem;flex-wrap:wrap;">
+  <div>
+    <div id="beforeGrid" style="display:grid;grid-template-columns:repeat(4,26px);grid-template-rows:repeat(4,26px);gap:2px;"></div>
+    <p class="cap2">업샘플링 전 (4×4)</p>
+  </div>
+  <i class="ti ti-arrow-right" style="font-size:18px;color:var(--text-muted)" aria-hidden="true"></i>
+  <div>
+    <div id="afterGrid" style="display:grid;grid-template-columns:repeat(8,13px);grid-template-rows:repeat(8,13px);gap:1px;"></div>
+    <p class="cap2">업샘플링 후 (8×8)</p>
+  </div>
+  <button id="upBtn" onclick="runUpsample()" style="margin-left:auto;">업샘플링 실행</button>
+</div>
+
+<p class="cap" style="margin-top:1.5rem;">생성기가 반복하는 해상도 확장 과정</p>
+<div style="display:flex;align-items:flex-end;gap:20px;margin-bottom:0.5rem;flex-wrap:wrap;">
+  <div class="sizebox"><div class="sizeswatch" style="width:24px;height:24px;"></div><span style="font-size:12px;color:var(--text-secondary);">16×16×128</span></div>
+  <i class="ti ti-arrow-right" style="color:var(--text-muted);align-self:center;" aria-hidden="true"></i>
+  <div class="sizebox"><div class="sizeswatch" style="width:44px;height:44px;"></div><span style="font-size:12px;color:var(--text-secondary);">32×32×128</span></div>
+  <i class="ti ti-arrow-right" style="color:var(--text-muted);align-self:center;" aria-hidden="true"></i>
+  <div class="sizebox"><div class="sizeswatch" style="width:72px;height:72px;"></div><span style="font-size:12px;color:var(--text-secondary);">64×64×64</span></div>
+  <i class="ti ti-arrow-right" style="color:var(--text-muted);align-self:center;" aria-hidden="true"></i>
+  <div class="sizebox"><div class="sizeswatch" style="width:72px;height:72px;background:linear-gradient(135deg,#e24b4a,#378add,#639922);border:none;"></div><span style="font-size:12px;color:var(--text-secondary);">64×64×3 (RGB)</span></div>
+</div>
+
+<script>
+function randColor(){
+  const hue = Math.floor(Math.random()*360);
+  return `hsl(${hue},55%,60%)`;
+}
+const vecGrid = document.getElementById('vecGrid');
+for(let i=0;i<64;i++){
+  const d=document.createElement('div');
+  d.className='vcell';
+  const v = (Math.random()*2-1);
+  const light = 50 + v*25;
+  d.style.background = `hsl(255,45%,${light}%)`;
+  vecGrid.appendChild(d);
+}
+
+const colors=[];
+for(let i=0;i<16;i++) colors.push(randColor());
+
+const beforeGrid = document.getElementById('beforeGrid');
+colors.forEach(c=>{
+  const d=document.createElement('div');
+  d.style.background=c;
+  d.style.borderRadius='3px';
+  beforeGrid.appendChild(d);
+});
+
+const afterGrid = document.getElementById('afterGrid');
+const afterCells=[];
+for(let r=0;r<8;r++){
+  for(let c=0;c<8;c++){
+    const d=document.createElement('div');
+    d.style.background='var(--surface-1)';
+    d.style.border='0.5px solid var(--border)';
+    d.style.transition='background .4s';
+    afterGrid.appendChild(d);
+    afterCells.push(d);
+  }
+}
+
+function runUpsample(){
+  for(let r=0;r<8;r++){
+    for(let c=0;c<8;c++){
+      const srcR=Math.floor(r/2), srcC=Math.floor(c/2);
+      const idx = srcR*4+srcC;
+      afterCells[r*8+c].style.background = colors[idx];
+    }
+  }
+}
+</script>

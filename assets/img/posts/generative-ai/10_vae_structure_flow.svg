@@ -1,0 +1,70 @@
+<svg width="1000" height="420" viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <defs>
+    <marker id="a10" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#5f6470"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="420" fill="#ffffff"/>
+
+  <rect x="40" y="28" width="28" height="28" rx="8" fill="#7c5cff"/>
+  <text x="54" y="47" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">6</text>
+  <text x="80" y="49" font-size="21" font-weight="700" fill="#1a1a1a">VAE 개념 (Encoder-Decoder)</text>
+  <line x1="40" y1="72" x2="960" y2="72" stroke="#dbe4f3" stroke-width="2"/>
+
+  <text x="40" y="104" font-size="15" font-weight="700" fill="#5b3fd6">VAE (Variational AutoEncoder)</text>
+  <text x="40" y="126" font-size="12.5" fill="#5f6470">이미지를 잠재 공간(latent space)의 확률 분포로 변환하여 새로운 데이터를 생성하는 모델</text>
+
+  <rect x="40" y="150" width="660" height="200" rx="12" fill="#fbfbfc" stroke="#e2e4e9"/>
+  <text x="60" y="174" font-size="10.5" font-weight="700" fill="#9aa5b1" letter-spacing="0.5">STRUCTURE FLOW</text>
+
+  <rect x="70" y="220" width="80" height="80" rx="8" fill="#eaeef5" stroke="#9aa5b1"/>
+  <text x="110" y="264" text-anchor="middle" font-size="26">🐱</text>
+  <text x="110" y="314" text-anchor="middle" font-size="10" fill="#7a7f89">Input Image</text>
+
+  <line x1="150" y1="260" x2="188" y2="260" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a10)"/>
+
+  <rect x="190" y="220" width="90" height="80" rx="8" fill="#d7f0e2" stroke="#1f9e5c"/>
+  <text x="235" y="256" text-anchor="middle" font-size="13" font-weight="700" fill="#146538">Encoder</text>
+  <text x="235" y="274" text-anchor="middle" font-size="9.5" fill="#4b8a68">NN Model</text>
+
+  <line x1="280" y1="260" x2="316" y2="260" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a10)"/>
+
+  <rect x="318" y="192" width="150" height="136" rx="10" fill="#f8f6ff" stroke="#c7b8fb"/>
+  <rect x="336" y="200" width="114" height="20" rx="10" fill="#7c5cff"/>
+  <text x="393" y="214" text-anchor="middle" font-size="9.5" font-weight="700" fill="#ffffff">Latent Space</text>
+  <circle cx="365" cy="252" r="18" fill="#ffffff" stroke="#9db8e0"/>
+  <text x="365" y="256" text-anchor="middle" font-size="11" fill="#3a3f4a">μ</text>
+  <circle cx="422" cy="252" r="18" fill="#ffffff" stroke="#9db8e0"/>
+  <text x="422" y="256" text-anchor="middle" font-size="11" fill="#3a3f4a">σ</text>
+  <text x="393" y="238" text-anchor="middle" font-size="8" fill="#9aa5b1">평균 / 분산</text>
+  <line x1="393" y1="270" x2="393" y2="288" stroke="#9aa5b1" stroke-width="1.2" marker-end="url(#a10)"/>
+  <rect x="336" y="290" width="114" height="26" rx="6" fill="#ffffff" stroke="#c7b8fb"/>
+  <text x="393" y="307" text-anchor="middle" font-size="9.5" fill="#5b3fd6">z ~ N(μ, σ)</text>
+  <text x="393" y="330" text-anchor="middle" font-size="8.5" fill="#9aa5b1">Sampling</text>
+
+  <line x1="468" y1="260" x2="506" y2="260" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a10)"/>
+
+  <rect x="508" y="220" width="90" height="80" rx="8" fill="#d7f0e2" stroke="#1f9e5c"/>
+  <text x="553" y="256" text-anchor="middle" font-size="13" font-weight="700" fill="#146538">Decoder</text>
+  <text x="553" y="274" text-anchor="middle" font-size="9.5" fill="#4b8a68">NN Model</text>
+
+  <line x1="598" y1="260" x2="634" y2="260" stroke="#5f6470" stroke-width="1.4" marker-end="url(#a10)"/>
+
+  <rect x="636" y="220" width="60" height="80" rx="8" fill="#eaeef5" stroke="#1f9e5c"/>
+  <text x="666" y="264" text-anchor="middle" font-size="24">🐱</text>
+  <circle cx="686" cy="228" r="10" fill="#1f9e5c"/>
+  <text x="686" y="232" text-anchor="middle" font-size="8" fill="#ffffff" font-weight="700">New</text>
+  <text x="666" y="314" text-anchor="middle" font-size="9.5" fill="#7a7f89">Reconstructed</text>
+
+  <!-- concept analogy -->
+  <rect x="720" y="150" width="240" height="200" rx="12" fill="#eef4ff" stroke="#bcd3f7"/>
+  <text x="740" y="176" font-size="11" font-weight="700" fill="#2f6fd0">💡 개념 비유</text>
+  <text x="740" y="206" font-size="11.5" font-weight="700" fill="#3a3f4a">Encoder:</text>
+  <text x="740" y="226" font-size="10.5" fill="#5f6470">사진을 보고 상세한</text>
+  <text x="740" y="242" font-size="10.5" fill="#5f6470">설명서(특징)를 작성</text>
+  <text x="740" y="272" font-size="11.5" font-weight="700" fill="#3a3f4a">Decoder:</text>
+  <text x="740" y="292" font-size="10.5" fill="#5f6470">그 설명서만 보고</text>
+  <text x="740" y="308" font-size="10.5" fill="#5f6470">다시 그림을 그리기</text>
+
+  <text x="500" y="390" text-anchor="middle" font-size="12.5" fill="#9aa5b1">Input Image → Encoder → μ,σ(Latent Space) → Sampling z → Decoder → Reconstructed(New) Image</text>
+</svg>

@@ -1,0 +1,34 @@
+<svg width="1000" height="420" viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="1000" height="420" fill="#ffffff"/>
+
+  <rect x="40" y="28" width="28" height="28" rx="8" fill="#7c5cff"/>
+  <text x="54" y="47" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">6</text>
+  <text x="80" y="49" font-size="21" font-weight="700" fill="#1a1a1a">VAE 개념 (Encoder-Decoder)</text>
+  <line x1="40" y1="72" x2="960" y2="72" stroke="#dbe4f3" stroke-width="2"/>
+
+  <text x="40" y="102" font-size="13" font-weight="700" fill="#3a3f4a">기본 개념</text>
+  <text x="60" y="126" font-size="12" fill="#4b4f58">• VAE는 입력 데이터를 <tspan font-weight="700">잠재 공간(latent space)</tspan>에 확률적으로 인코딩하고,</text>
+  <text x="76" y="146" font-size="12" fill="#4b4f58">다시 복원(decoding)하는 <tspan font-weight="700">생성 모델(Generative Model)</tspan>임.</text>
+  <text x="60" y="170" font-size="12" fill="#4b4f58">• 단순한 Autoencoder와 달리, <tspan font-weight="700">확률 분포(μ, σ)</tspan>를 학습해 새로운</text>
+  <text x="76" y="190" font-size="12" fill="#4b4f58">데이터 샘플을 생성할 수 있음.</text>
+
+  <text x="60" y="228" font-size="10.5" font-weight="700" fill="#9aa5b1" letter-spacing="0.5">AUTOENCODER VS VAE</text>
+
+  <!-- AE card -->
+  <rect x="60" y="244" width="420" height="150" rx="12" fill="#fbfbfc" stroke="#e2e4e9"/>
+  <circle cx="86" cy="270" r="4" fill="#9aa5b1"/>
+  <text x="100" y="274" font-size="13" font-weight="700" fill="#3a3f4a">AutoEncoder (AE)</text>
+  <text x="86" y="308" font-size="12" fill="#5f6470">잠재 공간이 <tspan font-weight="700">고정값</tspan></text>
+  <text x="86" y="332" font-size="12" fill="#5f6470">단순 압축 및 복원 목적</text>
+  <text x="86" y="356" font-size="12" fill="#c0464c">새로운 생성(Sampling) 어려움</text>
+
+  <!-- VAE card -->
+  <rect x="520" y="244" width="420" height="150" rx="12" fill="#f8f6ff" stroke="#c7b8fb"/>
+  <circle cx="546" cy="270" r="4" fill="#7c5cff"/>
+  <text x="560" y="274" font-size="13" font-weight="700" fill="#5b3fd6">VAE</text>
+  <text x="546" y="308" font-size="12" fill="#4b4f58">잠재 공간이 <tspan font-weight="700">확률 분포</tspan></text>
+  <text x="546" y="332" font-size="12" fill="#4b4f58">데이터의 <tspan font-weight="700">특성 분포</tspan> 학습</text>
+  <text x="546" y="356" font-size="12" fill="#146538"><tspan font-weight="700">Sampling</tspan>으로 생성 가능</text>
+
+  <text x="500" y="412" text-anchor="middle" font-size="12" fill="#9aa5b1">AE는 점(point) 하나로, VAE는 구름(distribution)으로 이미지를 인코딩한다</text>
+</svg>

@@ -1,0 +1,76 @@
+<svg width="1000" height="560" viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+  <defs>
+    <marker id="a3" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2b3a52"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="560" fill="#ffffff"/>
+
+  <!-- Header -->
+  <rect x="40" y="28" width="28" height="28" rx="8" fill="#7c5cff"/>
+  <text x="54" y="47" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">3</text>
+  <text x="80" y="49" font-size="21" font-weight="700" fill="#1a1a1a">GAN 개념 이해</text>
+  <line x1="40" y1="72" x2="960" y2="72" stroke="#dbe4f3" stroke-width="2"/>
+
+  <text x="40" y="104" font-size="15" font-weight="700" fill="#5b3fd6">GAN (Generative Adversarial Network)</text>
+  <text x="40" y="126" font-size="12.5" fill="#5f6470">두 개의 신경망(생성자와 판별자)이 서로 경쟁(Adversarial)하며 학습하여 진짜 같은 데이터를 생성하는 모델</text>
+
+  <!-- Adversarial Training Loop -->
+  <rect x="40" y="150" width="920" height="220" rx="12" fill="#fbfbfc" stroke="#e2e4e9"/>
+  <text x="60" y="174" font-size="11" font-weight="700" fill="#9aa5b1" letter-spacing="0.5">ADVERSARIAL TRAINING LOOP</text>
+
+  <rect x="70" y="200" width="110" height="60" rx="10" fill="#fff7e6" stroke="#f0c866"/>
+  <text x="125" y="225" text-anchor="middle" font-size="16">⚡</text>
+  <text x="125" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="#8a6d1f">Random Noise</text>
+  <text x="125" y="258" text-anchor="middle" font-size="9.5" fill="#a1885a">(Latent z)</text>
+
+  <line x1="180" y1="230" x2="220" y2="230" stroke="#2b3a52" stroke-width="2" marker-end="url(#a3)"/>
+
+  <rect x="222" y="195" width="130" height="70" rx="10" fill="#d7f0e2" stroke="#1f9e5c" stroke-width="1.5"/>
+  <text x="287" y="222" text-anchor="middle" font-size="15">🛠</text>
+  <text x="287" y="248" text-anchor="middle" font-size="11.5" font-weight="700" fill="#146538">Generator (G)</text>
+
+  <line x1="352" y1="230" x2="392" y2="230" stroke="#2b3a52" stroke-width="2" marker-end="url(#a3)"/>
+
+  <rect x="394" y="200" width="100" height="60" rx="10" fill="#f3f4f6" stroke="#b9bec8"/>
+  <text x="444" y="234" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3a3f4a">Fake</text>
+  <text x="444" y="250" text-anchor="middle" font-size="10" fill="#7a7f89">Generated Img</text>
+
+  <text x="444" y="278" text-anchor="middle" font-size="10" fill="#9aa5b1">G(z)</text>
+
+  <text x="560" y="225" text-anchor="middle" font-size="22" font-weight="800" fill="#e2493b">vs</text>
+  <circle cx="560" cy="245" r="0" />
+
+  <rect x="600" y="195" width="150" height="70" rx="10" fill="#eef2fa" stroke="#2f6fd0" stroke-width="1.5"/>
+  <text x="675" y="222" text-anchor="middle" font-size="15">🔎</text>
+  <text x="675" y="248" text-anchor="middle" font-size="11.5" font-weight="700" fill="#173a70">Discriminator (D)</text>
+
+  <line x1="494" y1="230" x2="598" y2="230" stroke="#2b3a52" stroke-width="2" marker-end="url(#a3)" stroke-dasharray="0"/>
+
+  <rect x="800" y="200" width="120" height="60" rx="10" fill="#fdeef0" stroke="#eab6bd"/>
+  <text x="860" y="222" text-anchor="middle" font-size="11" font-weight="700" fill="#8a231a">Real Images</text>
+  <text x="860" y="238" text-anchor="middle" font-size="9.5" fill="#a1885a">Training Data (x)</text>
+
+  <line x1="798" y1="230" x2="752" y2="230" stroke="#2b3a52" stroke-width="2" marker-end="url(#a3)"/>
+
+  <rect x="600" y="290" width="150" height="46" rx="8" fill="#ffffff" stroke="#d7dae0"/>
+  <text x="675" y="308" text-anchor="middle" font-size="10.5" font-weight="700" fill="#3a3f4a">Prediction</text>
+  <text x="675" y="324" text-anchor="middle" font-size="10" fill="#2f6fd0">Real (1)</text>
+  <text x="710" y="324" text-anchor="middle" font-size="10" fill="#e2493b">Fake (0)</text>
+  <line x1="675" y1="290" x2="675" y2="266" stroke="#9aa5b1" stroke-width="1.5" marker-end="url(#a3)"/>
+
+  <!-- Key players & minimax -->
+  <rect x="40" y="392" width="450" height="130" rx="12" fill="#fbfbfc" stroke="#e2e4e9"/>
+  <text x="60" y="416" font-size="12" font-weight="700" fill="#3a3f4a">🧩 Key Players</text>
+  <text x="70" y="446" font-size="12" font-weight="700" fill="#146538">🛠 Generator (G)</text>
+  <text x="70" y="466" font-size="11.5" fill="#5f6470">"경찰(D)을 속일 만한 위조지폐를 만든다"</text>
+  <text x="70" y="490" font-size="12" font-weight="700" fill="#173a70">🔎 Discriminator (D)</text>
+  <text x="70" y="510" font-size="11.5" fill="#5f6470">"진짜와 가짜 데이터를 판별해낸다"</text>
+
+  <rect x="510" y="392" width="450" height="130" rx="12" fill="#f8f6ff" stroke="#c7b8fb"/>
+  <text x="530" y="416" font-size="12" font-weight="700" fill="#5b3fd6">⚖ Minimax Game (게임 이론)</text>
+  <text x="530" y="444" font-size="11.5" fill="#3a3f4a">제로섬 게임(Zero-Sum Game)과 유사합니다.</text>
+  <text x="530" y="466" font-size="11.5" fill="#3a3f4a">G: D가 실수하도록 유도합니다 (Maximize Error).</text>
+  <text x="530" y="486" font-size="11.5" fill="#3a3f4a">D: 자신의 판별 정확도를 높입니다 (Minimize Error).</text>
+  <text x="530" y="508" font-size="11.5" fill="#5f6470">이 경쟁의 균형점(Nash Equilibrium)에서 고품질 이미지가 생성됩니다.</text>
+</svg>
