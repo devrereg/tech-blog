@@ -1,0 +1,77 @@
+<svg width="720" height="380" viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect width="720" height="380" fill="#ffffff"/>
+
+  <!-- Divider -->
+  <line x1="360" y1="10" x2="360" y2="340" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Left: Greedy -->
+  <text x="175" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#1e293b">Greedy Search</text>
+  <text x="175" y="46" text-anchor="middle" font-size="10" fill="#64748b">매 순간 확률 1등만 선택</text>
+
+  <circle cx="175" cy="80" r="9" fill="#3b82f6"/>
+  <!-- level1 -->
+  <line x1="175" y1="89" x2="120" y2="130" stroke="#cbd5e1" stroke-width="1.3" stroke-dasharray="3 2"/>
+  <line x1="175" y1="89" x2="175" y2="130" stroke="#3b82f6" stroke-width="2"/>
+  <line x1="175" y1="89" x2="230" y2="130" stroke="#cbd5e1" stroke-width="1.3" stroke-dasharray="3 2"/>
+  <circle cx="120" cy="135" r="7" fill="#cbd5e1"/>
+  <circle cx="175" cy="135" r="9" fill="#3b82f6"/>
+  <circle cx="230" cy="135" r="7" fill="#cbd5e1"/>
+
+  <!-- level2 -->
+  <line x1="175" y1="144" x2="120" y2="185" stroke="#cbd5e1" stroke-width="1.3" stroke-dasharray="3 2"/>
+  <line x1="175" y1="144" x2="175" y2="185" stroke="#3b82f6" stroke-width="2"/>
+  <line x1="175" y1="144" x2="230" y2="185" stroke="#cbd5e1" stroke-width="1.3" stroke-dasharray="3 2"/>
+  <circle cx="120" cy="190" r="7" fill="#cbd5e1"/>
+  <circle cx="175" cy="190" r="9" fill="#3b82f6"/>
+  <circle cx="230" cy="190" r="7" fill="#cbd5e1"/>
+
+  <!-- level3 -->
+  <line x1="175" y1="199" x2="120" y2="240" stroke="#cbd5e1" stroke-width="1.3" stroke-dasharray="3 2"/>
+  <line x1="175" y1="199" x2="175" y2="240" stroke="#3b82f6" stroke-width="2"/>
+  <line x1="175" y1="199" x2="230" y2="240" stroke="#cbd5e1" stroke-width="1.3" stroke-dasharray="3 2"/>
+  <circle cx="120" cy="245" r="7" fill="#cbd5e1"/>
+  <circle cx="175" cy="245" r="9" fill="#3b82f6"/>
+  <circle cx="230" cy="245" r="7" fill="#cbd5e1"/>
+
+  <text x="175" y="280" text-anchor="middle" font-size="10" fill="#1d4ed8">경로 1개만 추적</text>
+  <text x="175" y="298" text-anchor="middle" font-size="10" fill="#94a3b8">빠르지만 국소 최적해 위험</text>
+
+  <!-- Right: Beam -->
+  <text x="545" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#1e293b">Beam Search (K=2)</text>
+  <text x="545" y="46" text-anchor="middle" font-size="10" fill="#64748b">상위 K개 경로를 동시에 유지</text>
+
+  <circle cx="545" cy="80" r="9" fill="#8b5cf6"/>
+  <!-- level1: keep 2 of 3 -->
+  <line x1="545" y1="89" x2="490" y2="130" stroke="#8b5cf6" stroke-width="2"/>
+  <line x1="545" y1="89" x2="545" y2="130" stroke="#8b5cf6" stroke-width="2"/>
+  <line x1="545" y1="89" x2="600" y2="130" stroke="#cbd5e1" stroke-width="1.3" stroke-dasharray="3 2"/>
+  <circle cx="490" cy="135" r="9" fill="#8b5cf6"/>
+  <circle cx="545" cy="135" r="9" fill="#8b5cf6"/>
+  <circle cx="600" cy="135" r="7" fill="#cbd5e1"/>
+
+  <!-- level2: each of 2 branches to 2, keep top2 overall -->
+  <line x1="490" y1="144" x2="465" y2="185" stroke="#8b5cf6" stroke-width="2"/>
+  <line x1="490" y1="144" x2="510" y2="185" stroke="#cbd5e1" stroke-width="1.3" stroke-dasharray="3 2"/>
+  <line x1="545" y1="144" x2="580" y2="185" stroke="#8b5cf6" stroke-width="2"/>
+  <line x1="545" y1="144" x2="620" y2="185" stroke="#cbd5e1" stroke-width="1.3" stroke-dasharray="3 2"/>
+  <circle cx="465" cy="190" r="9" fill="#8b5cf6"/>
+  <circle cx="510" cy="190" r="7" fill="#cbd5e1"/>
+  <circle cx="580" cy="190" r="9" fill="#8b5cf6"/>
+  <circle cx="620" cy="190" r="7" fill="#cbd5e1"/>
+
+  <!-- level3 -->
+  <line x1="465" y1="199" x2="450" y2="240" stroke="#8b5cf6" stroke-width="2"/>
+  <line x1="465" y1="199" x2="490" y2="240" stroke="#cbd5e1" stroke-width="1.3" stroke-dasharray="3 2"/>
+  <line x1="580" y1="199" x2="600" y2="240" stroke="#8b5cf6" stroke-width="2"/>
+  <line x1="580" y1="199" x2="640" y2="240" stroke="#cbd5e1" stroke-width="1.3" stroke-dasharray="3 2"/>
+  <circle cx="450" cy="245" r="9" fill="#8b5cf6"/>
+  <circle cx="490" cy="245" r="7" fill="#cbd5e1"/>
+  <circle cx="600" cy="245" r="9" fill="#8b5cf6"/>
+  <circle cx="640" cy="245" r="7" fill="#cbd5e1"/>
+
+  <text x="545" y="280" text-anchor="middle" font-size="10" fill="#6d28d9">경로 K개 동시 추적</text>
+  <text x="545" y="298" text-anchor="middle" font-size="10" fill="#94a3b8">느리지만(K배 비용) 더 자연스러운 문장</text>
+
+  <line x1="10" y1="330" x2="710" y2="330" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="360" y="356" text-anchor="middle" font-size="11" fill="#475569">파란/보라 실선 = 유지되는 경로, 회색 점선 = 버려지는 후보</text>
+</svg>
