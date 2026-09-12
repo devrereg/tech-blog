@@ -83,11 +83,11 @@
 ## 최근 글
 
 <!-- BLOG-POST-LIST:START -->
-- [AI는 새로운 이미지를 어떻게 만들까: 생성형 이미지 AI&lpar;GAN, VAE&rpar; 원리 총정리](https://devrereg.github.io/tech-blog/posts/generative-image-ai-gan-vae/)
-- [[라이프오아시스] MAUM Admin/백오피스 개발 및 자동화 — 800만 유저 LIKE 검색을 Fulltext Index로 100배 개선하고, 매월 반복되던 마케팅 프로모션 세팅을 Admin 기능으로 자동화](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-admin-fulltext-search-promotion-automation/)
-- [[라이프오아시스] MAUM 인앱결제 수수료 절감을 위한 토스페이먼츠 웹결제 연동 — 결제·재화 지급 정합성을 Saga 보상 트랜잭션으로 확보](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-tosspayments-web-payment/)
-- [[라이프오아시스] MAUM 근처 친구 추천 — 800만 유저 위치정보 전체 스캔을 3시간 배치 캐싱으로 전환](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-nearby-friends-recommendation/)
-- [[라이프오아시스] MAUM 운영 안정화 및 레거시 마이그레이션 — 분산된 멀티 레포 마이크로서비스를 Monorepo로 통합하고 Spring Boot 3 + Kotlin으로 순차 마이그레이션](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-monorepo-legacy-migration/)
+- [CNN + LSTM으로 이미지 캡셔닝 모델 만들기 — 원리부터 PyTorch 구현까지](https://devrereg.github.io/tech-blog/posts/image-captioning-cnn-lstm/)
+- [신경망 스타일 전이&lpar;Neural Style Transfer&rpar; 완전 정복 — 원리부터 PyTorch 구현까지](https://devrereg.github.io/tech-blog/posts/neural-style-transfer/)
+- [CNN 이미지 분류 실습&lpar;4&rpar; — 학습을 몇 배 빠르게? DataLoader·AMP·Gradient Accumulation·torch.compile로 훈련 최적화](https://devrereg.github.io/tech-blog/posts/cnn-classification-4-training-performance-optimization/)
+- [CNN 이미지 분류 실습&lpar;3&rpar; — 밑바닥부터 쌓은 CNN vs 전이학습&lpar;ResNet-18&rpar; 성능 비교](https://devrereg.github.io/tech-blog/posts/cnn-classification-3-cnn-scratch-vs-transfer-learning/)
+- [CNN 이미지 분류 실습&lpar;2&rpar; — VGG13, 미세조정 없이 사전학습 모델 그대로 써보기](https://devrereg.github.io/tech-blog/posts/cnn-classification-2-vgg13-pretrained-inference/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 연락
