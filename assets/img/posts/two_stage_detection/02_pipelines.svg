@@ -1,0 +1,107 @@
+<svg width="760" height="480" viewBox="0 0 760 480" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect width="760" height="480" fill="#ffffff"/>
+
+  <!-- Column headers -->
+  <text x="140" y="32" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">R-CNN (2014)</text>
+  <text x="140" y="50" text-anchor="middle" font-size="11" fill="#94a3b8">47초 / 이미지</text>
+
+  <text x="390" y="32" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">Fast R-CNN (2015)</text>
+  <text x="390" y="50" text-anchor="middle" font-size="11" fill="#94a3b8">0.32초 + SS 2초</text>
+
+  <text x="630" y="32" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">Faster R-CNN (2015)</text>
+  <text x="630" y="50" text-anchor="middle" font-size="11" fill="#94a3b8">0.2초 / 이미지</text>
+
+  <!-- divider lines -->
+  <line x1="255" y1="16" x2="255" y2="460" stroke="#e2e8f0" stroke-width="1.5"/>
+  <line x1="505" y1="16" x2="505" y2="460" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- ===== Column 1: R-CNN ===== -->
+  <g>
+    <rect x="40" y="70" width="200" height="46" rx="8" fill="#ffe4e6" stroke="#fb7185"/>
+    <text x="140" y="97" text-anchor="middle" font-size="12" font-weight="700" fill="#881337">Selective Search (~2초)</text>
+    <line x1="140" y1="116" x2="140" y2="132" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <rect x="40" y="134" width="200" height="46" rx="8" fill="#ffe4e6" stroke="#fb7185"/>
+    <text x="140" y="153" text-anchor="middle" font-size="11.5" font-weight="700" fill="#881337">Region 2,000개 각각</text>
+    <text x="140" y="169" text-anchor="middle" font-size="11.5" font-weight="700" fill="#881337">Warp → CNN 실행</text>
+    <line x1="140" y1="180" x2="140" y2="196" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <rect x="40" y="198" width="200" height="40" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="140" y="222" text-anchor="middle" font-size="12" font-weight="700" fill="#1e293b">별도 SVM 분류</text>
+    <line x1="140" y1="238" x2="140" y2="254" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <rect x="40" y="256" width="200" height="40" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="140" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="#1e293b">BBox Regression</text>
+
+    <rect x="40" y="316" width="200" height="120" rx="8" fill="#fff1f2" stroke="#fecdd3"/>
+    <text x="140" y="338" text-anchor="middle" font-size="11" font-weight="700" fill="#9f1239">문제점</text>
+    <text x="55" y="358" font-size="10.5" fill="#7f1d1d">· CNN을 2,000번 반복 실행</text>
+    <text x="55" y="376" font-size="10.5" fill="#7f1d1d">· CNN·SVM·Reg 분리 학습</text>
+    <text x="55" y="394" font-size="10.5" fill="#7f1d1d">· feature 디스크 저장 부담</text>
+    <text x="55" y="412" font-size="10.5" fill="#7f1d1d">· End-to-end 불가능</text>
+  </g>
+
+  <!-- ===== Column 2: Fast R-CNN ===== -->
+  <g>
+    <rect x="290" y="70" width="200" height="40" rx="8" fill="#dbeafe" stroke="#3b82f6"/>
+    <text x="390" y="94" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">전체 이미지 CNN (1회)</text>
+    <line x1="390" y1="110" x2="390" y2="126" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <rect x="290" y="128" width="200" height="40" rx="8" fill="#ffe4e6" stroke="#fb7185"/>
+    <text x="390" y="152" text-anchor="middle" font-size="12" font-weight="700" fill="#881337">Selective Search (~2초)</text>
+    <line x1="390" y1="168" x2="390" y2="184" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <rect x="290" y="186" width="200" height="40" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="390" y="210" text-anchor="middle" font-size="12" font-weight="700" fill="#1e293b">ROI Projection</text>
+    <line x1="390" y1="226" x2="390" y2="242" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <rect x="290" y="244" width="200" height="40" rx="8" fill="#dbeafe" stroke="#3b82f6"/>
+    <text x="390" y="268" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">ROI Pooling (7×7 고정)</text>
+    <line x1="390" y1="284" x2="390" y2="300" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <rect x="290" y="302" width="200" height="40" rx="8" fill="#dbeafe" stroke="#3b82f6"/>
+    <text x="390" y="322" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e3a8a">FC: 분류 + 좌표 회귀</text>
+    <text x="390" y="336" text-anchor="middle" font-size="10" fill="#3b5bab">(SVM 불필요)</text>
+
+    <rect x="290" y="360" width="200" height="76" rx="8" fill="#fff1f2" stroke="#fecdd3"/>
+    <text x="390" y="382" text-anchor="middle" font-size="11" font-weight="700" fill="#9f1239">남은 병목</text>
+    <text x="305" y="402" font-size="10.5" fill="#7f1d1d">· CNN은 0.32초로 단축</text>
+    <text x="305" y="420" font-size="10.5" fill="#7f1d1d">· 그러나 SS가 여전히 2초</text>
+  </g>
+
+  <!-- ===== Column 3: Faster R-CNN ===== -->
+  <g>
+    <rect x="530" y="70" width="200" height="40" rx="8" fill="#dbeafe" stroke="#3b82f6"/>
+    <text x="630" y="94" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">전체 이미지 CNN (1회)</text>
+    <line x1="630" y1="110" x2="630" y2="126" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <rect x="530" y="128" width="200" height="40" rx="8" fill="#dcfce7" stroke="#22c55e"/>
+    <text x="630" y="152" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">RPN (region proposal)</text>
+    <line x1="630" y1="168" x2="630" y2="184" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <rect x="530" y="186" width="200" height="40" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="630" y="210" text-anchor="middle" font-size="12" font-weight="700" fill="#1e293b">ROI Projection</text>
+    <line x1="630" y1="226" x2="630" y2="242" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <rect x="530" y="244" width="200" height="40" rx="8" fill="#dbeafe" stroke="#3b82f6"/>
+    <text x="630" y="268" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">ROI Pooling (7×7 고정)</text>
+    <line x1="630" y1="284" x2="630" y2="300" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <rect x="530" y="302" width="200" height="40" rx="8" fill="#dbeafe" stroke="#3b82f6"/>
+    <text x="630" y="322" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e3a8a">FC: 분류 + 좌표 회귀</text>
+    <text x="630" y="336" text-anchor="middle" font-size="10" fill="#3b5bab">(Fast R-CNN 헤드 재사용)</text>
+
+    <rect x="530" y="360" width="200" height="76" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="630" y="382" text-anchor="middle" font-size="11" font-weight="700" fill="#166534">해결</text>
+    <text x="545" y="402" font-size="10.5" fill="#14532d">· SS(CPU, 2초) → RPN(GPU)</text>
+    <text x="545" y="420" font-size="10.5" fill="#14532d">· 완전한 End-to-End 학습</text>
+  </g>
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text x="380" y="465" text-anchor="middle" font-size="12" fill="#475569">붉은 박스 = Selective Search 병목 · 초록 박스 = RPN으로 대체된 구간</text>
+</svg>

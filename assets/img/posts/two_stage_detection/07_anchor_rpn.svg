@@ -1,0 +1,88 @@
+<svg width="760" height="440" viewBox="0 0 760 440" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect width="760" height="440" fill="#ffffff"/>
+
+  <!-- ===== Left: anchor boxes on feature map ===== -->
+  <text x="180" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Feature map 각 위치의 9개 Anchor</text>
+
+  <rect x="20" y="50" width="320" height="290" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+
+  <!-- grid -->
+  <g stroke="#cbd5e1" stroke-width="1">
+    <rect x="40" y="90" width="240" height="160" fill="none"/>
+    <line x1="80" y1="90" x2="80" y2="250"/>
+    <line x1="120" y1="90" x2="120" y2="250"/>
+    <line x1="160" y1="90" x2="160" y2="250"/>
+    <line x1="200" y1="90" x2="200" y2="250"/>
+    <line x1="240" y1="90" x2="240" y2="250"/>
+    <line x1="40" y1="130" x2="280" y2="130"/>
+    <line x1="40" y1="170" x2="280" y2="170"/>
+    <line x1="40" y1="210" x2="280" y2="210"/>
+  </g>
+  <rect x="160" y="170" width="40" height="40" fill="#fef9c3" stroke="#eab308" stroke-width="1.5"/>
+  <text x="180" y="270" text-anchor="middle" font-size="10.5" fill="#64748b">노란 칸 = 3×3 conv의 현재 위치</text>
+
+  <!-- large anchors (purple) -->
+  <rect x="98.7" y="108.7" width="162.6" height="81.3" fill="none" stroke="#8b5cf6" stroke-width="1.4"/>
+  <rect x="139.4" y="132.4" width="81.3" height="162.6" fill="none" stroke="#8b5cf6" stroke-width="1.4"/>
+  <rect x="122.5" y="132.5" width="115" height="115" fill="none" stroke="#8b5cf6" stroke-width="1.4"/>
+
+  <!-- medium anchors (blue) -->
+  <rect x="123.6" y="161.7" width="113" height="56.6" fill="none" stroke="#3b82f6" stroke-width="1.4"/>
+  <rect x="151.7" y="133.6" width="56.6" height="113" fill="none" stroke="#3b82f6" stroke-width="1.4"/>
+  <rect x="140" y="150" width="80" height="80" fill="none" stroke="#3b82f6" stroke-width="1.4"/>
+
+  <!-- small anchors (rose) -->
+  <rect x="144.6" y="172.3" width="70.7" height="35.4" fill="none" stroke="#fb7185" stroke-width="1.6"/>
+  <rect x="162.3" y="154.6" width="35.4" height="70.7" fill="none" stroke="#fb7185" stroke-width="1.6"/>
+  <rect x="155" y="165" width="50" height="50" fill="none" stroke="#fb7185" stroke-width="1.6"/>
+
+  <circle cx="180" cy="190" r="2.5" fill="#1e293b"/>
+
+  <g font-size="10.5">
+    <rect x="40" y="286" width="12" height="12" fill="none" stroke="#fb7185" stroke-width="1.6"/>
+    <text x="58" y="296" fill="#334155">128² (소형)</text>
+    <rect x="150" y="286" width="12" height="12" fill="none" stroke="#3b82f6" stroke-width="1.6"/>
+    <text x="168" y="296" fill="#334155">256² (중형)</text>
+    <rect x="40" y="308" width="12" height="12" fill="none" stroke="#8b5cf6" stroke-width="1.6"/>
+    <text x="58" y="318" fill="#334155">512² (대형)</text>
+    <text x="168" y="318" fill="#94a3b8">× 비율 1:1, 1:2, 2:1</text>
+  </g>
+
+  <!-- ===== Right: RPN head structure ===== -->
+  <text x="580" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">RPN 헤드 구조</text>
+
+  <rect x="440" y="60" width="280" height="50" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="580" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="#1e293b">Feature Map (H×W×C)</text>
+  <line x1="580" y1="110" x2="580" y2="128" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrr)"/>
+
+  <rect x="440" y="130" width="280" height="50" rx="8" fill="#fef9c3" stroke="#eab308"/>
+  <text x="580" y="152" text-anchor="middle" font-size="12" font-weight="700" fill="#713f12">3×3 Conv Sliding Window</text>
+  <text x="580" y="168" text-anchor="middle" font-size="10" fill="#854d0e">위치마다 9개 anchor 대응</text>
+
+  <line x1="540" y1="180" x2="480" y2="210" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrr)"/>
+  <line x1="620" y1="180" x2="680" y2="210" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrr)"/>
+
+  <rect x="420" y="212" width="200" height="70" rx="8" fill="#dbeafe" stroke="#3b82f6"/>
+  <text x="520" y="234" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e3a8a">Classification</text>
+  <text x="520" y="252" text-anchor="middle" font-size="10.5" fill="#1e3a8a">객체 있음 / 배경</text>
+  <text x="520" y="268" text-anchor="middle" font-size="10" fill="#3b5bab">2 × 9 = 18 출력</text>
+
+  <rect x="620" y="212" width="120" height="70" rx="8" fill="#ede9fe" stroke="#8b5cf6"/>
+  <text x="680" y="234" text-anchor="middle" font-size="11.5" font-weight="700" fill="#4c1d95">Regression</text>
+  <text x="680" y="252" text-anchor="middle" font-size="10.5" fill="#4c1d95">(x,y,w,h) offset</text>
+  <text x="680" y="268" text-anchor="middle" font-size="10" fill="#5b21b6">4 × 9 = 36 출력</text>
+
+  <rect x="420" y="300" width="320" height="96" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="580" y="322" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">"클래스가 뭔지"는 아직 안 따진다</text>
+  <text x="440" y="344" font-size="10.5" fill="#475569">· cls: 이 anchor가 객체(fg)인지 배경(bg)인지만 판단</text>
+  <text x="440" y="362" font-size="10.5" fill="#475569">· reg: anchor를 정답 박스에 가깝게 이동·확대/축소</text>
+  <text x="440" y="380" font-size="10.5" fill="#475569">· 최종 클래스 분류는 뒤이은 Fast R-CNN 헤드가 담당</text>
+
+  <defs>
+    <marker id="arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text x="380" y="418" text-anchor="middle" font-size="12" fill="#475569">기존 Sliding Window(2절)와 달리, 이미 계산된 feature map 위에서만 3×3 conv가 움직이므로 훨씬 가볍다</text>
+</svg>

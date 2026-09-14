@@ -1,0 +1,38 @@
+<svg width="680" height="380" viewBox="0 0 680 380" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect width="680" height="380" fill="#ffffff"/>
+
+  <!-- scene -->
+  <rect x="40" y="30" width="330" height="260" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+
+  <!-- Ground Truth box -->
+  <rect x="90" y="70" width="180" height="150" fill="#dcfce7" fill-opacity="0.55" stroke="#22c55e" stroke-width="2.5"/>
+  <text x="100" y="62" font-size="12" font-weight="700" fill="#166534">Ground Truth (G)</text>
+
+  <!-- Prediction box -->
+  <rect x="170" y="130" width="180" height="150" fill="#dbeafe" fill-opacity="0.55" stroke="#3b82f6" stroke-width="2.5"/>
+  <text x="220" y="298" font-size="12" font-weight="700" fill="#1e3a8a">Prediction (P)</text>
+
+  <!-- intersection label -->
+  <rect x="185" y="150" width="65" height="45" fill="#fde68a" fill-opacity="0.7" stroke="none"/>
+  <text x="217" y="176" text-anchor="middle" font-size="10.5" font-weight="700" fill="#78350f">교집합</text>
+
+  <!-- legend -->
+  <rect x="410" y="60" width="16" height="16" fill="#fde68a" fill-opacity="0.9"/>
+  <text x="434" y="73" font-size="12" fill="#334155">교집합 (Area of Overlap)</text>
+  <rect x="410" y="88" width="16" height="16" fill="none" stroke="#94a3b8" stroke-width="2"/>
+  <text x="434" y="101" font-size="12" fill="#334155">합집합 (Area of Union)</text>
+
+  <!-- formula -->
+  <rect x="400" y="130" width="240" height="90" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="520" y="165" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">IoU = 교집합 / 합집합</text>
+  <text x="520" y="188" text-anchor="middle" font-size="11" fill="#64748b">PASCAL VOC: IoU ≥ 0.5면 성공</text>
+  <text x="520" y="204" text-anchor="middle" font-size="11" fill="#64748b">COCO: 0.5~0.95, 0.05 간격 평균</text>
+
+  <rect x="400" y="238" width="240" height="90" rx="10" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="520" y="262" text-anchor="middle" font-size="12" font-weight="700" fill="#9a3412">gIoU</text>
+  <text x="520" y="282" text-anchor="middle" font-size="10.5" fill="#7c2d12">두 박스가 안 겹치면 IoU=0으로</text>
+  <text x="520" y="298" text-anchor="middle" font-size="10.5" fill="#7c2d12">고정 — 둘러싸는 박스 C로</text>
+  <text x="520" y="314" text-anchor="middle" font-size="10.5" fill="#7c2d12">"얼마나 먼지" 방향성을 보완</text>
+
+  <text x="340" y="345" text-anchor="middle" font-size="12" fill="#475569">두 박스가 겹칠수록 IoU는 1에 가까워지고, 전혀 안 겹치면 0이 된다</text>
+</svg>
