@@ -83,11 +83,11 @@
 ## 최근 글
 
 <!-- BLOG-POST-LIST:START -->
+- [LangChain 대신 LangGraph를 선택한 이유: State 공유 관점에서](https://devrereg.github.io/tech-blog/posts/langchain-vs-langgraph-state-sharing/)
 - [객체 검출&lpar;1&rpar; — Two-Stage Detector 완전 정리: R-CNN에서 Faster R-CNN까지](https://devrereg.github.io/tech-blog/posts/object-detection-1-two-stage-detector/)
 - [CNN + LSTM으로 이미지 캡셔닝 모델 만들기 — 원리부터 PyTorch 구현까지](https://devrereg.github.io/tech-blog/posts/image-captioning-cnn-lstm/)
 - [신경망 스타일 전이&lpar;Neural Style Transfer&rpar; 완전 정복 — 원리부터 PyTorch 구현까지](https://devrereg.github.io/tech-blog/posts/neural-style-transfer/)
 - [CNN 이미지 분류 실습&lpar;4&rpar; — 학습을 몇 배 빠르게? DataLoader·AMP·Gradient Accumulation·torch.compile로 훈련 최적화](https://devrereg.github.io/tech-blog/posts/cnn-classification-4-training-performance-optimization/)
-- [CNN 이미지 분류 실습&lpar;3&rpar; — 밑바닥부터 쌓은 CNN vs 전이학습&lpar;ResNet-18&rpar; 성능 비교](https://devrereg.github.io/tech-blog/posts/cnn-classification-3-cnn-scratch-vs-transfer-learning/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 연락
