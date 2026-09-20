@@ -1,0 +1,35 @@
+<svg width="560" height="480" viewBox="0 0 560 480" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect width="560" height="480" fill="#ffffff"/>
+
+  <text x="280" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">ROC Curve와 AUC</text>
+
+  <!-- axes -->
+  <line x1="100" y1="400" x2="460" y2="400" stroke="#cbd5e1" stroke-width="1.5"/>
+  <line x1="100" y1="400" x2="100" y2="60" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <text x="280" y="440" text-anchor="middle" font-size="11" fill="#475569">FPR (거짓양성률) →</text>
+  <text x="46" y="230" text-anchor="middle" font-size="11" fill="#475569" transform="rotate(-90 46 230)">TPR (민감도) →</text>
+
+  <text x="100" y="416" text-anchor="middle" font-size="10" fill="#94a3b8">0</text>
+  <text x="460" y="416" text-anchor="middle" font-size="10" fill="#94a3b8">1</text>
+  <text x="90" y="404" text-anchor="end" font-size="10" fill="#94a3b8">0</text>
+  <text x="90" y="64" text-anchor="end" font-size="10" fill="#94a3b8">1</text>
+
+  <!-- AUC shaded area under curve -->
+  <path d="M100,400 C100,220 110,80 460,60 L460,400 Z" fill="#dbeafe" opacity="0.6"/>
+
+  <!-- diagonal (random classifier) -->
+  <line x1="100" y1="400" x2="460" y2="60" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="330" y="215" font-size="10" fill="#64748b" transform="rotate(-38 330 215)">무작위 추측 (AUC = 0.5)</text>
+
+  <!-- ROC curve bowing toward top-left -->
+  <path d="M100,400 C100,220 110,80 460,60" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- perfect point -->
+  <circle cx="100" cy="60" r="4.5" fill="#14b8a6"/>
+  <text x="112" y="56" font-size="10" fill="#0f766e">(0,1) 완벽한 분류점</text>
+
+  <text x="300" y="150" font-size="15" font-weight="700" fill="#1e40af">AUC ≈ 0.9 (예시)</text>
+  <text x="300" y="168" font-size="10.5" fill="#334155">곡선이 왼쪽 위 모서리에</text>
+  <text x="300" y="182" font-size="10.5" fill="#334155">가까울수록 좋은 모델</text>
+</svg>

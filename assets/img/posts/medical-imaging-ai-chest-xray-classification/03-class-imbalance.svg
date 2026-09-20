@@ -1,0 +1,35 @@
+<svg width="640" height="420" viewBox="0 0 640 420" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', 'Apple SD Gothic Neo', sans-serif">
+  <rect width="640" height="420" fill="#ffffff"/>
+
+  <text x="320" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">클래스별 이미지 수 — 약 2.9배 차이</text>
+
+  <!-- gridlines -->
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="90" y1="320" x2="560" y2="320"/>
+    <line x1="90" y1="250" x2="560" y2="250"/>
+    <line x1="90" y1="180" x2="560" y2="180"/>
+    <line x1="90" y1="110" x2="560" y2="110"/>
+    <line x1="90" y1="49" x2="560" y2="49"/>
+  </g>
+  <g font-size="10" fill="#94a3b8" text-anchor="end">
+    <text x="80" y="324">0</text>
+    <text x="80" y="254">1,000</text>
+    <text x="80" y="184">2,000</text>
+    <text x="80" y="114">3,000</text>
+    <text x="80" y="53">4,000</text>
+  </g>
+  <line x1="90" y1="320" x2="90" y2="49" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="90" y1="320" x2="560" y2="320" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- NORMAL bar: 1341 -->
+  <rect x="180" y="226" width="120" height="94" rx="4" fill="#3b82f6"/>
+  <text x="240" y="212" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">1,341장</text>
+  <text x="240" y="342" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">NORMAL</text>
+
+  <!-- PNEUMONIA bar: 3875 -->
+  <rect x="380" y="49" width="120" height="271" rx="4" fill="#f59e0b"/>
+  <text x="440" y="35" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">3,875장</text>
+  <text x="440" y="342" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">PNEUMONIA</text>
+
+  <text x="320" y="372" text-anchor="middle" font-size="10.5" fill="#64748b">그대로 학습하면 "무조건 폐렴"이라고만 찍어도 정확도가 높아 보이는 함정 발생</text>
+</svg>
