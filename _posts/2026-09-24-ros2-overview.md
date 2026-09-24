@@ -1,9 +1,9 @@
 ---
-title: "ROS2 한 장 요약 — 개념, ROS1과의 차이, 핵심 도구까지"
+title: "ROS2 한 장 요약"
 date: 2026-09-24 09:00:00 +0900
 categories: [ROS2]
 tags: [ros2, ros, robotics, dds, middleware, nav2, moveit, gazebo, rviz]
-description: "ROS2가 무엇인지, ROS1과 무엇이 다른지, 노드·토픽·서비스·액션 같은 핵심 개념과 RViz2·Gazebo·Nav2·MoveIt 2 같은 주요 도구를 한 장으로 정리했다."
+description: "ROS2가 무엇인지 합습 전에 알아보기"
 ---
 
 > 로봇에는 카메라, 라이다, 모터 제어, 경로 계획 같은 여러 기능이 동시에 돌아갑니다. 이 기능들을 어떻게 나누고, 어떻게 서로 데이터를 주고받게 할까요? 그 답으로 사실상 표준이 된 것이 **ROS2**입니다. 이 글에서는 ROS2가 무엇인지부터 ROS1과의 차이, 꼭 알아야 할 핵심 개념, 함께 쓰는 도구와 버전 정책까지 한 장으로 정리합니다.
