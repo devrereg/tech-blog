@@ -11,7 +11,7 @@ description: "마인드리퍼블릭 WENOA의 인플루언서 카테고리 검색
 
 - **회사 / 서비스**: 마인드리퍼블릭 / WENOA
 - **프로젝트명**: 인플루언서 카테고리 매칭 개선을 위한 ETL 파이프라인 구축
-- **일정**: 2025.07 (3개월)
+- **일정**: 2025.09 (2주)
 - **역할**: 카테고리 매칭 로직 설계 · 개발 (LLM 요약, 임베딩, 유사도 기반 매칭)
 - **기술 스택**
   - Backend: Spring Boot 3 (Kotlin)
@@ -46,7 +46,7 @@ description: "마인드리퍼블릭 WENOA의 인플루언서 카테고리 검색
 
 ## 아키텍처
 
-![WENOA 인플루언서 카테고리 매칭 ETL 파이프라인 아키텍처(2025.07) 다이어그램](/assets/img/posts/mindrepublic-wenoa-influencer-search/wenoa_influencer_etl_pipeline.png)
+![WENOA 인플루언서 카테고리 매칭 ETL 파이프라인 아키텍처 다이어그램](/assets/img/posts/mindrepublic-wenoa-influencer-search/wenoa_influencer_etl_pipeline.png)
 
 
 - **수집 (Extract)**: 일 1,000개 키워드로 Google 검색 → SNS별 채널 ID 파싱 → 채널 상세정보 크롤링 → 원본 데이터 저장. 클라우드 IP 차단을 피하기 위해 크롤링은 Local PC에서 수행
