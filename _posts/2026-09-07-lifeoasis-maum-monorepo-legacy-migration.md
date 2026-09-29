@@ -1,94 +1,80 @@
 ---
-title: "[라이프오아시스] MAUM 운영 안정화 및 레거시 마이그레이션 — 분산된 멀티 레포 마이크로서비스를 Monorepo로 통합하고 Spring Boot 3 + Kotlin으로 순차 마이그레이션"
+title: "[라이프오아시스] MAUM 운영 안정화 — 멀티 레포 마이크로서비스 Monorepo 통합 및 레거시 마이그레이션"
 date: 2026-09-07 07:00:00 +0900
 categories: [포트폴리오]
-tags: [portfolio, lifeoasis, maum, monorepo, microservices, legacy-migration, spring-boot, kotlin, mysql, dynamodb, redis, grpc, graphql, kubernetes, k8s, grafana, slow-query]
-description: "라이프오아시스 MAUM의 2년(2023.05~2025.05) 운영 안정화·레거시 마이그레이션 기록. 여러 repo로 분산 운영되던 마이크로서비스를 하나의 Monorepo로 통합해 소수 인력의 개발·테스트 비효율을 없애고, 서로 다른 프레임워크로 구현돼 있던 서비스를 채용 시장 수요가 가장 높은 Spring Boot 3 + Kotlin으로 순차 마이그레이션하면서 Slow Query 개선 등 성능 최적화를 병행했다."
+tags: [spring-boot, kotlin, gradle, mysql, dynamodb, redis, grpc, graphql, kubernetes, grafana, monorepo, git-submodule]
+description: 여러 프레임워크로 나뉘어 있던 11개 마이크로서비스를 Monorepo로 합치고, Spring Boot 3 + Kotlin으로 마이그레이션한 과정을 정리
 ---
-
-> 라이프오아시스에서 운영하는 서비스 **MAUM**의 **운영 안정화 및 레거시 마이그레이션** 기록입니다. 백엔드 인력 2명이 여러 repo로 분산된 마이크로서비스를 관리하던 구조를 **하나의 Monorepo로 통합**하고, 마이크로서비스별로 제각각이던 프레임워크를 **Spring Boot 3 + Kotlin으로 순차 마이그레이션**하면서 성능 최적화까지 함께 진행한 2년간의 과정을 정리합니다.
 
 ## 프로젝트 개요
 
 - **회사 / 서비스**: 라이프오아시스 / MAUM
-- **프로젝트명**: 운영 안정화 및 레거시 마이그레이션
+- **프로젝트명**: MAUM 운영 안정화 및 레거시 마이그레이션
 - **일정**: 2023.05 ~ 2025.05 (2년)
-- **기술 스택**: Kubernetes (K8s) · Spring Boot 3 (Kotlin) · MySQL · DynamoDB · Redis · GraphQL · gRPC · Grafana
-
-**설계 기준**
-
-- 여러 repo로 분산 운영되던 마이크로서비스를 **Monorepo로 통합**
-- 다양한 프레임워크로 구현된 마이크로서비스를 **Spring Boot 3 + Kotlin으로 마이그레이션**
-
----
-
-## 아키텍처
-
-![MAUM 멀티 레포 → Monorepo 통합 및 Spring Boot 3 + Kotlin 마이그레이션 아키텍처(2023.05~2025.05) 다이어그램. 기술 스택은 K8s, Spring Boot3 + Kotlin, MySQL, DynamoDB, Grafana, GraphQL, gRPC, Redis. 상단 통합 전(Before): 마이크로서비스마다 별도의 Git Repository가 존재하고 각 repo가 서로 다른 언어·프레임워크로 구현돼 있다 — MSA #1 Repo(Node.js/Express), MSA #2 Repo(Django/Python), MSA #3 Repo(Ruby on Rails), MSA #4 Repo(Go/Gin). 왼쪽의 '백엔드 인력 2명'이 이 여러 repo를 점선 화살표로 이어 개발·관리(비효율)하며, 기능 개발·테스트 시 여러 repo를 동시에 띄워야 하는 비효율과 프레임워크 혼재로 인한 채용 어려움이 있다. 각 repo에서 아래쪽 K8s Cluster 안의 Monorepo(MAUM)로 '마이그레이션' 화살표가 향한다. 하단 통합 후(After): K8s Cluster 안의 하나의 Monorepo(MAUM)에 MSA #1~#4 모듈이 디렉터리로 들어가 있다 — MSA #1(Spring Boot3 + Kotlin, 완료 ✅), MSA #2(Spring Boot3 + Kotlin, 완료 ✅), MSA #3(마이그레이션 중, 60%), MSA #4(마이그레이션 예정). 왼쪽의 '백엔드 개발자(신규 채용 성공)'가 '단일 환경에서 개발·테스트'한다. Monorepo 아래에는 데이터/통신 계층으로 MySQL(Slow Query 개선), DynamoDB, Redis, gRPC / GraphQL API Gateway가 연동되고, 이들의 '메트릭 수집'이 맨 아래 Grafana(통합 모니터링)로 모인다. 하단 결과: MAUM 담당 백엔드 개발자 채용 성공, 레거시 60% 마이그레이션 완료, 성능 개선(Slow Query 등) 동시 달성](/assets/img/posts/maum-monorepo-migration/maum_legacy_migration_architecture.drawio.png)
-
-*MAUM 레거시 마이그레이션 구조 (2023.05~2025.05) — Node.js/Express·Django/Python·Ruby on Rails·Go/Gin 등 서로 다른 프레임워크로 분리 운영되던 마이크로서비스(MSA #1~#4) repo를 K8s Cluster 위의 하나의 Monorepo(MAUM)로 합쳐 단일 환경에서 개발·테스트하도록 만들고, 각 모듈을 Spring Boot 3 + Kotlin으로 순차 마이그레이션했다(MSA #1·#2 완료, #3 진행 중 60%, #4 예정). 데이터/통신 계층은 MySQL·DynamoDB·Redis·gRPC/GraphQL API Gateway를 공유하고 Grafana로 통합 모니터링하며, MySQL Slow Query 개선 등 성능 최적화를 병행했다.*
-
-전체 작업은 **① 멀티 레포 → Monorepo 통합 → ② 모듈 단위 Spring Boot 3 + Kotlin 순차 마이그레이션 → ③ 마이그레이션과 함께 성능 최적화** 순으로 진행됐다.
-
-**1. 멀티 레포 → Monorepo 통합**
-
-- 마이크로서비스마다 흩어져 있던 저장소를 하나의 Monorepo로 합치고, 각 서비스를 모듈(디렉터리) 단위로 배치했다.
-- 개발자가 **단일 프로젝트만 열면** 관련 서비스를 전부 빌드·실행·테스트할 수 있도록 구조를 정리했다.
-
-**2. 모듈 단위 Spring Boot 3 + Kotlin 마이그레이션**
-
-- Node.js/Express, Django/Python, Ruby on Rails, Go/Gin 등 서로 다른 프레임워크로 구현된 모듈(MSA #1~#4)을 **Spring Boot 3 + Kotlin**으로 하나씩 순차 마이그레이션했다.
-- 운영 중인 서비스이므로 전체를 한 번에 바꾸지 않고, 모듈 경계 단위로 옮기면서 기존 레거시와 신규 구현이 공존하도록 했다. (MSA #1·#2 완료, #3 진행 중 60%, #4 예정)
-- 서비스 간 통신은 gRPC·GraphQL(API Gateway)로, 데이터 계층은 MySQL·DynamoDB·Redis로 유지해 마이그레이션 중에도 인터페이스가 깨지지 않게 했다.
-
-**3. 성능 최적화 병행**
-
-- 마이그레이션으로 코드를 다시 들여다보는 시점에 맞춰 **Slow Query를 함께 개선**했다.
-- K8s 배포·Grafana 모니터링 위에서 개선 전후 지표를 확인하며 진행했다.
+- **역할**: 백엔드 개발 (백엔드 3인, Monorepo 구조 설계 및 마이그레이션)
+- **기술 스택**
+  - Backend: Spring Boot 3 (Kotlin) · Gradle 멀티모듈 · gRPC · GraphQL (API Gateway)
+  - Legacy: NestJS · Python (Django, FastAPI) · Go
+  - Database: MySQL · DynamoDB · Redis
+  - Infra: Kubernetes · Grafana · Git Submodule
 
 ---
 
 ## 문제
 
-### 1. 소수 인력의 다수 레포 관리로 인한 개발 비효율
+MAUM은 11개의 마이크로서비스가 **서비스마다 별도 repo**로 나뉘어 있었고, **NestJS, Django, FastAPI, Go** 등 각기 다른 프레임워크로 만들어져 있었다. 이걸 백엔드 3명이 모두 관리해야 했다.
 
-- 백엔드 인력 **2명**이 여러 repo로 분산된 마이크로서비스를 모두 관리해야 했다.
-- 기능 하나를 개발·테스트하려면 관련된 **여러 repo를 동시에 clone·실행**해야 했고, repo마다 실행 방법·설정·의존성이 달라 준비 과정 자체가 비용이었다.
-- repo가 늘어날수록 소수 인력이 감당해야 하는 유지보수 범위가 넓어졌다.
+기능 하나를 개발하려면 관련 repo를 여러 개 동시에 띄워야 했다. repo마다 만든 사람이 달라서, 다른 서비스의 로직을 써야 할 때마다 담당자에게 확인하는 커뮤니케이션 비용이 컸다.
 
-### 2. 다양한 프레임워크 혼재로 인한 채용 및 유지보수 어려움
-
-- 마이크로서비스별로 **서로 다른 프레임워크**가 사용되고 있었다. (Node.js/Express, Django/Python, Ruby on Rails, Go/Gin 등)
-- MAUM 담당 개발자를 채용하려 해도, 여러 프레임워크를 모두 다룰 수 있는 적합한 인력을 찾기 어려웠다.
-- 프레임워크마다 관례·빌드·테스트 방식이 달라, 한 사람이 전체를 유지보수하는 부담이 컸다.
+프레임워크가 제각각이다 보니 한 사람이 전체를 유지보수하기 어려웠고, 이 스택을 다 다룰 수 있는 사람을 구하기도 힘들어 **MAUM 담당 개발자 채용**에도 어려움이 있었다.
 
 ---
 
 ## 해결
 
-### 1. 전체 마이크로서비스를 Monorepo로 통합
+흩어진 repo를 **하나의 Monorepo로 합쳐** 한 곳에서 개발하고 테스트할 수 있게 했다. 그리고 각 서비스를 **Spring Boot 3 + Kotlin**으로 하나씩 옮기면서 Gradle 멀티모듈로 구성했다.
 
-- MAUM의 마이크로서비스를 **하나의 Monorepo로 통합**하고, 각 서비스를 모듈 단위로 배치했다.
-- 단일 프로젝트 환경에서 관련 서비스를 한 번에 띄워 **개발·테스트가 가능**하도록 구조를 개선했다. 기능 개발 시 여러 repo를 오가며 맞추던 작업이 사라졌다.
-- 저장소가 하나로 모이면서, 소수 인력이 전체 코드베이스를 한눈에 파악하고 유지보수할 수 있게 됐다.
+옮기는 과정에서 repo마다 중복돼 있던 공통 함수, 테이블 엔티티, 라이브러리는 **공통 모듈로 분리**해 여러 서비스가 같이 쓰도록 했다. 코드를 다시 보면서 발견한 **Slow Query와 작은 버그들**도 함께 수정했다.
 
-### 2. Spring Boot 3 + Kotlin으로 순차 마이그레이션 + 성능 최적화
+**설계 기준**
 
-- Monorepo 통합과 함께, 각 마이크로서비스를 **채용 시장에서 수요가 가장 높은 Spring Boot 3 기반**으로 순차 마이그레이션했다.
-- 운영 리스크를 줄이기 위해 모듈 단위로 나눠 옮기고, 마이그레이션이 끝난 모듈부터 표준 스택으로 수렴시켰다.
-- 마이그레이션 과정에서 코드를 다시 검토하는 김에 **Slow Query 개선 등 성능 최적화를 병행**해, 구조 개선과 성능 개선을 한 번의 작업으로 처리했다.
+- 프로젝트 하나만 열면 관련 서비스를 모두 빌드·실행·테스트할 수 있어야 함
+- 운영 중인 서비스이므로 옮기는 동안에도 서비스가 멈추면 안 됨
+- 기존 서비스와 새 서비스가 함께 돌아가는 동안 API가 깨지면 안 됨
+- 급하게 수정할 일이 생기면 기존 방식대로도 고칠 수 있어야 함
+- 적은 인원으로 유지보수할 수 있고, 채용이 쉬운 스택 하나로 모아야 함
+
+## 아키텍처
+
+[![MAUM 멀티 레포 → Monorepo 통합 및 Spring Boot 3 + Kotlin 마이그레이션 아키텍처](/assets/img/posts/maum-monorepo-migration/maum_legacy_migration_architecture.png)](/assets/img/posts/maum-monorepo-migration/maum_legacy_migration_architecture.png)
+
+- **Before**: 11개 서비스가 각각 별도 repo로 존재 (NestJS · Django · FastAPI · Go)
+- **After**: 하나의 Monorepo(MAUM) 안에서 Spring Boot 3 + Kotlin Gradle 멀티모듈로 구성. 공통 함수, 테이블 엔티티, 라이브러리는 공통 모듈로 빼고 루트 Gradle에서 의존관계를 관리
+- **미전환 서비스**: 기존 repo에서 그대로 운영해 급한 수정은 기존 방식대로 처리하고, 전환 후 안정화되면 기존 repo 제거
+- **데이터 / 통신**: MySQL · DynamoDB · Redis, gRPC · GraphQL API Gateway는 기존 방식 그대로 사용하고, Grafana로 모니터링
+
+작업은 **Monorepo 통합 → 서비스별 순차 마이그레이션 및 공통 모듈 분리 → 안정화 후 기존 repo 제거** 순서로 진행했다.
+
+**Monorepo를 선택한 이유**: 서비스가 많은 것보다, 적은 인원이 여러 repo를 오가며 환경을 맞추는 게 더 큰 문제였다. 서비스는 모듈로 나눠둔 채 저장소만 하나로 합치면, MSA 구조는 유지하면서 개발 환경은 하나로 쓸 수 있었다.
+
+**순차 마이그레이션을 선택한 이유**: 운영 중인 서비스를 한 번에 바꾸면 장애 위험이 크다. 서비스 단위로 하나씩 옮기고, 서비스 간 통신(gRPC · GraphQL)과 DB는 그대로 둬서 기존 서비스와 새 서비스가 같이 돌아가는 동안에도 API가 깨지지 않게 했다.
+
+**Spring Boot 3 + Kotlin을 선택한 이유**: 목표는 여러 개로 흩어진 기술 스택을 하나로 모으는 것이었다. 국내 개발자 풀이 가장 넓은 Spring Boot를 선택해 채용 문제를 해결하고자 했고, 언어는 Java보다 가독성이 좋은 Kotlin을 선택했다.
 
 ---
 
 ## 결과
 
-### 1. 소수 인력의 다수 레포 관리로 인한 개발 비효율
+- 여러 repo를 오가던 비효율이 없어지고, 한 곳에서 개발·테스트 가능해짐
+- 중복 구현돼 있던 함수와 엔티티를 공통 모듈로 합쳐 한 곳만 수정하면 되도록 개선
+- 스택 통일로 **MAUM 담당 백엔드 개발자 채용 성공**
+- 11개 서비스 중 **6개 전환 완료, 1개 진행 중** (진행 중 포함 약 60%)
+- Slow Query 개선 및 작은 버그들 수정
 
-- 다중 repo 운영으로 인한 개발 비효율이 제거됐다.
-- 단일 프로젝트 환경에서 개발·테스트가 가능해져, **소수 인력으로도 효율적인 유지보수**가 가능해졌다.
+---
 
-### 2. 다양한 프레임워크 혼재로 인한 채용 및 유지보수 어려움
+## 회고
 
-- 표준 스택(Spring Boot 3)으로 수렴하면서 **MAUM 담당 백엔드 개발자 채용에 성공**했다.
-- 기존 레거시의 **약 60% 마이그레이션을 완료**했다.
-- Slow Query 개선 등 **서비스 성능 개선까지 동시에 달성**했다.
+- - 기존 로직을 이해하려고 담당자들과 이야기하면서, "왜 이렇게 개발됐는지"에 대한 히스토리를 알게 된 게 즐거웠다.
+- 여러 서비스를 거치는 요청을 한 번에 추적할 수 있는 모니터링 기능을 같이 만들었다면 장애 대응이 더 편했을 것 같다.
+- MSA에서는 장애 발생 시 데이터 정합성을 맞추는 과정이 꽤 힘들다는 것을 알았다.
