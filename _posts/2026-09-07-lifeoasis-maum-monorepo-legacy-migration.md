@@ -46,7 +46,7 @@ MAUM은 11개의 마이크로서비스가 **서비스마다 별도 repo**로 나
 
 ## 아키텍처
 
-[![MAUM 멀티 레포 → Monorepo 통합 및 Spring Boot 3 + Kotlin 마이그레이션 아키텍처](/assets/img/posts/maum-monorepo-migration/maum_legacy_migration_architecture.png)](/assets/img/posts/maum-monorepo-migration/maum_legacy_migration_architecture.png)
+![MAUM 멀티 레포 → Monorepo 통합 및 Spring Boot 3 + Kotlin 마이그레이션 아키텍처](/assets/img/posts/maum-monorepo-migration/maum_legacy_migration_architecture.png)
 
 - **Before**: 11개 서비스가 각각 별도 repo로 존재 (NestJS · Django · FastAPI · Go)
 - **After**: 하나의 Monorepo(MAUM) 안에서 Spring Boot 3 + Kotlin Gradle 멀티모듈로 구성. 공통 함수, 테이블 엔티티, 라이브러리는 공통 모듈로 빼고 루트 Gradle에서 의존관계를 관리
