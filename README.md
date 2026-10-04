@@ -83,11 +83,11 @@
 ## 최근 글
 
 <!-- BLOG-POST-LIST:START -->
+- [Intel&lpar;T2&rpar; MacBook에 외장 SSD로 Ubuntu 24.04 설치하기](https://devrereg.github.io/tech-blog/posts/intel-t2-macbook-external-ssd-ubuntu-24-04/)
 - [ROS2 한 장 요약](https://devrereg.github.io/tech-blog/posts/ros2-overview/)
 - [의료 영상 분석 AI 완전 정복 — DICOM부터 ResNet18 전이학습, ROC-AUC, Grad-CAM까지](https://devrereg.github.io/tech-blog/posts/medical-imaging-ai-chest-xray-classification/)
 - [객체 검출&lpar;2&rpar; — One-Stage Detector 완전 정복: YOLO v5 → v8 → v10 진화](https://devrereg.github.io/tech-blog/posts/object-detection-2-one-stage-yolo/)
 - [LangChain 대신 LangGraph를 선택한 이유: State 공유 관점에서](https://devrereg.github.io/tech-blog/posts/langchain-vs-langgraph-state-sharing/)
-- [객체 검출&lpar;1&rpar; — Two-Stage Detector 완전 정리: R-CNN에서 Faster R-CNN까지](https://devrereg.github.io/tech-blog/posts/object-detection-1-two-stage-detector/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 연락
