@@ -30,7 +30,7 @@
 | 2026.03 | [자연어 기반 인플루언서 검색 (AX 서비스)](https://devrereg.github.io/tech-blog/posts/mindrepublic-wenoa-ax-influencer-search/) | 멀티 필터 방식 검색을 "자연어 요청 → AI Agent가 검색 필터 자동 생성·가중치 정렬" 방식으로 전환. 비용 절감을 위해 ECS Fargate 기반 서버리스로 구성 |
 | 2026.01 | [정기결제 토스페이먼츠 연동](https://devrereg.github.io/tech-blog/posts/mindrepublic-tosspayments-recurring-billing/) | 빌링키 기반 정기결제 연동. 외부 PG와 내부 DB 상태가 어긋나는 정합성 이슈를 보상 트랜잭션(자동 환불) + Slack 실시간 알림으로 대응 |
 | 2025.12 | [FE/BE 통합 AI-Native 개발환경 구축](https://devrereg.github.io/tech-blog/posts/mindrepublic-monorepo-ai-native-devenv/) | FE·BE 저장소를 Git Subtree로 Monorepo에 통합해 기능 단위 개발·단일 PR 실현. 폴더별 `CLAUDE.md` 컨텍스트 엔지니어링으로 AI 도구의 토큰 부족 문제 해결 |
-| 2025.10 | [유튜브 콘텐츠 실시간 수집](https://devrereg.github.io/tech-blog/posts/mindrepublic-wenoa-youtube-collector/) | 일 20만 건 이상으로 늘어난 수집량에 맞춰 SQS 컨슈머 병렬도·EC2 오토스케일링 조정. MySQL 커넥션 한계와 YouTube Data API 일일 한도(10,000 credit)를 50건 배치 호출로 돌파 |
+| 2025.10 | [유튜브 콘텐츠 실시간 수집](https://devrereg.github.io/tech-blog/posts/mindrepublic-wenoa-youtube-collector/) | 일 30만 건 이상으로 늘어난 수집량에 맞춰 SQS 컨슈머 병렬도·EC2 오토스케일링 조정. MySQL 커넥션 한계와 YouTube Data API 일일 한도(10,000 credit)를 50건 배치 호출로 돌파 |
 | 2025.07 | [인플루언서 검색 ETL 파이프라인 구축](https://devrereg.github.io/tech-blog/posts/mindrepublic-wenoa-influencer-search-etl-pipeline/) | 일 1,000개 키워드로 최대 5만 채널을 수집·가공·저장. 채널 설명과 인기 게시물의 이미지·텍스트를 결합한 멀티모달 임베딩으로 텍스트 기반 검색을 벡터 기반 의미 검색으로 전환 |
 | — | [서버 장애 알림 처리](https://devrereg.github.io/tech-blog/posts/mindrepublic-error-alert-notification/) | AWS WAF Email 알림 + 전 서버 에러 로그 Slack Bot 실시간 통지 파이프라인 구축. dedup 키 + Redis 억제 창으로 동일 장애 중복 알림 제거 |
 
