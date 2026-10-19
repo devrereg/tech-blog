@@ -6,6 +6,7 @@ tags: [monorepo, git-subtree, claude-code, ai-native, context-engineering]
 description: "마인드리퍼블릭 WENOA의 FE/BE 저장소를 Git Subtree로 Monorepo에 통합해 기능 단위 개발 체계를 만들고, 폴더별 CLAUDE.md 기반 컨텍스트 엔지니어링으로 Claude Code의 토큰 부족 문제를 해결한 과정을 정리"
 ---
 
+> 마인드리퍼블릭에서 운영하는 서비스 **WENOA**의 **FE/BE 통합 Monorepo 및 AI-Native 개발환경 구축** 기록이다. 별도 repository로 운영되던 FE·BE를 Git Subtree로 하나의 Monorepo에 합치고, 폴더별 `CLAUDE.md` 기반 컨텍스트 엔지니어링으로 AI 생산성 문제와 토큰 부족 문제를 함께 해결한 과정을 정리했다.
 
 ## 프로젝트 개요
 
@@ -15,44 +16,63 @@ description: "마인드리퍼블릭 WENOA의 FE/BE 저장소를 Git Subtree로 M
 - **역할**: Monorepo 구조 설계 · 저장소 통합 · AI 개발환경 구축
 - **기술 스택**: Git Monorepo · Git Subtree · Claude Code · Claude Skills · CLAUDE.md
 
-
----
-
-## 문제
-
-FE와 BE가 별도 repository로 운영되어, AI를 활용해도 FE의 AI에게는 BE 스펙을, BE의 AI에게는 FE 구조를 따로 알려줘야 했다.
-
-서비스 초기라 요구사항 변경이 잦았고, 변경될 때마다 FE·BE 개발자가 요청·응답 형식을 다시 맞추고 QA도 다시 해야 했다.
-
-**AI를 쓰고 있어도, 저장소가 분리된 구조 때문에 생산성이 오르지 않았다.**
-
-통합 이후에는 코드베이스가 커지면서 관련 없는 코드까지 컨텍스트에 적재되어 **토큰이 부족해지는 문제**가 생겼다.
-
----
-
-
-## 해결
-
-FE·BE를 **하나의 Monorepo로 통합**해 한 명의 개발자가 기능 단위로 FE·BE를 함께 개발하도록 바꾸고, 폴더별 컨텍스트 문서로 AI가 필요한 범위만 파악하도록 구성함.
-
-
 **설계 기준**
 
 - 기존 repository의 커밋 이력을 보존해야 함
 - 한 명의 개발자가 하나의 브랜치에서 기능 전체를 개발·테스트할 수 있어야 함
 - AI가 전체 코드베이스 중 필요한 범위만 파악할 수 있어야 함
 
+---
 
 ## 아키텍처
 
 ![FE/BE 통합 AI-Native 개발환경 아키텍처(2025.12) 다이어그램](/assets/img/posts/mindrepublic-monorepo/wenoa_ai_native_dev_environment.png)
 
+*WENOA FE/BE 통합 Monorepo 구조 — Git Subtree로 이력을 보존한 채 `frontend/`, `backend/`를 하나의 저장소로 합치고, 폴더별 `CLAUDE.md`로 AI가 참조할 컨텍스트 범위를 제한한다.*
 
-- **Monorepo 통합**: `git subtree add/pull --prefix=frontend|backend`로 기존 저장소를 이력째 가져와 `frontend/`, `backend/`로 구성
-- **기능 단위 개발**: 하나의 feature 브랜치에서 FE·BE를 함께 개발하고, AI가 양쪽 코드를 참조해 E2E 테스트 케이스까지 작성
-- **컨텍스트 엔지니어링**: 폴더별 `CLAUDE.md`와 파일 최상단에 역할·코드 컨벤션을 정의해, AI가 작업에 필요한 폴더와 파일만 선택적으로 탐색
+전체 작업은 **① Monorepo 통합 → ② 기능 단위 개발 체계 전환 → ③ 컨텍스트 엔지니어링** 순으로 진행했다.
+
+**1. Monorepo 통합**
+
+- `git subtree add/pull --prefix=frontend|backend`로 기존 저장소를 이력째 가져와 `frontend/`, `backend/`로 구성
+
+**2. 기능 단위 개발 체계 전환**
+
+- 하나의 feature 브랜치에서 FE·BE를 함께 개발하고, AI가 양쪽 코드를 참조해 E2E 테스트 케이스까지 작성
+
+**3. 컨텍스트 엔지니어링**
+
+- 폴더별 `CLAUDE.md`와 파일 최상단에 역할·코드 컨벤션을 정의해, AI가 작업에 필요한 폴더와 파일만 선택적으로 탐색
+
+---
+
+## 문제
+
+### 1. FE/BE 저장소 분리로 인한 AI 컨텍스트 공유 어려움
+
+FE와 BE가 별도 repository로 운영되어, AI를 활용해도 FE의 AI에게는 BE 스펙을, BE의 AI에게는 FE 구조를 따로 알려줘야 했다. **AI를 쓰고 있어도, 저장소가 분리된 구조 때문에 생산성이 오르지 않았다.**
+
+### 2. 잦은 요구사항 변경에 따른 동기화 비용
+
+서비스 초기라 요구사항 변경이 잦았고, 변경될 때마다 FE·BE 개발자가 요청·응답 형식을 다시 맞추고 QA도 다시 해야 했다.
+
+### 3. Monorepo 통합 후 발생한 토큰 부족 문제
+
+통합 이후에는 코드베이스가 커지면서 관련 없는 코드까지 컨텍스트에 적재되어 **토큰이 부족해지는 문제**가 생겼다.
+
+---
+
+## 해결
+
+### 1. Git Subtree로 FE·BE를 하나의 Monorepo로 통합
+
+FE·BE를 **하나의 Monorepo로 통합**해 한 명의 개발자가 기능 단위로 FE·BE를 함께 개발하도록 바꿨다.
 
 **Git Subtree를 선택한 이유**: Submodule은 원본을 참조만 해 별도 checkout과 버전 동기화가 필요하지만, Subtree는 이력을 유지한 채 코드를 직접 포함해 하나의 저장소처럼 다룰 수 있다.
+
+### 2. 폴더별 CLAUDE.md 기반 컨텍스트 엔지니어링
+
+폴더별 컨텍스트 문서로 AI가 필요한 범위만 파악하도록 구성했다.
 
 **CLAUDE.md를 폴더별로 나눈 이유**: 루트 하나에 모든 규칙을 담으면 매번 전체가 컨텍스트에 적재된다. 폴더 단위로 나누면 작업 대상 문서만 참조해 토큰을 줄이면서 정확도를 유지할 수 있다.
 
@@ -65,8 +85,6 @@ FE·BE를 **하나의 Monorepo로 통합**해 한 명의 개발자가 기능 단
 - FE/BE 동기화 커뮤니케이션 비용 감소
 - 컨텍스트 엔지니어링으로 토큰 부족 문제 해소
 
----
-
 ## 회고
-- 개발자의 업무 비중이 코드 작성에서 기획 검토와 QA로 옮겨갔다.
-- AI-Native 환경이라도 코드 리뷰를 통해 검증 하고, 가드레일링 하면서 고도화 해나가는 과정이 필요하다.
+
+개발자의 업무 비중이 코드 작성에서 기획 검토와 QA로 옮겨갔다. AI-Native 환경이라도 코드 리뷰를 통해 검증하고, 가드레일링하면서 고도화해나가는 과정이 필요하다.
