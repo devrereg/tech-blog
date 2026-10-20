@@ -1,12 +1,12 @@
 ---
-title: "[라이프오아시스] MAUM Admin 유저 검색 성능 개선 — 800만 유저 LIKE 검색을 Fulltext Index로 전환해 20초에서 200ms로 단축"
+title: "[라이프오아시스] MAUM Admin 유저 검색 성능 개선 — 170만 유저 LIKE 검색을 Fulltext Index로 전환해 10~16초에서 1초 이내로 단축"
 date: 2026-09-07 12:00:00 +0900
 categories: [포트폴리오]
 tags: [mysql, fulltext-index, ngram, query-optimization, spring-boot, kotlin, kubernetes]
-description: 라이프오아시스 MAUM Admin의 유저 검색 성능 개선 기록. CS 대응용 유저 조회에서 800만 행을 풀 스캔하느라 20초 이상 걸리던 이름·이메일 LIKE 검색을, ngram 파서 기반 Fulltext Index와 MATCH AGAINST 쿼리로 바꿔 200ms로 줄였다.
+description: 라이프오아시스 MAUM Admin의 유저 검색 성능 개선 기록. CS 대응용 유저 조회에서 170만 행을 풀 스캔하느라 10~16초 걸리던 이름·이메일 LIKE 검색을, ngram 파서 기반 Fulltext Index와 MATCH AGAINST 쿼리로 바꿔 1초 이내로 줄였다.
 ---
 
-> 라이프오아시스에서 운영하는 서비스 **MAUM**의 **Admin 유저 검색 성능 개선** 기록이다. CS 담당자가 이름이나 이메일로 유저를 찾을 때 20초 넘게 걸리던 LIKE 검색을 Fulltext Index 기반으로 바꾼 과정을 정리했다.
+> 라이프오아시스에서 운영하는 서비스 **MAUM**의 **Admin 유저 검색 성능 개선** 기록이다. CS 담당자가 이름이나 이메일로 유저를 찾을 때 10~16초 걸리던 LIKE 검색을 Fulltext Index 기반으로 바꾼 과정을 정리했다.
 
 ## 프로젝트 개요
 
@@ -26,7 +26,7 @@ description: 라이프오아시스 MAUM Admin의 유저 검색 성능 개선 기
 
 ![MAUM Admin 유저 검색 성능 개선 아키텍처 다이어그램](/assets/img/posts/maum-admin-automation/maum_admin_backoffice_architecture_1_user_search.png)
 
-*MAUM Admin 유저 검색 구조 — CS 담당자가 Admin에서 이름·이메일로 유저를 검색하면, API 서버가 약 800만 행의 `user` 테이블을 Fulltext Index로 조회한다.*
+*MAUM Admin 유저 검색 구조 — CS 담당자가 Admin에서 이름·이메일로 유저를 검색하면, API 서버가 약 170만 행의 `user` 테이블을 Fulltext Index로 조회한다.*
 
 전체 작업은 **① 원인 분석 → ② ngram Fulltext Index 생성 → ③ 쿼리 전환 및 검증** 순으로 진행했다.
 
@@ -46,7 +46,7 @@ description: 라이프오아시스 MAUM Admin의 유저 검색 성능 개선 기
 
 ## 문제
 
-### 1. 800만 행 풀 스캔으로 20초 이상 걸리는 유저 검색
+### 1. 170만 행 풀 스캔으로 10~16초 걸리는 유저 검색
 
 CS 담당자는 문의가 오면 이름이나 이메일로 그 유저부터 찾는다. 하루에도 수십 번 쓰는 화면인데, 쿼리는 이렇게 생겼었다.
 
@@ -55,7 +55,7 @@ SELECT * FROM user
 WHERE name LIKE '%값%' OR email LIKE '%값%';
 ```
 
-앞에 `%`가 붙은 LIKE는 B-Tree 인덱스를 탈 수 없다. 검색할 때마다 800만 행을 전부 읽었고, 유저 한 명 찾는 데 **20초 이상** 걸렸다.
+앞에 `%`가 붙은 LIKE는 B-Tree 인덱스를 탈 수 없다. 검색할 때마다 170만 행을 전부 읽었고, 유저 한 명 찾는 데 **10~16초** 걸렸다.
 
 ### 2. CS 응대 지연과 DB 부하
 
@@ -93,7 +93,7 @@ WHERE MATCH(name, email) AGAINST(:keyword IN BOOLEAN MODE);
 
 ## 결과
 
-- 유저 검색 응답 시간이 **20초에서 200ms로 줄었다** (약 100배).
+- 유저 검색 응답 시간이 **10~16초에서 1초 이내로 줄었다**.
 - CS 담당자가 검색 결과를 기다리지 않고 바로 응대할 수 있게 됐다.
 
 ## 회고

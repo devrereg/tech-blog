@@ -40,9 +40,9 @@
 
 | 기간 | 프로젝트 | 요약 |
 |---|---|---|
-| 2025.03 | [근처 친구 추천](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-nearby-friends-recommendation/) | 요청마다 800만 유저 위치정보를 전체 스캔하던 구조를, 3시간 주기 배치가 Redis Geolocation으로 근처 친구 50명을 미리 계산해 유저별 Redis Set에 캐싱하는 구조로 전환 |
+| 2025.03 | [근처 친구 추천](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-nearby-friends-recommendation/) | 요청마다 500만 유저 위치정보를 전체 스캔하던 구조를, 3시간 주기 배치가 Redis Geolocation으로 근처 친구 50명을 미리 계산해 유저별 Redis Set에 캐싱하는 구조로 전환 |
 | 2024.03 | [토스페이먼츠 웹결제 연동](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-tosspayments-web-payment/) | iOS 인앱결제 30% 수수료를 우회하는 웹결제 플로우 설계. 결제 성공 후 재화 지급 실패에 대비해 Saga 패턴 보상 트랜잭션(자동 환불)과 Slack 알림 구현 |
-| 2023–2025 | [Admin/백오피스 개발 및 자동화](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-admin-fulltext-search-promotion-automation/) | 800만 유저 대상 이름·이메일 LIKE 검색(20초+)을 MySQL Fulltext Index(MATCH AGAINST)로 200ms까지 개선. 매월 2~3일씩 걸리던 마케팅 프로모션 세팅을 마케터 셀프서비스 기능으로 자동화 |
+| 2023–2025 | [Admin/백오피스 개발 및 자동화](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-admin-fulltext-search-promotion-automation/) | 170만 유저 대상 이름·이메일 LIKE 검색(10~16초)을 MySQL Fulltext Index(MATCH AGAINST)로 1초 이내로 개선. 매월 2~3일씩 걸리던 마케팅 프로모션 세팅을 마케터 셀프서비스 기능으로 자동화 |
 | 2023–2025 | [운영 안정화 및 레거시 마이그레이션](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-monorepo-legacy-migration/) | 여러 repo로 분산된 마이크로서비스를 하나의 Monorepo로 통합하고, 이기종 프레임워크로 흩어진 서비스를 Spring Boot 3 + Kotlin으로 순차 마이그레이션하며 Slow Query 개선 등 성능 최적화 병행 |
 
 ---
