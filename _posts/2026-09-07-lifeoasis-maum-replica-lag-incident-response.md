@@ -1,5 +1,5 @@
 ---
-title: "[라이프오아시스] MAUM 간헐적 요청 실패 장애 대응 — Read/Write DB 분리 환경의 복제 지연(Replication Lag) 원인 분석"
+title: "[라이프오아시스] MAUM 간헐적 요청 실패 장애 대응 — Read/Write DB 분리 환경의 복제 지연 원인 분석"
 date: 2026-09-07 13:00:00 +0900
 categories: [포트폴리오]
 tags: [mysql, read-write-splitting, spring-boot, kotlin]
