@@ -83,11 +83,11 @@
 ## 최근 글
 
 <!-- BLOG-POST-LIST:START -->
-- [Intel&lpar;T2&rpar; MacBook에 외장 SSD로 Ubuntu 24.04 설치하기](https://devrereg.github.io/tech-blog/posts/intel-t2-macbook-external-ssd-ubuntu-24-04/)
-- [ROS2 한 장 요약](https://devrereg.github.io/tech-blog/posts/ros2-overview/)
-- [의료 영상 분석 AI 완전 정복 — DICOM부터 ResNet18 전이학습, ROC-AUC, Grad-CAM까지](https://devrereg.github.io/tech-blog/posts/medical-imaging-ai-chest-xray-classification/)
-- [객체 검출&lpar;2&rpar; — One-Stage Detector 완전 정복: YOLO v5 → v8 → v10 진화](https://devrereg.github.io/tech-blog/posts/object-detection-2-one-stage-yolo/)
-- [LangChain 대신 LangGraph를 선택한 이유: State 공유 관점에서](https://devrereg.github.io/tech-blog/posts/langchain-vs-langgraph-state-sharing/)
+- [[라이프오아시스] MAUM 간헐적 요청 실패 장애 대응 — Read/Write DB 분리 환경의 복제 지연 원인 분석](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-replica-lag-incident-response/)
+- [[라이프오아시스] MAUM Admin 유저 검색 성능 개선 — 170만 유저 LIKE 검색을 Fulltext Index로 전환해 10~16초에서 1초 이내로 단축](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-admin-user-search-performance/)
+- [[라이프오아시스] MAUM 마케팅 프로모션 세팅 자동화 — 매월 코드로 구현·배포하던 프로모션을 Admin 설정 기반 구조로 전환해 마케터가 직접 운영](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-promotion-automation/)
+- [[라이프오아시스] MAUM 인앱결제 수수료 절감을 위한 토스페이먼츠 웹결제 연동 — 결제·재화 지급 정합성을 Saga 보상 트랜잭션으로 확보](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-tosspayments-web-payment/)
+- [[라이프오아시스] MAUM 근처 친구 추천 — 500만 유저 위치정보 전체 스캔을 3시간 배치 캐싱으로 전환](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-nearby-friends-recommendation/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 연락
