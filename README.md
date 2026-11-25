@@ -83,11 +83,11 @@
 ## 최근 글
 
 <!-- BLOG-POST-LIST:START -->
+- [[두산로보틱스 ROKEY] 3Farm — ROS2 기반 무인 3D 프린트 자동화 공정 시스템 구현](https://devrereg.github.io/tech-blog/posts/doosan-rokey-3farm-ros2-robot-automation/)
 - [[라이프오아시스] MAUM 간헐적 요청 실패 장애 대응 — Read/Write DB 분리 환경의 복제 지연 원인 분석](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-replica-lag-incident-response/)
 - [[라이프오아시스] MAUM Admin 유저 검색 성능 개선 — 170만 유저 LIKE 검색을 Fulltext Index로 전환해 10~16초에서 1초 이내로 단축](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-admin-user-search-performance/)
 - [[라이프오아시스] MAUM 마케팅 프로모션 세팅 자동화 — 매월 코드로 구현·배포하던 프로모션을 Admin 설정 기반 구조로 전환해 마케터가 직접 운영](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-promotion-automation/)
 - [[라이프오아시스] MAUM 인앱결제 수수료 절감을 위한 토스페이먼츠 웹결제 연동 — 결제·재화 지급 정합성을 Saga 보상 트랜잭션으로 확보](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-tosspayments-web-payment/)
-- [[라이프오아시스] MAUM 근처 친구 추천 — 500만 유저 위치정보 전체 스캔을 3시간 배치 캐싱으로 전환](https://devrereg.github.io/tech-blog/posts/lifeoasis-maum-nearby-friends-recommendation/)
 <!-- BLOG-POST-LIST:END -->
 
 ## 연락
